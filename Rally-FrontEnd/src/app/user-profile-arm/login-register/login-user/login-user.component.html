@@ -1,0 +1,26 @@
+<div style="text-align:center" class="container">
+
+    <div class="form-group">
+      <h2>Login</h2>
+    </div>
+    <form #userLogin="ngForm" (ngSubmit)="login(userLogin)">
+
+      <br><br>
+      <label>UserName: <input type="text" name="userName" required ngModel></label>
+
+      <br><br>
+      <label>Password: <input type="password" name="password" required ngModel></label>
+      
+      <br><br>
+      <input type="submit" value="Submit">
+
+      <br><br>
+      <div *ngIf="incorrectPassword">
+        <p id="IncorrectPW">Invalid Username or Password</p>
+      </div>
+
+    </form>
+
+  <br>
+  <p>Don't have an account?<a routerLink="/register" routerLinkActive="active">Register</a></p>
+</div>
