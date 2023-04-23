@@ -33,58 +33,35 @@ public class AuthenticationController {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
-    private static int userSessionId = 0;
-    private static final String userSessionKey = "user";
-
-
-    @GetMapping("/currentUser")
-    public ResponseEntity<?> getUserFromSession(HttpSession session) {
-
-        if (userSessionId == 0) {
-            return null;
-        }
-
-        Optional<UserEntity> user = userRepository.findById(userSessionId);
-
-        if (user.isEmpty()) {
-            return null;
-        }
-
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
-
-    private static void setUserInSession(HttpSession session, UserEntity userEntity) {
-        session.setAttribute(userSessionKey, userEntity.getId());
-    }
-
     @PostMapping("/register")
     public ResponseEntity<?> processRegistrationForm(@RequestBody RegisterDTO registerDTO, HttpServletRequest request) {
 
         UserEntity existingUser = userRepository.findByUserName(registerDTO.getUserName());
 
         if (existingUser != null) {
-            AuthenticationFailure authenticationFailure = new AuthenticationFailure("That username is taken.");
+            AuthenticationFailure authenticationFailure = new AuthenticationFailure("That username is taken");
             return new ResponseEntity<>(authenticationFailure, HttpStatus.OK);
         }
 
         String password = registerDTO.getPassword();
         String verifyPassword = registerDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
-            AuthenticationFailure authenticationFailure = new AuthenticationFailure("Passwords do not match.");
-            return new ResponseEntity<>(authenticationFailure, HttpStatus.OK);
+            AuthenticationFailure authenticationFailure = new AuthenticationFailure("Passwords do not match");
         }
 
-        UserEntity newUser = new UserEntity(registerDTO.getUserName(), registerDTO.getPassword());
+        UserEntity registerNewUser = new UserEntity((registerDTO.getUserName()), registerDTO.getPassword());
         Role roles = roleRepository.findByName("USER").get();
-        newUser.setRoles(Collections.singletonList(roles));
+        registerNewUser.setRoles(Collections.singletonList(roles));
 
-        userRepository.save(newUser);
-        setUserInSession(request.getSession(), newUser);
-        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("User successfully registered.");
+        userRepository.save(registerNewUser);
+
+        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("New user successfully registered");
 
         return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
 
     }
+
+
     @PostMapping("/login")
     public ResponseEntity<?> processLoginForm(@RequestBody LoginDTO loginDTO,
                                               Errors errors, HttpServletRequest request,
@@ -93,29 +70,19 @@ public class AuthenticationController {
         UserEntity theUser = userRepository.findByUserName(loginDTO.getUserName());
 
         if (theUser == null) {
-            AuthenticationFailure authenticationFailure = new AuthenticationFailure("Username does not exist.");
+            AuthenticationFailure authenticationFailure = new AuthenticationFailure("Username doesn't exist");
             return new ResponseEntity<>(authenticationFailure, HttpStatus.OK);
         }
 
         String password = loginDTO.getPassword();
 
         if (!theUser.isMatchingPassword(password)) {
-            AuthenticationFailure authenticationFailure = new AuthenticationFailure("Incorrect password.");
+            AuthenticationFailure authenticationFailure = new AuthenticationFailure("Incorrect password");
             return new ResponseEntity<>(authenticationFailure, HttpStatus.OK);
         }
-
-        setUserInSession(request.getSession(), theUser);
-        userSessionId = theUser.getId();
-        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("User logged in and session created");
 
         return new ResponseEntity<>(theUser, HttpStatus.OK);
     }
 
-    @GetMapping("/logout")
-    public ResponseEntity<?> logout(HttpServletRequest request){
-        request.getSession().invalidate();
-        AuthenticationFailure authenticationFailure = new AuthenticationFailure("User logged out.");
-        return new ResponseEntity<>(authenticationFailure, HttpStatus.OK);
-    }
 
 }

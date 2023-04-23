@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterDTO } from '../../models/dto/RegisterDTO';
 import { HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms'
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({

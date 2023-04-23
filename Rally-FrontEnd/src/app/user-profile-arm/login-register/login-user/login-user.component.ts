@@ -5,6 +5,7 @@ import { LoginDTO } from '../../models/dto/LoginDTO';
 import { AuthenticationFailed } from '../../exception/AuthenticationFailed';
 import { UserEntity } from '../../models/UserEntity';
 import { NgForm } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-user',
@@ -15,15 +16,18 @@ export class LoginUserComponent implements OnInit {
 
   private userUrl: string;
   incorrectPassword: boolean;
-  currentUser: UserEntity;
-  private response: AuthenticationFailed[];
+  cookieValue;
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient,
+              private router: Router, 
+              private cookieService: CookieService) 
+              { 
     this.userUrl = 'http://localhost:8080/api/login';
-    this.response = [];
-    this.incorrectPassword = false;
-    this.currentUser = new UserEntity("Nope", "2")
+    // cookie tests
+    this.cookieService.set('Test', 'Hello World');
+    this.cookieValue = this.cookieService.get('Test');
   }
+
 
   ngOnInit(): void {
   }
@@ -36,16 +40,20 @@ export class LoginUserComponent implements OnInit {
         password: userInformation.value.password
       }
 
-      this.http.post(this.userUrl, loginInfo).subscribe((res) => 
-        {console.log(res)
-        for (const k in res){
-          if (k == "failed"){
-            this.incorrectPassword = true;
+      this.http.post(this.userUrl, loginInfo).subscribe((res) => {
+        console.log(res)
+          for (const k in res){
+            if (k == "failed"){
+              this.incorrectPassword = true;
+            }
+            else if (k == "userName"){
+
+              // wish list: localStorage.setItem(loginInfo.userName.toString(), loginInfo.password.toString());
+              localStorage.setItem(k, loginInfo.userName)
+              console.log(k);
+              this.router.navigate(["/myProfile"])
+            }
           }
-          else if (k == "userName"){
-            this.router.navigate(["/myProfile"], {state: {data: res}})
-          }
-        }
       });
 
   }

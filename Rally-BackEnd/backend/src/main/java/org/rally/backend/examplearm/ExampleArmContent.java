@@ -1,4 +1,4 @@
 package org.rally.backend.examplearm;
 
-public class holder {
+public class ExampleArmContent {
 }
