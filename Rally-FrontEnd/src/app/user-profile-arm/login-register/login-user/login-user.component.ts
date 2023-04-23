@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from '../../models/dto/LoginDTO';
-import { AuthenticationFailed } from '../../exception/AuthenticationFailed';
-import { UserEntity } from '../../models/UserEntity';
 import { NgForm } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 

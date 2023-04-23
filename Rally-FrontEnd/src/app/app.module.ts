@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchUserComponent } from './user-profile-arm/user-profile/search-user/search-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { ExperimentalComponent } from './user-profile-arm/experiments/experimental/experimental.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
     LoginUserComponent,
     UserProfileComponent,
     SearchUserComponent,
+    ExperimentalComponent,
   ],
   imports: [
     BrowserModule,
