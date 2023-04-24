@@ -47,11 +47,14 @@ public class AuthenticationController {
         String verifyPassword = registerDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             AuthenticationFailure authenticationFailure = new AuthenticationFailure("Passwords do not match");
+            return new ResponseEntity<>(authenticationFailure, HttpStatus.OK);
         }
 
         UserEntity registerNewUser = new UserEntity((registerDTO.getUserName()), registerDTO.getPassword());
-        Role roles = roleRepository.findByName("USER").get();
-        registerNewUser.setRoles(Collections.singletonList(roles));
+
+        /** Roles are not enabled for now, leave these rows commented out **/
+//        Role roles = roleRepository.findByName("USER").get();
+//        registerNewUser.setRoles(Collections.singletonList(roles));
 
         userRepository.save(registerNewUser);
 

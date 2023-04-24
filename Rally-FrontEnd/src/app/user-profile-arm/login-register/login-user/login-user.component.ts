@@ -32,27 +32,24 @@ export class LoginUserComponent implements OnInit {
 
   login(userInformation: NgForm ) {
       
-      this.incorrectPassword = false;
-      let loginInfo: LoginDTO = {
-        userName: userInformation.value.userName,
-        password: userInformation.value.password
-      }
+    this.incorrectPassword = false;
+    let loginInfo: LoginDTO = {
+      userName: userInformation.value.userName,
+      password: userInformation.value.password
+    }
 
-      this.http.post(this.userUrl, loginInfo).subscribe((res) => {
-        console.log(res)
-          for (const k in res){
-            if (k == "failed"){
-              this.incorrectPassword = true;
-            }
-            else if (k == "userName"){
-
-              // wish list: localStorage.setItem(loginInfo.userName.toString(), loginInfo.password.toString());
-              localStorage.setItem(k, loginInfo.userName)
-              console.log(k);
-              this.router.navigate(["/myProfile"])
-            }
+    this.http.post(this.userUrl, loginInfo).subscribe((res) => {
+      console.log(res)
+        for (const k in res){
+          if (k == "failed"){
+            this.incorrectPassword = true;
           }
-      });
+          else if (k == "userName"){            
+            localStorage.setItem(k, loginInfo.userName)
+            this.router.navigate(["/myProfile"])
+          }
+        }
+    });
 
   }
 }
