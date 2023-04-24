@@ -18,7 +18,7 @@ export class RegisterUserComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  }
+  } 
 
   registerNewUser(userInformation: NgForm) {
       let submitNewUser: RegisterDTO = {

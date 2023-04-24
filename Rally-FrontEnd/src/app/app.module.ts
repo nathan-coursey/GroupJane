@@ -11,6 +11,7 @@ import { SearchUserComponent } from './user-profile-arm/user-profile/search-user
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ExperimentalComponent } from './user-profile-arm/experiments/experimental/experimental.component';
+import { ForumComponent } from './forum/forum.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ExperimentalComponent } from './user-profile-arm/experiments/experiment
     UserProfileComponent,
     SearchUserComponent,
     ExperimentalComponent,
+    ForumComponent,
   ],
   imports: [
     BrowserModule,
