@@ -15,6 +15,7 @@ import { EventViewComponent } from './event-view/event-view.component';
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
+import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-user-profile/view-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CommunityHomeComponent } from './community-forum-arm/community-home/com
     DropdownMenuComponent,
     ForumComponent,
     CommunityHomeComponent,
+    ViewUserProfileComponent,
   ],
   imports: [
     BrowserModule,
