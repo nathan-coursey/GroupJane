@@ -30,6 +30,7 @@ export class UserProfileComponent implements OnInit {
 
     this.currentUser = localStorage.getItem('userName');
     this.logInStatus = true;
+    return;
   }
 
   logOut() {

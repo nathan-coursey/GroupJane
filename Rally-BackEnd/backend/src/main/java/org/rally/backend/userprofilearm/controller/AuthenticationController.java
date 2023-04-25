@@ -24,10 +24,16 @@ import java.util.Optional;
 @CrossOrigin
 @RequestMapping(value = "/api")
 public class AuthenticationController {
-    @Autowired
+
     UserRepository userRepository;
-    @Autowired
+
     RoleRepository roleRepository;
+
+    @Autowired
+    public AuthenticationController(UserRepository userRepository, RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
 
     @PostMapping("/register")
     public ResponseEntity<?> processRegistrationForm(@RequestBody RegisterDTO registerDTO, HttpServletRequest request) {
