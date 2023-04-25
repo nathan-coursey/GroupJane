@@ -1,8 +1,10 @@
 export class UserEntity {
-    username: string;
+    userName: string;
 	id: string;
-	constructor(username: string, id: string){
-		this.username = username;
+	role: string[];
+	constructor(userName: string, id: string, role: string[]){
+		this.userName = userName;
 		this.id = id;
+		this.role = role;
 	}
 }
