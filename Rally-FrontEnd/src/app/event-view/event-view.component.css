@@ -1,0 +1,11 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+div#list_head{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#span-1{ text-align: left; }
+#span-2{ text-align: right; }
