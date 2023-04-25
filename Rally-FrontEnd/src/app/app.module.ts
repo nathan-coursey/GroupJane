@@ -11,7 +11,13 @@ import { SearchUserComponent } from './user-profile-arm/user-profile/search-user
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ExperimentalComponent } from './user-profile-arm/experiments/experimental/experimental.component';
+<<<<<<< HEAD
 import { EventViewComponent } from './event-view/event-view.component';
+=======
+import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
+import { ForumComponent } from './community-forum-arm/forum/forum.component';
+import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
+>>>>>>> f3e149a3e2bed74073d596ae0b3af9e310d0d3ab
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { EventViewComponent } from './event-view/event-view.component';
     UserProfileComponent,
     SearchUserComponent,
     ExperimentalComponent,
+<<<<<<< HEAD
     EventViewComponent,
+=======
+    DropdownMenuComponent,
+    ForumComponent,
+    CommunityHomeComponent,
+>>>>>>> f3e149a3e2bed74073d596ae0b3af9e310d0d3ab
   ],
   imports: [
     BrowserModule,

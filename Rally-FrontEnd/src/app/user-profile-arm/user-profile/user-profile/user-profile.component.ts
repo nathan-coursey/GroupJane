@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserEntity } from '../../models/UserEntity';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
 
   currentUser;
   logInStatus: Boolean;
@@ -35,8 +34,10 @@ export class UserProfileComponent implements OnInit {
 
   logOut() {
     localStorage.clear();
-    console.log(localStorage.getItem('userName'))
     this.logInStatus = false;
+    this.router.navigate(["/login"])
+    return;
   }
+
 
 }

@@ -24,15 +24,11 @@ import java.util.Optional;
 @CrossOrigin
 @RequestMapping(value = "/api")
 public class AuthenticationController {
-
+    @Autowired
     UserRepository userRepository;
+    @Autowired
     RoleRepository roleRepository;
 
-    @Autowired
-    public AuthenticationController(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-    }
     @PostMapping("/register")
     public ResponseEntity<?> processRegistrationForm(@RequestBody RegisterDTO registerDTO, HttpServletRequest request) {
 
@@ -47,9 +43,16 @@ public class AuthenticationController {
         String verifyPassword = registerDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             AuthenticationFailure authenticationFailure = new AuthenticationFailure("Passwords do not match");
+            return new ResponseEntity<>(authenticationFailure, HttpStatus.OK);
         }
 
         UserEntity registerNewUser = new UserEntity((registerDTO.getUserName()), registerDTO.getPassword());
+<<<<<<< HEAD
+=======
+
+        /** Roles are not enabled for now, leave these rows commented out **/
+
+>>>>>>> f3e149a3e2bed74073d596ae0b3af9e310d0d3ab
 //        Role roles = roleRepository.findByName("USER").get();
 //        registerNewUser.setRoles(Collections.singletonList(roles));
 

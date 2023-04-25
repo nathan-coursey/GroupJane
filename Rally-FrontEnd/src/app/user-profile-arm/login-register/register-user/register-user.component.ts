@@ -18,7 +18,7 @@ export class RegisterUserComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  }
+  } 
 
   registerNewUser(userInformation: NgForm) {
       let submitNewUser: RegisterDTO = {
@@ -31,6 +31,7 @@ export class RegisterUserComponent implements OnInit {
         console.log(res)
       });
 
+      localStorage.setItem("userName", submitNewUser.userName.toString())
       this.router.navigate(["/myProfile"])
 
   }

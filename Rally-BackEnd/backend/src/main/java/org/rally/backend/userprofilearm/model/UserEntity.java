@@ -23,7 +23,9 @@ public class UserEntity {
     private String pwHash;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles = new ArrayList<>();
 
     public UserEntity() {
@@ -50,6 +52,7 @@ public class UserEntity {
     public String getUserName() {
         return userName;
     }
+
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
