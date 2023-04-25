@@ -6,6 +6,7 @@ import { UserProfileComponent } from './user-profile-arm/user-profile/user-profi
 import { EventViewComponent } from './event-view/event-view.component';
 
 
+
 const routes: Routes = [
   {path: 'login', component: LoginUserComponent},
   {path: 'register', component: RegisterUserComponent},
