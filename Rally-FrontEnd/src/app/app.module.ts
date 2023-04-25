@@ -11,6 +11,7 @@ import { SearchUserComponent } from './user-profile-arm/user-profile/search-user
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ExperimentalComponent } from './user-profile-arm/experiments/experimental/experimental.component';
+import { EventViewComponent } from './event-view/event-view.component';
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
@@ -26,6 +27,7 @@ import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/f
     UserProfileComponent,
     SearchUserComponent,
     ExperimentalComponent,
+    EventViewComponent,
     DropdownMenuComponent,
     ForumComponent,
     CommunityHomeComponent,
