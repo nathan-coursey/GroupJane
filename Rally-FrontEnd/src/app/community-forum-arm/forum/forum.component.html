@@ -1,0 +1,50 @@
+<div *ngIf="logInStatus; else notLoggedIn">
+    
+    <div style="text-align: right;">
+        <p>Logged in as: {{currentUser}}  <button (click)="logOut()"> Log Out?</button></p>
+    </div>
+    
+
+
+</div>
+<ng-template #notLoggedIn>
+
+    <h2></h2>
+
+    <p>User is not logged in. </p>
+    <a routerLink="/login" routerLinkActive="active" (click)="logInStatus = false">Login</a>
+</ng-template>
+
+<div class="blue"><h2 class="container-fluid border">Community Forum</h2></div>
+<br>
+
+<div class="blue">
+    <div class="container-fluid border" style="text-align: left;">
+        <h2><a class="nav-link" routerLink="/communityHomeForum" routerLinkActive="active">Community Home</a></h2>
+        <p>Post about, discuss and find out what's going on across the Community.  Keep it civil!</p>
+    </div>
+</div>
+<br>
+
+<div class="blue">
+    <div class="container-fluid border" style="text-align: left;">
+        <h2>Introductions</h2>
+        <p>Introduce yourself to the community. Don't be shy, say hi!</p>
+    </div>
+</div>
+<br>
+
+<div class="blue">
+    <div class="container-fluid border" style="text-align: left;">
+        <h2>Volunteering/Event Recruitment</h2>
+        <p>Discuss getting together as a group for Events.</p>
+    </div>
+</div>
+<br>
+<div class="blue">
+    <div class="container-fluid border" style="text-align: left;">
+        <h2>Help Requests/Home Improvement</h2>
+        <p>Need a cup of sugar?  Borrow a ladder?  Help moving something heavy?  Discuss here.</p>
+    </div>
+</div>
+<br>

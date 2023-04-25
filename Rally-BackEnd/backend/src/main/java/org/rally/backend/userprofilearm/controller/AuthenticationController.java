@@ -24,15 +24,11 @@ import java.util.Optional;
 @CrossOrigin
 @RequestMapping(value = "/api")
 public class AuthenticationController {
-
+    @Autowired
     UserRepository userRepository;
+    @Autowired
     RoleRepository roleRepository;
 
-    @Autowired
-    public AuthenticationController(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-    }
     @PostMapping("/register")
     public ResponseEntity<?> processRegistrationForm(@RequestBody RegisterDTO registerDTO, HttpServletRequest request) {
 
@@ -53,6 +49,7 @@ public class AuthenticationController {
         UserEntity registerNewUser = new UserEntity((registerDTO.getUserName()), registerDTO.getPassword());
 
         /** Roles are not enabled for now, leave these rows commented out **/
+
 //        Role roles = roleRepository.findByName("USER").get();
 //        registerNewUser.setRoles(Collections.singletonList(roles));
 

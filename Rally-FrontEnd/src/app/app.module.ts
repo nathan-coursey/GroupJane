@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ExperimentalComponent } from './user-profile-arm/experiments/experimental/experimental.component';
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
+import { ForumComponent } from './community-forum-arm/forum/forum.component';
+import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-m
     SearchUserComponent,
     ExperimentalComponent,
     DropdownMenuComponent,
+    ForumComponent,
+    CommunityHomeComponent,
   ],
   imports: [
     BrowserModule,
