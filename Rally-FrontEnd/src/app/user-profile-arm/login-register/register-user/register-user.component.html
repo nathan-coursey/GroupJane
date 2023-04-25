@@ -1,0 +1,25 @@
+<div style="text-align:center" class="container">
+
+    <div class="form-group">
+        <h2>Register</h2>
+    </div>
+    <form #userInformation="ngForm" (ngSubmit)="registerNewUser(userInformation)">
+        
+        <br>
+        <label>Enter a user name: <input type="text" name="userName" required ngModel></label>
+        
+        <br><br>
+        <label>Enter your password: <input type="password" name="password" required ngModel></label>
+        
+        <br><br>
+        <label>Please re-enter your password: <input type="password" name="verify" required ngModel></label>
+        
+        <br><br>
+        <input type="submit" value="Submit"> 
+
+        <br><br>
+        <p>Already have an account? <a routerLink="/login" routerLinkActive="active">Login</a></p>
+
+    
+    </form> 
+</div>
