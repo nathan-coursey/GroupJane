@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent implements OnInit {
-currentUser;
+currentUser: String;
 logInStatus: Boolean;
 
 constructor(private http: HttpClient, private router: Router) {

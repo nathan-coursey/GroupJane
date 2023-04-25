@@ -6,6 +6,9 @@ import { UserProfileComponent } from './user-profile-arm/user-profile/user-profi
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
+import { IntroductionsComponent } from './community-forum-arm/forum/introductions/introductions.component';
+import { ForumTopic1Component } from './community-forum-arm/forum/forum-topic1/forum-topic1.component';
+import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/forum-topic2.component';
 
 
 const routes: Routes = [
@@ -14,7 +17,10 @@ const routes: Routes = [
   {path: 'myProfile', component: UserProfileComponent},
   {path: 'testing', component: DropdownMenuComponent},
   {path: 'forum', component: ForumComponent},
-  {path: 'communityHomeForum', component: CommunityHomeComponent}
+  {path: 'forum/communityhome', component: CommunityHomeComponent},
+  {path: 'forum/introductions', component: IntroductionsComponent},
+  {path: 'forum/topic1', component: ForumTopic1Component},
+  {path: 'forum/topic2', component: ForumTopic2Component}
 
 ];
 
