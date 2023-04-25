@@ -26,7 +26,6 @@ export class RegisterUserComponent implements OnInit {
         password: userInformation.value.password,
         verifyPassword: userInformation.value.verify
       }
-      console.log(submitNewUser);
       this.http.post(this.userUrl, submitNewUser).subscribe((res) => {
         console.log(res)
       });
