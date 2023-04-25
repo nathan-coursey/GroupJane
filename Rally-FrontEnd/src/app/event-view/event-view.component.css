@@ -5,7 +5,14 @@ body{
 div#list_head{
     margin-left: 20px;
     margin-right: 20px;
+    height: 100px;
+    width: 500px;
+    padding: 30px;
+    text-align: left;
+    /* background-color: aqua; */
 }
 
-#span-1{ text-align: left; }
-#span-2{ text-align: right; }
+div#button-1 {
+    float: right;
+}
+
