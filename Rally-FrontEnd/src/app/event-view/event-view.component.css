@@ -16,22 +16,49 @@ div#list_head {
     padding: 30px;
     text-align: left;
     font-size: 50px;
-    color: navy;
+    color: #004369;
+    font-weight: 575;
     
     /* background-color: aqua; */
 }
 
 
 .myButton {
-    background-color: teal;
+    background-color: #01949A;
 	border-radius:7px;
 	display: internal;
 	color:#ffffff;
-	font-family:Arial;
+	font-family: Arial;
 	font-size:20px;
 	font-weight:bold;
 	padding:15px 75px;
 	text-decoration: none;
     float: right;
     
+}
+
+div#event_display {
+    width: 350px;
+    height: 750px;
+    float: left;
+    padding: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 200px;
+    text-align: left;
+    font-size: 25px;
+    font-family: arial;
+    /* background-color:#E5DDC8; */
+}
+
+div#main_content {
+    margin-top: 20px;
+    padding: 30px;
+    text-align: left;
+    font-size: 30px;
+}
+
+
+#event_heading {
+    font-size: 50px;
 }
