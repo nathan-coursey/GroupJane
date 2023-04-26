@@ -1,6 +1,7 @@
 package org.rally.backend.userprofilearm.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.rally.backend.userprofilearm.model.UserEntity;
 import org.rally.backend.userprofilearm.model.dto.SearchUserDTO;
 import org.rally.backend.userprofilearm.repository.RoleRepository;
@@ -34,7 +35,7 @@ public class UserProfileInformation {
     }
 
     @GetMapping("/search/this")
-    public ResponseEntity<UserEntity> displayUser(@RequestBody SearchUserDTO searchUserDTO) {
+    public ResponseEntity<?> displayUser(@Valid SearchUserDTO searchUserDTO, HttpServletRequest request) {
         UserEntity findUser = this.userRepository.findByUserName(searchUserDTO.getUserName());
         return new ResponseEntity<>(findUser, HttpStatus.OK);
     }
