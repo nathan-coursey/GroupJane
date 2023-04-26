@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ValidateViewUserService } from './validate-view-user.service';
+import { ViewUserService } from './view-user.service';
 
 describe('ValidateViewUserService', () => {
-  let service: ValidateViewUserService;
+  let service: ViewUserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ValidateViewUserService);
+    service = TestBed.inject(ViewUserService);
   });
 
   it('should be created', () => {

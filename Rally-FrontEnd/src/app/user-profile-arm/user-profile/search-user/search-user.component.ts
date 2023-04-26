@@ -19,7 +19,6 @@ export class SearchUserComponent implements OnInit {
   ngOnInit(): void {
     this.logInStatus = this.verifyService.verifyLoggedIn();
     this.userService.getUserList().subscribe((data: UserEntity[]) => {
-      console.log(data);
       this.userList = data;
     })
   }

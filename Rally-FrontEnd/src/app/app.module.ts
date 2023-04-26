@@ -10,9 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchUserComponent } from './user-profile-arm/user-profile/search-user/search-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { ExperimentalComponent } from './user-profile-arm/experiments/experimental/experimental.component';
 import { EventViewComponent } from './event-view/event-view.component';
-import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
 import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-user-profile/view-user-profile.component';
@@ -24,9 +22,7 @@ import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-u
     LoginUserComponent,
     UserProfileComponent,
     SearchUserComponent,
-    ExperimentalComponent,
     EventViewComponent,
-    DropdownMenuComponent,
     ForumComponent,
     CommunityHomeComponent,
     ViewUserProfileComponent,

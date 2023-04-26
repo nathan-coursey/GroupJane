@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserEntity } from '../../models/UserEntity';
-import { HttpClient } from '@angular/common/http';
-import { ValidateViewUserService } from './validate-view-user.service';
-import { SearchUserDTO } from '../../models/dto/SearchUserDTO';
-import { Observable } from 'rxjs';
+import { ViewUserService } from './view-user.service';
+import { VerifyLogoutService } from '../../security/verify-logout.service';
 @Component({
   selector: 'app-view-user-profile',
   templateUrl: './view-user-profile.component.html',
@@ -12,38 +10,47 @@ import { Observable } from 'rxjs';
 })
 export class ViewUserProfileComponent implements OnInit, OnDestroy {
 
-  usersUrl: string;
-  viewUser: UserEntity;
+  logInStatus: Boolean;
+  user: UserEntity;
   userName: string;
   private sub: any;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router, 
-              private http: HttpClient) { 
-    this.usersUrl = 'http://localhost:8080/user/search/this'
+              private viewUser: ViewUserService,
+              private verifyService: VerifyLogoutService) {
+      this.logInStatus = false;
    }
 
   ngOnInit() {
-    /** Allows me to view a page with a specific username from link*/
+    this.logInStatus = this.verifyService.verifyLoggedIn();
+
+    /* Allows me to view a page with a specific username from link from search-user.component.html */
     this.sub = this.activatedRoute.paramMap.subscribe(params => {
     this.userName = params.get('userName');
     });
 
-    console.log(this.userName)
-    this.getUser(this.userName);
+    this.viewUser.redirectWhenViewingSelf(this.userName);
     
+    /* Temp Solution, need to find out how to get only target user */
+    this.viewUser.getUserList().subscribe((data) => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].userName === this.userName) {
+          this.user = data[i];
+        }
+      }
+    }) 
+
   }
 
-  /** Get this get method working! */
-
-  getUser(userName: string){
-    console.log("did this run?")
-    let userInfo: SearchUserDTO = {
-      userName: userName
-    }
-    return this.http.get(this.usersUrl).subscribe(userInfo => console.log(userInfo))
+  logOut() {
+    localStorage.clear();
+    this.logInStatus = false;
+    this.router.navigate(["/login"])
+    return;
   }
 
+  
 
   ngOnDestroy() {
       this.sub.unsubscribe();
