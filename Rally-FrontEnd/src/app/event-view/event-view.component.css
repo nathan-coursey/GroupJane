@@ -16,7 +16,7 @@ div#list_head {
     padding: 30px;
     text-align: left;
     font-size: 50px;
-    color: #004369;
+    color: black;
     font-weight: 575;
     
     /* background-color: aqua; */
@@ -24,7 +24,7 @@ div#list_head {
 
 
 .myButton {
-    background-color: #01949A;
+    background-color: #78d4e5;
 	border-radius:7px;
 	display: internal;
 	color:#ffffff;
@@ -42,23 +42,54 @@ div#event_display {
     height: 750px;
     float: left;
     padding: 30px;
-    margin-left: 20px;
+    margin-left: 50px;
     margin-top: 20px;
     margin-right: 200px;
+    box-sizing: border-box;
+    border: 5px solid #e7a84b;
     text-align: left;
     font-size: 25px;
     font-family: arial;
-    /* background-color:#E5DDC8; */
+}
+
+.button2 {
+	background-color: #FABC41;
+	border-radius:6px; 
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:20px;
+	font-weight:bold;
+    text-shadow: 1px;
+	padding:6px 24px;
+	text-decoration:none;
+    width: 50%;
 }
 
 div#main_content {
-    margin-top: 20px;
-    padding: 30px;
+    /* margin-top: 20px; */
+    /* padding: 30px; */
     text-align: left;
     font-size: 30px;
+    /* background-color: red; */
+}
+
+div#event_pic {
+    background-color: #d8d0ca;
+    float: left;
+    height: 200px;
+    width: 350px;
+}
+
+div#event_list {
+    padding-left: 75%;
+    height: 200px;
+    /* background-color: aqua; */
 }
 
 
-#event_heading {
-    font-size: 50px;
-}
+/* .bighr {
+    height: 30px;
+    color: #2e9abc; 
+} */
+
+
