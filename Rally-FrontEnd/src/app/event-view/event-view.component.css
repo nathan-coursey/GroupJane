@@ -5,35 +5,33 @@ body {
 }
 
 
-div#list_head{
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+div#list_head {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: space-between;
     margin-left: 20px;
     margin-right: 20px;
     height: 100px;
     width: auto;
     padding: 30px;
     text-align: left;
-    background-color: aqua;
+    font-size: 50px;
+    color: navy;
+    
+    /* background-color: aqua; */
 }
 
-/* div#span-2 {
-    float: right;
-} */
 
 .myButton {
-	box-shadow: 3px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#599bb3;
+    background-color: teal;
 	border-radius:7px;
-	border:2px solid #29668f;
-	display:inline;
-	cursor:pointer;
+	display: internal;
 	color:#ffffff;
 	font-family:Arial;
 	font-size:20px;
 	font-weight:bold;
-	padding:13px 76px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
+	padding:15px 75px;
+	text-decoration: none;
+    float: right;
     
 }
