@@ -54,7 +54,7 @@ div#event_display {
 }
 
 .rectangle {
-    margin-top: 25px;
+    margin-top: 10px;
     height: 300px;
     width: auto;
     background-color: #f4d668;
@@ -83,6 +83,7 @@ div#main_content {
 div#event_pic {
     background-color: #d8d0ca;
     float: left;
+    margin-top: 10px;
     height: 200px;
     width: 350px;
 }
@@ -90,6 +91,7 @@ div#event_pic {
 div#event_list {
     padding-left: 74%;
     height: 200px;
+    margin-top: 20px;
     /* background-color: aqua; */
 }
 
