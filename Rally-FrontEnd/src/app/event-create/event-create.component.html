@@ -1,0 +1,17 @@
+<div *ngIf="logInStatus; else notLoggedIn">
+    
+    <div style="text-align: right;  display: flex; justify-content:space-between;">
+        <p style="font-weight: bolder;">Welcome, {{currentUser}}!</p>
+        <button (click)="logOut()"> Log Out?</button>
+    </div>
+   
+
+</div>
+
+
+<ng-template #notLoggedIn>
+    <p style="text-align: left; display: flex; justify-content: space-between;">Log in to rally your community!</p>
+    <a routerLink="/login" routerLinkActive="active" (click)="logInStatus = false">Login</a>
+</ng-template>
+
+<p>event-create works!</p>

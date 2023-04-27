@@ -8,6 +8,7 @@ import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-m
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
 import { EventComponent } from './event/event.component';
+import { EventCreateComponent } from './event-create/event-create.component';
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'forum', component: ForumComponent},
   {path: 'communityHomeForum', component: CommunityHomeComponent},
   {path: 'event', component: EventComponent },
+  {path: 'create', component: EventCreateComponent},
 ];
 
 @NgModule({
