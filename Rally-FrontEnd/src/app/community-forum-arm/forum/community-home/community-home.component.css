@@ -1,0 +1,11 @@
+.black {
+    background-image: url('../images/black-image.png');
+}
+.gold {
+    color: goldenrod;
+}
+.big{
+    position:fixed;
+    left:0;
+    right:0;
+}
