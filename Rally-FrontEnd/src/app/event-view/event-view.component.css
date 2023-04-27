@@ -1,14 +1,8 @@
-
-
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-
 div#list_head {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     justify-content: space-between;
+    margin-top: 50px;
     /* margin-left: 15px; */
     /* margin-right: 20px; */
     height: 100px;
@@ -25,13 +19,15 @@ div#list_head {
 
 
 .myButton {
-    background-color: #78d4e5;
+    /* background-color: #78d4e5; */
+    background-color: #2e9abc;
 	border-radius:7px;
 	display: internal;
 	color:#ffffff;
 	font-family: Arial;
-	font-size:20px;
+	font-size:30px;
 	font-weight:bold;
+    text-shadow: 0.5px 0.5px 0px #000;
 	padding:15px 75px;
 	text-decoration: none;
     float: right;
@@ -49,24 +45,28 @@ div#event_display {
     /* box-sizing: border-box;
     border: 5px solid #e7a84b; */
     text-align: left;
-    font-size: 25px;
+    font-size: 35px;
     font-family: arial;
 }
 
 .rectangle {
-    margin-top: 10px;
+    margin-top: -15px;
     height: 300px;
     width: auto;
-    background-color: #f4d668;
+    box-sizing: border-box;
+    border: 5px solid #f4d668;
+    /* background-color: #f4d668; */
 }
 
 .button2 {
-    background-color: #e7a84b;
+    /* background-color: #e7a84b; */
+    background-color: #e5642b;
 	border-radius:6px; 
 	color:#ffffff;
 	font-family:Trebuchet MS;
-	font-size:20px;
+	font-size:25px;
 	font-weight:bold;
+    text-shadow: 0.5px 0.5px 0px #000;
 	padding:6px 24px;
 	text-decoration:none;
     width: 50%;
@@ -95,10 +95,5 @@ div#event_list {
     /* background-color: aqua; */
 }
 
-
-/* .bighr {
-    height: 30px;
-    color: #2e9abc; 
-} */
 
 
