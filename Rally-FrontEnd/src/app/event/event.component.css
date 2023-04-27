@@ -19,7 +19,6 @@ div#list_head {
 
 
 .myButton {
-    /* background-color: #78d4e5; */
     background-color: #2e9abc;
 	border-radius:7px;
 	display: internal;
@@ -45,13 +44,13 @@ div#event_display {
     /* box-sizing: border-box;
     border: 5px solid #e7a84b; */
     text-align: left;
-    font-size: 35px;
+    font-size: 25px;
     font-family: arial;
     /* background-color: blueviolet; */
 }
 
 .rectangle {
-    margin-top: -15px;
+    margin-top: -5px;
     height: 300px;
     width: auto;
     box-sizing: border-box;
@@ -60,7 +59,6 @@ div#event_display {
 }
 
 .button2 {
-    /* background-color: #e7a84b; */
     background-color: #e5642b;
 	border-radius:6px; 
 	color:#ffffff;

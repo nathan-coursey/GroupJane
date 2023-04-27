@@ -3,8 +3,6 @@ div#list_head {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
-    /* margin-left: 15px; */
-    /* margin-right: 20px; */
     height: 100px;
     width: auto;
     padding-top: 30px;
@@ -19,7 +17,6 @@ div#list_head {
 
 
 .myButton {
-    /* background-color: #78d4e5; */
     background-color: #2e9abc;
 	border-radius:7px;
 	display: internal;
@@ -31,7 +28,6 @@ div#list_head {
 	padding:15px 75px;
 	text-decoration: none;
     float: right;
-    
 }
 
 div#event_display {
@@ -55,11 +51,9 @@ div#event_display {
     width: auto;
     box-sizing: border-box;
     border: 1px solid #f4d668;
-    /* background-color: #f4d668; */
 }
 
 .button2 {
-    /* background-color: #e7a84b; */
     background-color: #e5642b;
 	border-radius:6px; 
 	color:#ffffff;
