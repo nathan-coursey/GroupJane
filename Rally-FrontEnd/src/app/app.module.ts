@@ -17,6 +17,7 @@ import { IntroductionsComponent } from './community-forum-arm/forum/introduction
 import { ForumTopic1Component } from './community-forum-arm/forum/forum-topic1/forum-topic1.component';
 import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/forum-topic2.component';
 import { ThemeserviceService } from './services/themeservice.service';
+import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/forum-topic3.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ThemeserviceService } from './services/themeservice.service';
     IntroductionsComponent,
     ForumTopic1Component,
     ForumTopic2Component,
+    ForumTopic3Component,
   ],
   imports: [
     BrowserModule,

@@ -32,7 +32,6 @@ verifyLoggedIn() {
     this.currentUser = localStorage.getItem('userName');
     this.logInStatus = true;
   }
-
 }
 Light(){
     this.themeservice.switchToLightTheme();
@@ -43,7 +42,7 @@ Dark(){
   this.darktheme = true;
 }
 logOut() {
-  localStorage.clear();
+  localStorage.removeItem('userName');
   console.log(localStorage.getItem('userName'))
   this.logInStatus = false;
 }

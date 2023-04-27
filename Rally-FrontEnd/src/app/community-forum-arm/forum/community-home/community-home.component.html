@@ -1,13 +1,28 @@
-<section>
-    <h1>Community Home</h1>
-    <article>Hello</article>
-    <article>Hi</article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-</section>
+<div class="big">
+    <div *ngIf="logInStatus; else notLoggedIn">
+        
+        <div style="text-align: right;">
+            <p>Logged in as: {{currentUser}}  <button (click)="logOut()"> Log Out?</button></p>
+        </div>
+        
+    
+    
+    </div>
+    <ng-template #notLoggedIn>
+        <h2></h2>
+    
+        <p>User is not logged in. </p>
+        <a routerLink="/login" routerLinkActive="active" (click)="logInStatus = false">Login</a>
+    </ng-template>
+        <div *ngIf="darktheme; else lightTheme" style="text-align: right;">
+            <button (click)="Light()">Turn on the lights</button>
+        </div>
+        <ng-template #lightTheme>
+            <div style="text-align: right;"><button (click)="Dark()">Turn off the lights</button></div>
+        </ng-template>   
+    <div id="theme" class="white">
+    <body class="white-theme"><div class="container-fluid"><h1>Community Home</h1></div></body>
+    <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    </div>
