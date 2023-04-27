@@ -54,7 +54,7 @@ div#event_display {
     height: 300px;
     width: auto;
     box-sizing: border-box;
-    border: 5px solid #f4d668;
+    border: 1px solid #f4d668;
     /* background-color: #f4d668; */
 }
 

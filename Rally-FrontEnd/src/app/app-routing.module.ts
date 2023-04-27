@@ -7,6 +7,7 @@ import { EventViewComponent } from './event-view/event-view.component';
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
+import { EventComponent } from './event/event.component';
 
 
 
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'events', component: EventViewComponent},
   {path: 'testing', component: DropdownMenuComponent},
   {path: 'forum', component: ForumComponent},
-  {path: 'communityHomeForum', component: CommunityHomeComponent}
+  {path: 'communityHomeForum', component: CommunityHomeComponent},
+  {path: 'event', component: EventComponent },
 ];
 
 @NgModule({
