@@ -6,11 +6,11 @@
     <form #userInformation="ngForm" (ngSubmit)="registerNewUser(userInformation)">
         
         <br>
-        <label>Enter a user name: <input type="text" name="userName" required ngModel></label>        
+        <label>Enter a user name: <input type="text" name="userName" ngModel></label>        
         <br><br>
-        <label>Enter your password: <input type="password" name="password" required ngModel></label>
+        <label>Enter your password: <input type="password" name="password" ngModel></label>
         <br><br>
-        <label>Please re-enter your password: <input type="password" name="verify" required ngModel></label>
+        <label>Please re-enter your password: <input type="password" name="verify" ngModel></label>
         <br><br>
         <input type="submit" value="Submit"> 
 

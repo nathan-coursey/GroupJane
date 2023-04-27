@@ -30,8 +30,10 @@ export class RegisterUserComponent implements OnInit {
         console.log(res)
       });
 
-      localStorage.setItem("userName", submitNewUser.userName.toString())
-      this.router.navigate(["/myProfile"])
+      if (submitNewUser.password === submitNewUser.verifyPassword) {
+        localStorage.setItem("userName", submitNewUser.userName.toString())
+        this.router.navigate(["/myProfile"])
+      }
 
   }
 

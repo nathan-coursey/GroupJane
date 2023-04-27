@@ -22,8 +22,6 @@ public class UserEntity {
     @NotNull
     private String pwHash;
 
-//    private UserInformation userInformation = new UserInformation();
-
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
@@ -46,14 +44,6 @@ public class UserEntity {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-
-//    public UserInformation getUserInformation() {
-//        return userInformation;
-//    }
-//
-//    public void setUserInformation(UserInformation userInformation) {
-//        this.userInformation = userInformation;
-//    }
 
     public int getId() {
         return id;

@@ -2,6 +2,7 @@ package org.rally.backend.userprofilearm.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.rally.backend.userprofilearm.model.UserInformation;
 import org.rally.backend.userprofilearm.model.response.AuthenticationSuccess;
 import org.rally.backend.userprofilearm.exception.AuthenticationFailure;
 import org.rally.backend.userprofilearm.model.Role;
@@ -54,8 +55,8 @@ public class AuthenticationController {
 
         UserEntity registerNewUser = new UserEntity((registerDTO.getUserName()), registerDTO.getPassword());
 
-        /** Roles are not enabled for now, leave these rows commented out **/
 
+        /** Roles are not enabled for now, leave these rows commented out **/
 //        Role roles = roleRepository.findByName("USER").get();
 //        registerNewUser.setRoles(Collections.singletonList(roles));
 
