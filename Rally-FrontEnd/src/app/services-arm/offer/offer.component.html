@@ -14,36 +14,172 @@
     </ng-template>
     
     
-    <div class="salmon"><h1>Offer Service</h1></div>
+    <div class="orange"><h1>Offer Service</h1></div>
     <br>
     <br>
-
-  
-        <form class="form">
-            <div class="form-group text-white">
-                <label for="name">Name:</label>
+        <form class="form container border">
+            <div class="form-group text-white accent">
+                <label class="text-orange" for="name">Name:</label>
                 <br>
                 <br>
                 <p class="text-white" style="font-size:28px">{{currentUser}}</p>
 
                 <br>
-                <label for="service">Service to Offer:</label>
-                <input type="service" class="form-control-sm" id="service">
+                <label class="text-orange" for="service">Service to Offer:</label>
+                <br>
+                <input type="service" class="form-control-center" style="width: 25%;" id="service">
                 
                 <br>
                 <br>
+                <br>
                 
-                <label for="category">Category:</label>
-                <div class="dropdown"></div>
+                <label class="text-orange" for="category">Category:</label>
+                <br>
+                <div class="form-check accent">
+                    <input class="form-check-input-lg" type="radio" name="category" id="art" value="art">
+                    <label class="form-check-label" for="art">
+                       &nbsp;&nbsp;Art&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="baby" value="baby">
+                    <label class="form-check-label" for="baby">
+                       &nbsp;&nbsp;Babysitting&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="admin" value="admin">
+                    <label class="form-check-label" for="admin">
+                       &nbsp;&nbsp;Business/Administrative&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="dog" value="dog">
+                    <label class="form-check-label" for="dog">
+                       &nbsp;&nbsp;Dogwalking&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="event" value="event">
+                    <label class="form-check-label" for="event">
+                       &nbsp;&nbsp;Event
+                    </label>
+                    <br>
+                    <br>
+                    <input class="form-check-input-lg" type="radio" name="category" id="music" value="music">
+                    <label class="form-check-label" for="music">
+                       &nbsp;&nbsp;Music&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="other" value="other">
+                    <label class="form-check-label" for="other">
+                       &nbsp;&nbsp;Other&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="photo" value="photo">
+                    <label class="form-check-label" for="photo">
+                       &nbsp;&nbsp;Photography&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="repair" value="repair">
+                    <label class="form-check-label" for="repair">
+                       &nbsp;&nbsp;Repair&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="radio" name="category" id="ride" value="ride">
+                    <label class="form-check-label" for="ride">
+                       &nbsp;&nbsp;Rideshare
+                    </label>
+                </div>
+                <br>
+                <br>
+                <label class="text-orange" for="availability">General Availability:</label>
+                <br>
+                <div class="form-check accent">
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="mon" value="mon">
+                    <label class="form-check-label" for="mon">
+                       &nbsp;&nbsp;Monday&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="tues" value="tues">
+                    <label class="form-check-label" for="tues">
+                       &nbsp;&nbsp;Tuesday&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+                    
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="wed" value="wed">
+                    <label class="form-check-label" for="wed">
+                       &nbsp;&nbsp;Wednesday&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="thurs" value="thurs">
+                    <label class="form-check-label" for="thurs">
+                       &nbsp;&nbsp;Thursday&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="fri" value="fri">
+                    <label class="form-check-label" for="fri">
+                       &nbsp;&nbsp;Friday&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="sat" value="sat">
+                    <label class="form-check-label" for="sat">
+                       &nbsp;&nbsp;Saturday&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="sun" value="sun">
+                    <label class="form-check-label" for="sun">
+                       &nbsp;&nbsp;Sunday&nbsp;&nbsp;|&nbsp;&nbsp;
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="every" value="every">
+                    <label class="form-check-label" for="every">
+                       &nbsp;&nbsp;Everyday
+                    </label>
+
+                    <br>
+                    <br>
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="morning" value="morning">
+                    <label class="form-check-label" for="morning">
+                       &nbsp;&nbsp;Morning&nbsp;&nbsp;|&nbsp;&nbsp;
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="afternoon" value="afternoon">
+                    <label class="form-check-label" for="afternoon">
+                       &nbsp;&nbsp;Afternoon&nbsp;&nbsp;|&nbsp;&nbsp;
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="evening" value="evening">
+                    <label class="form-check-label" for="evening">
+                       &nbsp;&nbsp;Evening&nbsp;&nbsp;|&nbsp;&nbsp;
+                    </label>
+
+                    <input class="form-check-input-lg" type="checkbox" name="availability" id="any" value="any">
+                    <label class="form-check-label" for="any">
+                       &nbsp;&nbsp;Anytime
+                    </label>
+                </div>
+
+                    <br>
+                    <br>
+                    <br>
+                    <div class="form-group accent">
+                        <label class="text-orange" for="exampleFormControlTextarea1">Description:</label>
+                        <br>
+                        <textarea class="form-control-center" style="width:50%" id="exampleFormControlTextarea1" rows="4"></textarea>
+                      </div>
+                    <br>
+                    <br>
+                    <br>
+                    <label class="text-orange">Photos</label>
+                    <br>
+                    <br>
+                    <input type="file" name="photo"/>
 
 
                 <br>
                 <br>
-
-
-
+                <br>
             </div>
 
+            <button class="button-blue button-hover">Submit</button>
+            <br>
+            <br>
         </form>
         <br>
         <br>
