@@ -20,9 +20,9 @@
 <div id="main_container">
     <div id="list_head">
             <p>Create Event</p> 
-        <span>
+        <!-- <span>
             <a href="#" class="myButton">SUBMIT</a>
-        </span>
+        </span> -->
     </div>
 
     <br>
@@ -31,40 +31,44 @@
     <br>
     <br>
 
-    <div id="event_display">
-        <p>event calendar</p>
-            <div class="rectangle">
-
-            </div>
-
-        <br>
+    <div id="event_details">
+        <form>
+            <label>host</label><br>
+            <input type="text" id="host" name="host">
+            <br>
+            <br>
+            <label>title</label><br>
+            <input type="text" id="title" name="title">
+            <br>
+            <br>
+            <label>date & time</label><br>
+            <input type="datetime-local" id="datetime" name="datetime">
+            <br>
+            <br>
+            <label>address</label><br>
+            <input type="text" id="address" name="address">
+            <br>
+            <br>
+            <label>category</label>
+            <hr>
+            <input type="radio" value="connect" name="category"> connect  
+            <input type="radio" value="volunteer" name="category"> volunteer  
+            <input type="radio" value="learn" name="category"> learn  <br>
+            <input type="radio" value="donate" name="category"> donate  
+            <input type="radio" value="celebrate" name="category"> celebrate
+            <br>
+            <br>
+            <label>description</label><br>
+            <textarea cols="80" rows="7" id=description name="description size=500"></textarea>
+            <br>
+            <br>
+            <label>Would you like to add a photo?</label><br>
+            <input type="file" id="eventpic" name="eventpic" accept="image/png, image/jpeg">
+            <br>
+            <br>
+            <!-- <input type="submit" value="SUBMIT"> -->
+            <button type="submit" id="create_btn">SUBMIT</button>
+        </form>
        
-        <span>
-            <p style="margin-bottom: -5px;">search by category</p>
-            <button class="button2">connect</button>
-            <button class="button2">learn</button>
-            <button class="button2">volunteer</button>
-            <button class="button2">donate</button>
-            <button class="button2">celebrate</button>
-            <button class="button2">view all</button>
-        </span>
-       
-    </div>
-
-    <div id="main_content">
-        <p style="font-size: 40px; ; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom: -15px;">All Events</p>
-        <hr style="height:4px; color: #0097b2; background-color: #0097b2;">
-        <div id="event_pic">
-            <p style="font-size: 25px;">photo goes here</p>
-        </div>
-        <div id="event_list">
-            <!-- loop eventually goes here -->
-            <!-- <img> goes here -->
-            <p style="font-family:Impact; margin-top: -5px;">DATE & TIME</p>
-            <p style="font-weight: bold; margin-top: -20px;">EVENT TITLE</p>
-            <p style="font-size: 25px; margin-top: -20px;">category tags</p>
-            <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by (name)</p>
-        </div>
-    
     </div>
 </div>
