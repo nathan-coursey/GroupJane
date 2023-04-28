@@ -1,3 +1,5 @@
+<body class="background">
+
 <div *ngIf="logInStatus; else notLoggedIn">
     
     <div style="text-align: right;">
@@ -9,9 +11,35 @@
 
     <h2></h2>
 
-    <p>User is not logged in. </p>
+    <p class="text-white">User is not logged in. </p>
     <a routerLink="/login" routerLinkActive="active" (click)="logInStatus = false">Login</a>
 </ng-template>
 
-<div class="color"><h2 class="container-fluid border">Rally Services</h2></div>
+
+<div class="salmon"><h1>Rally Services</h1></div>
 <br>
+<br>
+<br>
+
+<div class="salmon">
+        <div><button class="button-orange button-hover" type="button"><a class="nav-link" routerLink="/offer" routerLinkActive="active">Offer</a></button></div>
+</div>
+
+<br>
+<br>
+<br>
+<div class="salmon">
+    <div><button class="button-blue button-hover" type="button"><a class="nav-link" routerLink="/request" routerLinkActive="active">Request</a></button></div>
+</div>
+
+<br>
+<br>
+<br>
+<div class="salmon">
+    <div><button class="button-green button-hover" type="button"><a class="nav-link" routerLink="/search" routerLinkActive="active">Search</a></button></div>
+</div>
+<br>
+<br>
+<br>
+
+</body>
