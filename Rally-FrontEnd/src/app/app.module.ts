@@ -15,6 +15,7 @@ import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-m
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
 import { ServicesHomeComponent } from './services-arm/services-home/services-home.component';
+import { OfferComponent } from './services-arm/offer/offer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ServicesHomeComponent } from './services-arm/services-home/services-hom
     ForumComponent,
     CommunityHomeComponent,
     ServicesHomeComponent,
+    OfferComponent,
   ],
   imports: [
     BrowserModule,

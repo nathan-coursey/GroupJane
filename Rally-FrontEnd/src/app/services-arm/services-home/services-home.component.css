@@ -4,6 +4,9 @@
 
 .background {
     background-color: rgb(0, 0, 0);
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 .salmon {
