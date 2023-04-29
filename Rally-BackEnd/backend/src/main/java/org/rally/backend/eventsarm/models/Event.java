@@ -9,11 +9,11 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Event extends AbstractEntity {
 
-    @NotBlank(message = "Let your community know who is hosting this event")
+    @NotBlank(message = "Who can we thank for hosting this event?")
     private String eventHost;
 
-    @NotBlank(message = "But how will people know who to contact?")
-    @Email(message = "Whoops! Invalid email. Try again!")
+    @NotBlank(message = "But how will we know who to contact?")
+    @Email(message = "Whoops! Try entering your email again.")
     private String contactEmail;
 
     private String eventTitle;
@@ -22,12 +22,12 @@ public class Event extends AbstractEntity {
 //@Basic
 //private java.time.LocalDateTime localDateTime;
 
-    @NotBlank(message = "But how will people know where to go?")
+    @NotBlank(message = "But how will we know where to go?")
     private String eventAddress;
 
     private EventCategory eventCategory;
 
-    @NotBlank(message = "Tell your community what this event is all about!")
+    @NotBlank(message = "Tell us what this event is all about!")
     private String description;
 
     public Event(String eventHost, String contactEmail, String eventTitle, String eventAddress, EventCategory eventCategory, String description) {
