@@ -11,12 +11,12 @@ import { SearchUserComponent } from './user-profile-arm/user-profile/search-user
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ExperimentalComponent } from './user-profile-arm/experiments/experimental/experimental.component';
-import { EventViewComponent } from './event-view/event-view.component';
+import { EventViewComponent } from './Events/event-view/event-view.component';
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
-import { EventComponent } from './event/event.component';
-import { EventCreateComponent } from './event-create/event-create.component';
+import { EventComponent } from './Events/event/event.component';
+import { EventCreateComponent } from './Events/event-create/event-create.component';
 
 @NgModule({
   declarations: [

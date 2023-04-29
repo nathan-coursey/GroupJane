@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginUserComponent } from './user-profile-arm/login-register/login-user/login-user.component';
 import { RegisterUserComponent } from './user-profile-arm/login-register/register-user/register-user.component';
 import { UserProfileComponent } from './user-profile-arm/user-profile/user-profile/user-profile.component';
-import { EventViewComponent } from './event-view/event-view.component';
+import { EventViewComponent } from './Events/event-view/event-view.component';
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
-import { EventComponent } from './event/event.component';
-import { EventCreateComponent } from './event-create/event-create.component';
+import { EventComponent } from './Events/event/event.component';
+import { EventCreateComponent } from './Events/event-create/event-create.component';
 
 
 
