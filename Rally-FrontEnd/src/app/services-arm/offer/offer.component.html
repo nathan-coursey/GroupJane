@@ -17,7 +17,7 @@
     <div class="orange"><h1>Offer Service</h1></div>
     <br>
     <br>
-        <form class="form container border">
+        <form class="form container border" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
             <div class="form-group text-white accent">
                 <label class="text-orange" for="name">Name:</label>
                 <br>
@@ -27,7 +27,7 @@
                 <br>
                 <label class="text-orange" for="service">Service to Offer:</label>
                 <br>
-                <input type="service" class="form-control-center" style="width: 25%;" id="service">
+                <input type="text" class="form-control-center" style="width: 25%;" id="service">
                 
                 <br>
                 <br>
@@ -157,20 +157,22 @@
 
                     <br>
                     <br>
-                    <br>
                     <div class="form-group accent">
                         <label class="text-orange" for="exampleFormControlTextarea1">Description:</label>
                         <br>
-                        <textarea class="form-control-center" style="width:50%" id="exampleFormControlTextarea1" rows="4"></textarea>
+                        <textarea class="form-control-center" style="width:50%" id="description" rows="4"></textarea>
                       </div>
-                    <br>
                     <br>
                     <br>
                     <label class="text-orange">Photos</label>
                     <br>
                     <br>
-                    <input type="file" name="photo"/>
-
+                    <input type="file" name="photo" ngModel/>
+                    <br>
+                    <br>
+                    <label class="text-orange" for="email">Contact Email:</label>
+                    <br>
+                    <input type="text" class="form-control-center" style="width: 25%;" id="email">
 
                 <br>
                 <br>

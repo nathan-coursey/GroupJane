@@ -1,29 +1,38 @@
 package org.rally.backend.servicesarm.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class OfferService {
+@Entity
+@Table(name="service")
+public class Service {
 
     private String name;
+    @Id
+    @GeneratedValue
     private int id;
     private static int nextId = 1;
     private String service;
     private String description;
     private String category;
-    private ArrayList<Array> availability = new ArrayList<Array> ();
-    private ArrayList<Image> photo = new ArrayList<Image> ();
+    private ArrayList<String> availability = new ArrayList<String> ();
+//    private ArrayList<Image> photo = new ArrayList<Image> ();
     private String email;
 
-    public OfferService(String name, int id, String service, String description, String category, ArrayList<Array> availability, ArrayList<Image> photo, String email) {
+    public Service(String name, int id, String service, String description, String category, ArrayList<String> availability, String email) {
         this.name = name;
         this.id = id;
         this.service = service;
         this.description = description;
         this.category = category;
         this.availability = availability;
-        this.photo = photo;
+//        this.photo = photo;
         this.email = email;
     }
 
@@ -47,13 +56,13 @@ public class OfferService {
         return category;
     }
 
-    public ArrayList<Array> getAvailability() {
+    public ArrayList<String> getAvailability() {
         return availability;
     }
 
-    public ArrayList<Image> getPhoto() {
-        return photo;
-    }
+//    public ArrayList<Image> getPhoto() {
+//        return photo;
+//    }
 
     public String getEmail() {
         return email;
