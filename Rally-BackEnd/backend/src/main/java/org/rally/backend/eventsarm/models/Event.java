@@ -9,10 +9,10 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Event extends AbstractEntity {
 
-    @NotBlank(message = "Who can we thank for hosting this event?")
+    @NotBlank(message = "Who can your community thank for hosting this event?")
     private String eventHost;
 
-    @NotBlank(message = "But how will we know who to contact?")
+    @NotBlank(message = "But how will your community know who to contact?")
     @Email(message = "Whoops! Try entering your email again.")
     private String contactEmail;
 
@@ -22,20 +22,20 @@ public class Event extends AbstractEntity {
 //@Basic
 //private java.time.LocalDateTime localDateTime;
 
-    @NotBlank(message = "But how will we know where to go?")
+    @NotBlank(message = "But how will your community know where to go?")
     private String eventAddress;
 
-    private EventCategory eventCategory;
+//    private EventCategory eventCategory;
 
-    @NotBlank(message = "Tell us what this event is all about!")
+    @NotBlank(message = "Tell your community what this event is all about!")
     private String description;
 
-    public Event(String eventHost, String contactEmail, String eventTitle, String eventAddress, EventCategory eventCategory, String description) {
+    public Event(String eventHost, String contactEmail, String eventTitle, String eventAddress, String description) {
         this.eventHost = eventHost;
         this.contactEmail = contactEmail;
         this.eventTitle = eventTitle;
         this.eventAddress = eventAddress;
-        this.eventCategory = eventCategory;
+//        this.eventCategory = eventCategory;
         this.description = description;
     }
 
@@ -71,13 +71,13 @@ public class Event extends AbstractEntity {
         this.eventAddress = eventAddress;
     }
 
-    public EventCategory getEventCategory() {
-        return eventCategory;
-    }
-
-    public void setEventCategory(EventCategory eventCategory) {
-        this.eventCategory = eventCategory;
-    }
+//    public EventCategory getEventCategory() {
+//        return eventCategory;
+//    }
+//
+//    public void setEventCategory(EventCategory eventCategory) {
+//        this.eventCategory = eventCategory;
+//    }
 
     public String getDescription() {
         return description;
@@ -94,7 +94,7 @@ public class Event extends AbstractEntity {
                 ", contactEmail='" + contactEmail + '\'' +
                 ", eventTitle='" + eventTitle + '\'' +
                 ", eventAddress='" + eventAddress + '\'' +
-                ", eventCategory=" + eventCategory +
+//                ", eventCategory=" + eventCategory +
                 ", description='" + description + '\'' +
                 '}';
     }
