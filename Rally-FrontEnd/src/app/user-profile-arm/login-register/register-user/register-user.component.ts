@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterUserComponent implements OnInit {
 
+  incorrectPassword: boolean;
   private userUrl: string;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -21,19 +22,21 @@ export class RegisterUserComponent implements OnInit {
   } 
 
   registerNewUser(userInformation: NgForm) {
+      this.incorrectPassword = false;
       let submitNewUser: RegisterDTO = {
         userName: userInformation.value.userName,
         password: userInformation.value.password,
         verifyPassword: userInformation.value.verify
       }
       this.http.post(this.userUrl, submitNewUser).subscribe((res) => {
-        console.log(res)
+        if (submitNewUser.password === submitNewUser.verifyPassword) {
+          localStorage.setItem("userName", submitNewUser.userName.toString())
+          this.router.navigate(["/myProfile"])
+        } else {
+          this.incorrectPassword = true;
+          console.log("Passwords don't match.")
+        }
       });
-
-      if (submitNewUser.password === submitNewUser.verifyPassword) {
-        localStorage.setItem("userName", submitNewUser.userName.toString())
-        this.router.navigate(["/myProfile"])
-      }
 
   }
 

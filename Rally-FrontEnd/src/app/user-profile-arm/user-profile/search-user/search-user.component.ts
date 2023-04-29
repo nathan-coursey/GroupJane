@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserEntity } from '../../models/UserEntity';
-import { UserService } from './user.service';
+import { ViewUserService } from '../user-services/view-user.service';
 import { VerifyLogoutService } from 'src/app/user-profile-arm/security/verify-logout.service';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,9 @@ export class SearchUserComponent implements OnInit {
   userList: UserEntity[]; 
   logInStatus: Boolean;
 
-  constructor(private userService: UserService, private verifyService: VerifyLogoutService, private router: Router) { }
+  constructor(private userService: ViewUserService, 
+              private verifyService: VerifyLogoutService, 
+              private router: Router) { }
 
   ngOnInit(): void {
     this.logInStatus = this.verifyService.verifyLoggedIn();

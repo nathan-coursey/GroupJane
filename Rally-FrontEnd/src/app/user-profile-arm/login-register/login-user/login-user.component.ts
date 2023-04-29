@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from '../../models/dto/LoginDTO';
 import { NgForm } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { ViewUserService } from '../../user-profile/user-services/view-user.service';
+import { UserEntity } from '../../models/UserEntity';
 
 @Component({
   selector: 'app-login-user',
@@ -12,44 +14,54 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginUserComponent implements OnInit {
 
+  userList: UserEntity[];
   private userUrl: string;
   incorrectPassword: boolean;
-  cookieValue;
+  userEntity: UserEntity;
 
   constructor(private http: HttpClient,
               private router: Router, 
-              private cookieService: CookieService) 
+              private findUser: ViewUserService) 
               { 
     this.userUrl = 'http://localhost:8080/api/login';
-    // cookie tests
-    this.cookieService.set('Test', 'Hello World');
-    this.cookieValue = this.cookieService.get('Test');
   }
 
 
   ngOnInit(): void {
+    this.findUser.getUserList().subscribe((response: UserEntity[]) => {
+      this.userList = response;
+    })
   }
 
   login(userInformation: NgForm ) {
       
     this.incorrectPassword = false;
+
     let loginInfo: LoginDTO = {
       userName: userInformation.value.userName,
       password: userInformation.value.password
     }
 
-    this.http.post(this.userUrl, loginInfo).subscribe((res) => {
-      console.log(res)
-        for (const k in res){
-          if (k == "failed"){
-            this.incorrectPassword = true;
-          }
-          else if (k == "userName"){            
-            localStorage.setItem(k, loginInfo.userName)
-            this.router.navigate(["/myProfile"])
-          }
-        }
-    });
+    for (let i = 0; i < this.userList.length; i++) {
+      if (this.userList[i].userName === loginInfo.userName) {
+        localStorage.setItem('id', this.userList[i].id)
+      }
+    }
 
+    this.http.post(this.userUrl, loginInfo).subscribe((res) => {
+      for (const k in res){
+        if (k == "failed"){
+          this.incorrectPassword = true;
+          localStorage.removeItem('id');
+          return;
+        }
+        else if (k == "userName"){            
+          localStorage.setItem(k, loginInfo.userName)
+          this.router.navigate(["/myProfile"]);
+        }
+      } 
+    });
+    
+    
   }
 }

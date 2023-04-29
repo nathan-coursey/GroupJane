@@ -64,7 +64,7 @@ public class AuthenticationController {
 
         AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("New user successfully registered");
 
-        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
+        return new ResponseEntity<>(registerNewUser, HttpStatus.OK);
 
     }
 

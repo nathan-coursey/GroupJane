@@ -10,11 +10,26 @@ import { Router } from '@angular/router';
 export class ViewUserService {
 
   private url = 'http://localhost:8080/user/search'
+  private searchUserByIdUrl = 'http://localhost:8080/user/searchid/';
+  private searchUserByUserNameUrl = 'http://localhost:8080/user/searchUserName/';
+  private searchUserInformationByIdUrl = 'http://localhost:8080/user/userinfo/';
 
   constructor(private http: HttpClient, private router: Router) { }
 
   getUserList(): Observable<UserEntity[]>{
     return this.http.get<UserEntity[]>(`${this.url}`)
+  }
+
+  getUserById(id: string){
+    return this.http.get(`${this.searchUserByIdUrl}` + id)
+  }
+
+  getUserByUserName(userName: string) {
+    return this.http.get(`${this.searchUserByUserNameUrl}` + userName)
+  }
+
+  getClassUserInformation(id: string){
+    return this.http.get(`${this.searchUserInformationByIdUrl}` + id);
   }
 
   redirectWhenViewingSelf(userName) {

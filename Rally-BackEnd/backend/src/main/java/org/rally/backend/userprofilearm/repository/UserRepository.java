@@ -11,5 +11,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     UserEntity findByUserName(String userName);
 
     @Override
+    Optional<UserEntity> findById(Integer integer);
+
+    @Override
     <S extends UserEntity> Optional<S> findOne(Example<S> example);
 }

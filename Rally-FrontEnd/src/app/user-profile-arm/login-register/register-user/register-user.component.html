@@ -13,6 +13,9 @@
         <label>Please re-enter your password: <input type="password" name="verify" ngModel></label>
         <br><br>
         <input type="submit" value="Submit"> 
+        <div *ngIf="incorrectPassword">
+            <p id="IncorrectPW">Passwords don't match!</p>
+        </div>
 
         <br><br>
         <p>Already have an account? <a routerLink="/login" routerLinkActive="active">Login</a></p>

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserEntity } from '../../models/UserEntity';
-import { ViewUserService } from './view-user.service';
+import { ViewUserService } from '../user-services/view-user.service';
 import { VerifyLogoutService } from '../../security/verify-logout.service';
 @Component({
   selector: 'app-view-user-profile',
@@ -37,6 +37,7 @@ export class ViewUserProfileComponent implements OnInit, OnDestroy {
       for (let i = 0; i < data.length; i++) {
         if (data[i].userName === this.userName) {
           this.user = data[i];
+          console.log(this.user);
         }
       }
     }) 
