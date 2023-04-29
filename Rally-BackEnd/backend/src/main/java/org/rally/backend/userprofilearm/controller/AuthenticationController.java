@@ -47,12 +47,10 @@ public class AuthenticationController {
         }
 
         UserEntity registerNewUser = new UserEntity((registerDTO.getUserName()), registerDTO.getPassword());
-<<<<<<< HEAD
-=======
 
         /** Roles are not enabled for now, leave these rows commented out **/
 
->>>>>>> f3e149a3e2bed74073d596ae0b3af9e310d0d3ab
+
 //        Role roles = roleRepository.findByName("USER").get();
 //        registerNewUser.setRoles(Collections.singletonList(roles));
 
