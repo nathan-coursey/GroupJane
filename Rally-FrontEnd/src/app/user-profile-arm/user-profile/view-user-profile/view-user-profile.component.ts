@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserEntity } from '../../models/UserEntity';
 import { ViewUserService } from '../user-services/view-user.service';
 import { VerifyLogoutService } from '../../security/verify-logout.service';
+import { ViewUserBundle } from '../../models/ViewUserBundle';
 @Component({
   selector: 'app-view-user-profile',
   templateUrl: './view-user-profile.component.html',
@@ -11,8 +12,11 @@ import { VerifyLogoutService } from '../../security/verify-logout.service';
 export class ViewUserProfileComponent implements OnInit, OnDestroy {
 
   logInStatus: Boolean;
-  user: UserEntity;
-  userName: string;
+  viewUserEntity: UserEntity;
+  viewUserName: string;
+  viewUserId: string;
+  userEntityInformation: ViewUserBundle;
+
   private sub: any;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -24,34 +28,26 @@ export class ViewUserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.logInStatus = this.verifyService.verifyLoggedIn();
-
-    /* Allows me to view a page with a specific username from link from search-user.component.html */
+    /* This method pulls the parameters of the activated route and converts them into a usable object */
     this.sub = this.activatedRoute.paramMap.subscribe(params => {
-    this.userName = params.get('userName');
+    this.viewUserName = params.get('userName');
     });
 
-    this.viewUser.redirectWhenViewingSelf(this.userName);
-    
-    /* Temp Solution, need to find out how to get only target user */
-    this.viewUser.getUserList().subscribe((data) => {
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].userName === this.userName) {
-          this.user = data[i];
-          console.log(this.user);
-        }
-      }
-    }) 
+    this.viewUser.redirectWhenViewingSelf(this.viewUserName);
 
+    /* This method gets a bundle of information I want to display on the view user page */
+    this.viewUser.getViewUserBundleByUserName(this.viewUserName).subscribe((data: ViewUserBundle) => {
+      this.userEntityInformation = data;
+    })
   }
 
   logOut() {
-    localStorage.clear();
+    localStorage.removeItem('userName');
+    localStorage.removeItem('id')
     this.logInStatus = false;
     this.router.navigate(["/login"])
     return;
   }
-
-  
 
   ngOnDestroy() {
       this.sub.unsubscribe();

@@ -2,8 +2,8 @@ package org.rally.backend.userprofilearm.controller;
 
 import org.rally.backend.userprofilearm.model.UserEntity;
 import org.rally.backend.userprofilearm.model.UserInformation;
+import org.rally.backend.userprofilearm.model.ViewUserBundle;
 import org.rally.backend.userprofilearm.model.dto.UserInfoDTO;
-import org.rally.backend.userprofilearm.model.response.AuthenticationSuccess;
 import org.rally.backend.userprofilearm.repository.RoleRepository;
 import org.rally.backend.userprofilearm.repository.UserInformationRepository;
 import org.rally.backend.userprofilearm.repository.UserRepository;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping(value = "/user")
 public class UserProfileController {
 
@@ -49,6 +49,17 @@ public class UserProfileController {
     @GetMapping("/searchUserName/{userName}")
     public  UserEntity searchByUserName(@PathVariable String userName) {
         return userRepository.findByUserName(userName);
+    }
+
+    @GetMapping("/getViewUserBundleInformation/{userName}")
+    public ViewUserBundle getViewUserInformation(@PathVariable String userName) {
+
+        /** call post history and favorites here when ready **/
+        UserEntity targetUser = userRepository.findByUserName(userName);
+        Optional<UserInformation> targetInformation = userInformationRepository.findById(targetUser.getId());
+
+        return new ViewUserBundle(targetUser, targetInformation);
+
     }
 
     @GetMapping("/getUserInformationByUserId/{id}")

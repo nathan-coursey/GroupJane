@@ -13,7 +13,9 @@ export class ViewUserService {
   private searchUserByIdUrl = 'http://localhost:8080/user/searchid/';
   private searchUserByUserNameUrl = 'http://localhost:8080/user/searchUserName/';
   private searchUserInformationByIdUrl = 'http://localhost:8080/user/userinfo/';
-  private searchUserInformationByUserIdUrl= 'http://localhost:8080/user/getUserInformationByUserId/'
+  private searchUserInformationByUserIdUrl = 'http://localhost:8080/user/getUserInformationByUserId/'
+  private getUserBundleByUserName = 'http://localhost:8080/user/getViewUserBundleInformation/';
+  private getUserIdCountRegister = 'http://localhost:8080/api/userIdCount'
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -37,7 +39,13 @@ export class ViewUserService {
     return this.http.get(`${this.searchUserInformationByUserIdUrl}` + id);
   }
 
+  getViewUserBundleByUserName(username: string) {
+    return this.http.get(`${this.getUserBundleByUserName}` + username)
+  }
 
+  getCurrentUserIdCount() {
+    return this.http.get(`${this.getUserIdCountRegister}`)
+  }
 
   redirectWhenViewingSelf(userName) {
     if (localStorage.getItem('userName') === userName) {

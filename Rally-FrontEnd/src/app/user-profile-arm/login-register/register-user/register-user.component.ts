@@ -3,6 +3,10 @@ import { RegisterDTO } from '../../models/dto/RegisterDTO';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserInfoDTO } from '../../models/dto/UserInfoDTO';
+import { ViewUserService } from '../../user-profile/user-services/view-user.service';
+import { UserBundleDTO } from '../../models/dto/UserBundleDTO';
+import { UserEntity } from '../../models/UserEntity';
 
 @Component({
   selector: 'app-register-user',
@@ -11,32 +15,67 @@ import { Router } from '@angular/router';
 })
 export class RegisterUserComponent implements OnInit {
 
+  nextUserId: number;
+  passwordsMatch: boolean;
   incorrectPassword: boolean;
+  registerUser: RegisterDTO;
   private userUrl: string;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private getUserId: ViewUserService) {
     this.userUrl = 'http://localhost:8080/api/register'
+    this.passwordsMatch = true;
    }
 
   ngOnInit(): void {
+    this.getUserId.getCurrentUserIdCount().subscribe((data: number) => {
+      this.nextUserId = data;
+      console.log(data)
+    })
   } 
 
   registerNewUser(userInformation: NgForm) {
-      this.incorrectPassword = false;
-      let submitNewUser: RegisterDTO = {
-        userName: userInformation.value.userName,
-        password: userInformation.value.password,
-        verifyPassword: userInformation.value.verify
-      }
-      this.http.post(this.userUrl, submitNewUser).subscribe((res) => {
-        if (submitNewUser.password === submitNewUser.verifyPassword) {
-          localStorage.setItem("userName", submitNewUser.userName.toString())
-          this.router.navigate(["/myProfile"])
-        } else {
-          this.incorrectPassword = true;
-          console.log("Passwords don't match.")
-        }
-      });
+    this.incorrectPassword = false;
+    let submitNewUser: RegisterDTO = {
+      userName: userInformation.value.userName,
+      password: userInformation.value.password,
+      verifyPassword: userInformation.value.verify
+    }
+
+    if (submitNewUser.password !== submitNewUser.verifyPassword) {
+      this.incorrectPassword = true;
+      return;
+    } else {
+      this.registerUser = submitNewUser;
+      this.passwordsMatch = false;
+      console.log(this.registerUser)
+      return;
+    }
+
+  }
+
+  completeRegisteration(userDetails: NgForm) {
+    let userInfo: UserInfoDTO = {
+      userId: this.nextUserId + 1,
+      firstName: userDetails.value.firstName,
+      lastName: userDetails.value.lastName, 
+      neigborhood: userDetails.value.neigborhood,
+      city: userDetails.value.city,
+      state: userDetails.value.state
+    }
+
+    console.log(userInfo);
+
+    let userBundle: UserBundleDTO = {
+      registerDTO: this.registerUser,
+      userInfoDTO: userInfo
+    }
+
+    this.http.post(this.userUrl, userBundle).subscribe((response: UserEntity) => {
+      console.log(response)
+      localStorage.setItem('userName', this.registerUser.userName)
+      localStorage.setItem('id', response.id)
+      this.router.navigate(["/myProfile"])
+    });
 
   }
 

@@ -37,19 +37,21 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.logInStatus = this.verifyService.verifyLoggedIn();
 
-    this.viewUserInformationService.getUserById(localStorage.getItem('id')).subscribe((data: UserEntity) => {
-      this.userEntity = data;
-    })  
-    this.viewUserInformationService.getUserInformationByUserId(localStorage.getItem('id')).subscribe((data: UserInformation) => {
-      this.userInformation = data;
-      console.log(this.userInformation)
-    })
+
+    if (localStorage.getItem('id') !== null) {
+      this.viewUserInformationService.getUserById(localStorage.getItem('id')).subscribe((data: UserEntity) => {
+        this.userEntity = data;
+      })  
+      this.viewUserInformationService.getUserInformationByUserId(localStorage.getItem('id')).subscribe((data: UserInformation) => {
+        this.userInformation = data;
+      })
+    }
   }
 
   updateUserInfo( userDetails: NgForm ) {
 
     let userInfo: UserInfoDTO = {
-      userId: this.userEntity.id,
+      userId: Number(this.userEntity.id),
       firstName: userDetails.value.firstName,
       lastName: userDetails.value.lastName, 
       neigborhood: userDetails.value.neigborhood,
@@ -59,18 +61,14 @@ export class UserProfileComponent implements OnInit {
 
     this.http.post(this.userUrl, userInfo).subscribe((response: UserInformation) => {
         this.userInformation = response
-        console.log(this.userInformation)
         this.changeInfo=true;
     });
 
   }
 
-  
-
   editProfileDetails() {
     this.changeInfo=false;
   }
-
 
   logOut() {
     localStorage.removeItem('userName');

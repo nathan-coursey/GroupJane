@@ -10,7 +10,7 @@
 <div class="row">
 <div class="col">
     <div class="card">
-        <h2>Viewing {{ userName }}'s Profile</h2>
+        <h2>Viewing {{ this?.viewUserName }}'s Profile</h2>
             <div style="align-content: center;">
             <img src="/assets/user-profile-assets/big-duck.jpg" width="170" height="170">
             </div>
@@ -27,6 +27,19 @@
     <div class="col">
         <div class="card">
             <h2>UserDetails</h2>
+
+            <div class="card">
+                <br> 
+                <label>First Name: {{ userEntityInformation?.viewUserInformation.firstName }}</label>
+                <br>
+                <label>Last Name: {{ userEntityInformation?.viewUserInformation.lastName }}</label>
+                <br>
+                <label>Neigborhood: {{ userEntityInformation?.viewUserInformation.neigborhood }}</label>
+                <br>
+                <label>City: {{ userEntityInformation?.viewUserInformation.city }}</label>
+                <br>       
+                <label>State: {{ userEntityInformation?.viewUserInformation.state }}</label>                     
+            </div>
         </div>
     </div>
     <div class="col">

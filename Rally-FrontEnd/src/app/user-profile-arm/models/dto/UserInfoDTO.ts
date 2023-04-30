@@ -1,13 +1,13 @@
 export class UserInfoDTO {
-	userId: string;
+	userId: number;
     firstName: string;
 	lastName: string;
 	neigborhood: string;
     city: string;
 	state: string;
 
-	constructor(userId: string, firstName: string, lastName: string, neigborhood: string, city: string, state: string){
-		this.userId = this.userId;
+	constructor(userId: number, firstName: string, lastName: string, neigborhood: string, city: string, state: string){
+		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.neigborhood = neigborhood;
