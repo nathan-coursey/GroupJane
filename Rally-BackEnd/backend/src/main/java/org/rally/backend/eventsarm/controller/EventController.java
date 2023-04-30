@@ -1,7 +1,9 @@
 package org.rally.backend.eventsarm.controller;
 
+import org.rally.backend.eventsarm.models.DTO.EventDTO;
 import org.rally.backend.eventsarm.models.Event;
 import org.rally.backend.eventsarm.repository.EventRepository;
+import org.rally.backend.userprofilearm.model.UserEntity;
 import org.rally.backend.userprofilearm.model.response.AuthenticationSuccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/")
+@RequestMapping("/events")
 public class EventController {
 
     @Autowired
@@ -31,8 +33,11 @@ public class EventController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<?> createEventForm(@RequestBody Event event) {
-        eventRepository.save(event);
+    public ResponseEntity<?> createEventForm(@RequestBody EventDTO eventDTO) {
+
+        Event createNewEvent = new Event(eventDTO.getEventHost(), eventDTO.getContactEmail(), eventDTO.getEventTitle(), eventDTO.getDatetime(), eventDTO.getEventAddress(), eventDTO.getEventCategory(), eventDTO.getDescription());
+
+        eventRepository.save(createNewEvent);
         AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
         return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
     }

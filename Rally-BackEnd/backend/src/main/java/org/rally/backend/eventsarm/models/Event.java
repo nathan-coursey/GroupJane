@@ -18,6 +18,8 @@ public class Event extends AbstractEntity {
 
     private String eventTitle;
 
+    private String datetime;
+
 //    private String datetime;
 //@Basic
 //private java.time.LocalDateTime localDateTime;
@@ -27,15 +29,18 @@ public class Event extends AbstractEntity {
 
 //    private EventCategory eventCategory;
 
+    private String eventCategory;
+
     @NotBlank(message = "Tell your community what this event is all about!")
     private String description;
 
-    public Event(String eventHost, String contactEmail, String eventTitle, String eventAddress, String description) {
+    public Event(String eventHost, String contactEmail, String eventTitle, String datetime, String eventAddress, String eventCategory, String description) {
         this.eventHost = eventHost;
         this.contactEmail = contactEmail;
         this.eventTitle = eventTitle;
+        this.datetime = datetime;
         this.eventAddress = eventAddress;
-//        this.eventCategory = eventCategory;
+        this.eventCategory = eventCategory;
         this.description = description;
     }
 
@@ -87,15 +92,31 @@ public class Event extends AbstractEntity {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Event{" +
-                "eventHost='" + eventHost + '\'' +
-                ", contactEmail='" + contactEmail + '\'' +
-                ", eventTitle='" + eventTitle + '\'' +
-                ", eventAddress='" + eventAddress + '\'' +
-//                ", eventCategory=" + eventCategory +
-                ", description='" + description + '\'' +
-                '}';
+    public String getDatetime() {
+        return datetime;
     }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public String getEventCategory() {
+        return eventCategory;
+    }
+
+    public void setEventCategory(String eventCategory) {
+        this.eventCategory = eventCategory;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Event{" +
+//                "eventHost='" + eventHost + '\'' +
+//                ", contactEmail='" + contactEmail + '\'' +
+//                ", eventTitle='" + eventTitle + '\'' +
+//                ", eventAddress='" + eventAddress + '\'' +
+////                ", eventCategory=" + eventCategory +
+//                ", description='" + description + '\'' +
+//                '}';
+//    }
 }
