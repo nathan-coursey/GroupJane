@@ -10,8 +10,7 @@ public class UserInformation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserEntity userEntity = new UserEntity();
+    private int userId;
 
     @NotNull
     private String firstName;
@@ -19,21 +18,57 @@ public class UserInformation {
     @NotNull
     private String lastName;
 
+    @NotNull
+    private String neigborhood;
+
+    @NotNull
+    private String city;
+
+    @NotNull
+    private String state;
+
     public UserInformation() {
     }
 
-    public UserInformation(UserEntity userEntity, String firstName, String lastName) {
-        this.userEntity = userEntity;
+    public UserInformation(int userId, String firstName, String lastName, String neigborhood, String city, String state) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.neigborhood = neigborhood;
+        this.city = city;
+        this.state = state;
     }
 
-    public UserEntity getUserEntity() {
-        return userEntity;
+    public String getState() {
+        return state;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getNeigborhood() {
+        return neigborhood;
+    }
+
+    public void setNeigborhood(String neigborhood) {
+        this.neigborhood = neigborhood;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {

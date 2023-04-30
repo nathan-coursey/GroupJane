@@ -5,35 +5,68 @@ import jakarta.validation.constraints.NotNull;
 public class UserInfoDTO {
 
     @NotNull
-    private String userName;
+    private int userId;
 
     @NotNull
-    private String FirstName;
+    private String firstName;
 
     @NotNull
-    private String LastName;
+    private String lastName;
 
-    public String getUserName() {
-        return userName;
+    @NotNull
+    private String neigborhood;
+
+    @NotNull
+    private String city;
+
+    @NotNull
+    private String state;
+
+    public String getState() {
+        return state;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getNeigborhood() {
+        return neigborhood;
+    }
+
+    public void setNeigborhood(String neigborhood) {
+        this.neigborhood = neigborhood;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 }

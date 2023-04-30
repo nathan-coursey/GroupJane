@@ -1,6 +1,5 @@
 package org.rally.backend.userprofilearm.controller;
 
-import org.rally.backend.userprofilearm.exception.AuthenticationFailure;
 import org.rally.backend.userprofilearm.model.UserEntity;
 import org.rally.backend.userprofilearm.model.UserInformation;
 import org.rally.backend.userprofilearm.model.dto.UserInfoDTO;
@@ -52,21 +51,41 @@ public class UserProfileController {
         return userRepository.findByUserName(userName);
     }
 
+    @GetMapping("/getUserInformationByUserId/{id}")
+    public Optional<UserInformation> searchUserInfoRepositoryByUserId(@PathVariable int id) {
+
+        List<UserInformation> userInformationList = userInformationRepository.findAll();
+        Optional<UserInformation> userInformation = Optional.of(new UserInformation());
+        for (UserInformation info : userInformationList) {
+            if (info.getUserId() == id) {
+                userInformation = userInformationRepository.findById(info.getId());
+            }
+        }
+
+        return userInformation;
+    }
+
     @PostMapping("/update-user-information")
     public ResponseEntity<?> updateUserInformation(@RequestBody UserInfoDTO userInfoDTO) {
 
-        UserEntity targetUser = userRepository.findByUserName(userInfoDTO.getUserName());
+        List<UserInformation> userInformationList = userInformationRepository.findAll();
 
-        String firstName = userInfoDTO.getFirstName();
-        String lastName = userInfoDTO.getLastName();
+        UserInformation userInformation = new UserInformation(userInfoDTO.getUserId(),
+                                                              userInfoDTO.getFirstName(),
+                                                              userInfoDTO.getLastName(),
+                                                              userInfoDTO.getNeigborhood(),
+                                                              userInfoDTO.getCity(),
+                                                              userInfoDTO.getState());
 
-        UserInformation userInformation = new UserInformation(targetUser, firstName, lastName);
+        for (UserInformation info : userInformationList) {
+            if (info.getUserId() == userInfoDTO.getUserId()) {
+                userInformationRepository.deleteById(info.getId());
+            }
+        }
 
         userInformationRepository.save(userInformation);
 
-        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("user info added");
-
-        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
+        return new ResponseEntity<>(userInformation, HttpStatus.OK);
 
     }
 

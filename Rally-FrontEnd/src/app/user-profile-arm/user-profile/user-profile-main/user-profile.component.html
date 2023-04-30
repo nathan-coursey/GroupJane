@@ -10,7 +10,7 @@
 <div class="row">
 <div class="col">
     <div class="card">
-        <h2>Hello, {{currentUser}}</h2>
+        <h2>Hello<br>{{currentUser}}</h2>
             <div style="align-content: center;">
             <img src="/assets/user-profile-assets/profile-pic.gif" width="170" height="170">
             </div>
@@ -27,20 +27,40 @@
     <div class="col">
         <div class="card">
             <h2>UserDetails</h2>
+            <div *ngIf="changeInfo; else changeForm">
+                <button (click)="editProfileDetails()">Edit Profile Details</button>
+            <div class="card">
+                <br> 
+                <label>First Name: {{ userInformation?.firstName }}</label>
+                <br>
+                <label>Last Name: {{ userInformation?.lastName}}</label>
+                <br>
+                <label>Neigborhood: {{ userInformation?.neigborhood}}</label>
+                <br>
+                <label>City: {{ userInformation?.city}}</label>
+                <br>       
+                <label>State: {{ userInformation?.state}}</label>                     
+            </div>
+            </div>
 
-            <!-- <div *ngIf="changeInfo"> -->
-            <div class="form-group">
-              
+            <ng-template #changeForm>
+            <div class="form-group"> 
               <form #userDetails="ngForm" (ngSubmit)="updateUserInfo(userDetails)">
                 <br><br>
                 <label>First Name: <input type="text" name="firstName" ngModel></label>
                 <br><br>
                 <label>Last Name: <input type="text" name="lastName" ngModel></label>                
                 <br><br>
+                <label>Neigborhood: <input type="text" name="neigborhood" ngModel></label>
+                <br><br>
+                <label>City: <input type="text" name="city" ngModel></label>                
+                <br><br>
+                <label>State: <input type="text" name="state" ngModel></label>                
+                <br><br>
                 <input type="submit" value="Submit">
               </form>
-            </div>
-            <!-- </div> -->
+              </div>
+            </ng-template>
             
         </div>
     </div>

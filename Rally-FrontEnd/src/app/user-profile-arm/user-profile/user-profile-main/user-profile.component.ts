@@ -18,10 +18,11 @@ export class UserProfileComponent implements OnInit {
   currentUser;
   userInformation: UserInformation;
   logInStatus: Boolean;
-  changeInfo: boolean;
+  changeInfo = true;
   private userUrl: string;
   userEntity: UserEntity;
   searchUserByIdUrl: string;
+  
 
   constructor(private http: HttpClient, 
               private router: Router, 
@@ -39,23 +40,36 @@ export class UserProfileComponent implements OnInit {
     this.viewUserInformationService.getUserById(localStorage.getItem('id')).subscribe((data: UserEntity) => {
       this.userEntity = data;
     })  
+    this.viewUserInformationService.getUserInformationByUserId(localStorage.getItem('id')).subscribe((data: UserInformation) => {
+      this.userInformation = data;
+      console.log(this.userInformation)
+    })
   }
 
   updateUserInfo( userDetails: NgForm ) {
 
-    this.changeInfo = false;
     let userInfo: UserInfoDTO = {
-      userName: this.currentUser,
+      userId: this.userEntity.id,
       firstName: userDetails.value.firstName,
-      lastName: userDetails.value.lastName
+      lastName: userDetails.value.lastName, 
+      neigborhood: userDetails.value.neigborhood,
+      city: userDetails.value.city,
+      state: userDetails.value.state
     }
 
-    this.http.post(this.userUrl, userInfo).subscribe((response) => {
-        console.log(response);
+    this.http.post(this.userUrl, userInfo).subscribe((response: UserInformation) => {
+        this.userInformation = response
+        console.log(this.userInformation)
+        this.changeInfo=true;
     });
 
   }
 
+  
+
+  editProfileDetails() {
+    this.changeInfo=false;
+  }
 
 
   logOut() {
