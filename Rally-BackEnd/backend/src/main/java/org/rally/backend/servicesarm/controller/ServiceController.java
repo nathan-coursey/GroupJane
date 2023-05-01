@@ -1,15 +1,12 @@
 package org.rally.backend.servicesarm.controller;
 
-import org.rally.backend.servicesarm.model.Service;
+import org.rally.backend.servicesarm.model.dto.ServiceDTO;
+import org.rally.backend.servicesarm.model.response.Service;
 import org.rally.backend.userprofilearm.repository.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -20,8 +17,13 @@ public class ServiceController {
     ServiceRepository serviceRepository;
 
     @PostMapping("/offer")
-    public Service processOfferService (Service service) {
-            return serviceRepository.save(service);
+    public ResponseEntity<?> processOfferService (@RequestBody ServiceDTO serviceDTO) {
+
+
+        Service newService = new Service(serviceDTO.getUserName(), serviceDTO.getDescription(), serviceDTO.getCategory(), serviceDTO.getDayTime(serviceDTO.getDays()), serviceDTO.getDayTime(serviceDTO.getTime()), serviceDTO.getEmail(), serviceDTO.getService());
+
+        serviceRepository.save(newService);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

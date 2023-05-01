@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ServiceDTO } from '../models/Service';
 
 @Component({
   selector: 'app-offer',
@@ -38,10 +39,22 @@ export class OfferComponent implements OnInit {
     this.logInStatus = false;
   }
 
-  onSubmit(f: NgForm ) {//attempting to send form to Back End but not working
-    this.http.post(this.userUrl, f.value).subscribe((res => {
-      this.ngOnInit() //reload form
-    }))
+  onSubmit(f: NgForm ) {
+    let submitService: ServiceDTO = {
+      userName: f.value.userName,
+      description: f.value.description,
+      category: f.value.category,
+      days: f.value.days,
+      email: f.value.email,
+      service: f.value.service,
+      time: f.value.time
+    }
+    
+    
+    this.http.post(this.userUrl, submitService).subscribe((res) => {
+      console.log(res);
+      console.log(f.value.days);
+    })
 
 }
 }

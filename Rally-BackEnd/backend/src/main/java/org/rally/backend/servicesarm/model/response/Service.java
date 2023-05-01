@@ -1,9 +1,6 @@
-package org.rally.backend.servicesarm.model;
+package org.rally.backend.servicesarm.model.response;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.rally.backend.userprofilearm.model.UserEntity;
 
 import java.awt.*;
@@ -14,35 +11,34 @@ import java.util.ArrayList;
 @Table(name="service")
 public class Service {
 
-    private String name;
+    private String userName;
     @Id
-    @GeneratedValue
-    private int id;
-    private static int nextId = 1;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id = 1;
+//    private int nextId = 1;
     private String service;
     private String description;
     private String category;
-    private ArrayList<String> availability = new ArrayList<String> ();
-//    private ArrayList<Image> photo = new ArrayList<Image> ();
+//    private ArrayList<String> days;
     private String email;
 
-    public Service(int nextId, String name, String service, String description, String category, ArrayList<String> availability, String email) {
-        this.name = name;
-        this.nextId = nextId;
+    private String day;
+    private String time;
+
+    public Service(String userName, String description, String category, String day, String time, String email, String service) {
+        this.userName = userName;
         this.service = service;
         this.description = description;
         this.category = category;
-        this.availability = availability;
-//        this.photo = photo;
+        this.day = day;
+        this.time = time;
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Service () {};
 
-    public static int getNextId() {
-        return nextId;
+    public String getName() {
+        return userName;
     }
 
     public String getService() {
@@ -57,13 +53,14 @@ public class Service {
         return category;
     }
 
-    public ArrayList<String> getAvailability() {
-        return availability;
-    }
-
-//    public ArrayList<Image> getPhoto() {
-//        return photo;
+//    public ArrayList<String> getDays() {
+//        return days;
 //    }
+
+
+    public String getDay() {
+        return day;
+    }
 
     public String getEmail() {
         return email;
