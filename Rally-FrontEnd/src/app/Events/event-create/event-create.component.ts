@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventCategory } from '../models/eventCategory';
 import { Event } from 'src/app/Events/models/event';
 import { EventDTO } from '../models/DTO/EventDTO';
 import { NgForm } from '@angular/forms';
