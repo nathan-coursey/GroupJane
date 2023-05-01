@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.rally.backend.userprofilearm.model.UserEntity;
 
 import java.awt.*;
 import java.lang.reflect.Array;
@@ -25,9 +26,9 @@ public class Service {
 //    private ArrayList<Image> photo = new ArrayList<Image> ();
     private String email;
 
-    public Service(String name, int id, String service, String description, String category, ArrayList<String> availability, String email) {
+    public Service(int nextId, String name, String service, String description, String category, ArrayList<String> availability, String email) {
         this.name = name;
-        this.id = id;
+        this.nextId = nextId;
         this.service = service;
         this.description = description;
         this.category = category;
