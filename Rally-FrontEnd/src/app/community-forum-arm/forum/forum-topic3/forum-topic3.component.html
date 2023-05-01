@@ -28,7 +28,9 @@
     <body class="white-theme"><div class="container-fluid"><h1>Miscellaneous</h1></div></body>
     <br>
     <br>
-    <article style="color:red;" *ngFor = "let test of testArray">{{test}}</article>
+    <body>
+    <article style="text-align: left;" *ngFor = "let test of testArray">Title:  {{test.title}}<br>   Description: {{test.description}} <br> Posted By: {{test.userEntity.userName}}<br><br><br> <br></article>
+    </body>
     </div>
     </div>
     <ng-template #createPostForm>

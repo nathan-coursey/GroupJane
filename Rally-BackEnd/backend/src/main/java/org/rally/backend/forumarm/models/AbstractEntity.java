@@ -4,6 +4,7 @@ package org.rally.backend.forumarm.models;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -16,7 +17,6 @@ public abstract class AbstractEntity {
     public int getId() {
         return id;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

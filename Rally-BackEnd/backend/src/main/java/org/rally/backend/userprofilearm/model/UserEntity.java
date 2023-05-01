@@ -2,6 +2,7 @@ package org.rally.backend.userprofilearm.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.rally.backend.forumarm.models.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,17 @@ public class UserEntity {
 
     @NotNull
     private String pwHash;
+
+    @OneToMany(mappedBy = "userEntity")
+    private final List<CommunityHome> communityHomePosts = new ArrayList<>();
+    @OneToMany(mappedBy = "userEntity")
+    private final List<ForumTopic1> forumTopic1Posts = new ArrayList<>();
+    @OneToMany(mappedBy = "userEntity")
+    private final List<ForumTopic2> forumTopic2Posts = new ArrayList<>();
+    @OneToMany(mappedBy = "userEntity")
+    private final List<ForumTopic3> forumTopic3Posts = new ArrayList<>();
+    @OneToMany(mappedBy = "userEntity")
+    private final List<Introductions> introductionsPosts = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",

@@ -29,10 +29,13 @@ export class RegisterUserComponent implements OnInit {
       console.log(submitNewUser);
       this.http.post(this.userUrl, submitNewUser).subscribe((res) => {
         console.log(res)
+        for (const k in res){
+           if (k == "success"){            
+            localStorage.setItem(k, submitNewUser.userName)
+            this.router.navigate(["/myProfile"])
+          }
+        }
       });
-
-      localStorage.setItem("userName", submitNewUser.userName.toString())
-      this.router.navigate(["/myProfile"])
 
   }
 

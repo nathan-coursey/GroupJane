@@ -23,7 +23,6 @@ const routes: Routes = [
   {path: 'forum/topic1', component: ForumTopic1Component},
   {path: 'forum/topic2', component: ForumTopic2Component},
   {path: 'forum/topic3', component: ForumTopic3Component}
-
 ];
 
 @NgModule({

@@ -46,4 +46,5 @@ logOut() {
   console.log(localStorage.getItem('userName'))
   this.logInStatus = false;
 }
+
 }

@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemeserviceService } from '../../../services/themeservice.service';
 import { NgForm } from '@angular/forms';
-import { ForumPost } from '../../models/ForumPost';
+import { ForumPostDTO } from '../../models/ForumPostDTO';
+import { UserEntity } from 'src/app/user-profile-arm/models/UserEntity';
 
 @Component({
   selector: 'app-forum-topic3',
@@ -11,21 +12,24 @@ import { ForumPost } from '../../models/ForumPost';
   styleUrls: ['./forum-topic3.component.css']
 })
 export class ForumTopic3Component implements OnInit {
+  forumTopic: string;
   currentUser: String;
   logInStatus: Boolean;
   darktheme: Boolean;
-  testArray: String[];
+  testArray;
   createPostBoolean: boolean;
   constructor(private http: HttpClient, private router: Router, private themeservice: ThemeserviceService) {
     this.logInStatus = false;
     this.createPostBoolean = false;
     this.darktheme = false;
-    this.testArray = ["Hello", "this", "is", "a", "test"];
+    this.testArray;
+    this.forumTopic = "ForumTopic3"
    }
   
   ngOnInit(): void {
     this.verifyLoggedIn();
     this.checkTheme();
+    this.getPosts();
   }
   checkTheme(){
       if (localStorage.getItem('theme') == 'dark'){
@@ -45,12 +49,12 @@ export class ForumTopic3Component implements OnInit {
   }
   createPost(postInformation: NgForm){
       this.createPostBoolean = false;
-      let postDetails: ForumPost = {
-        title: postInformation.value.title,
-        description: postInformation.value.description
-      }
-      this.http.post('http://localhost:8080/posts', postDetails).subscribe((res) => {
-        console.log(res)
+      this.themeservice.createAPost(postInformation, this.forumTopic);
+  }
+  getPosts(){
+    this.http.get(`http://localhost:8080/${this.forumTopic}`).subscribe((res)=>{
+      console.log(res);
+      this.testArray = res;
     });
   }
   Light(){
@@ -63,7 +67,7 @@ export class ForumTopic3Component implements OnInit {
   }
   logOut() {
     localStorage.removeItem('username');
-    console.log(localStorage.getItem('userName'))
+    console.log(localStorage.getItem('userName'));
     this.logInStatus = false;
   }
 }

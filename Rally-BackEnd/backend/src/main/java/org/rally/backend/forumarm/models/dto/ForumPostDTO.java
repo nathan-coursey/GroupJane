@@ -1,14 +1,9 @@
-package org.rally.backend.forumarm.models;
+package org.rally.backend.forumarm.models.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.validation.constraints.NotNull;
-
-@Entity
-public class ForumPost extends AbstractEntity {
-    @NotNull
+public class ForumPostDTO {
     private String title;
-
     private String description;
+    private String username;
 
     public String getTitle() {
         return title;
@@ -24,5 +19,13 @@ public class ForumPost extends AbstractEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

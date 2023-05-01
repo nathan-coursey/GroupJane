@@ -44,7 +44,7 @@ export class LoginUserComponent implements OnInit {
           if (k == "failed"){
             this.incorrectPassword = true;
           }
-          else if (k == "userName"){            
+          else if (k == "userName"){       
             localStorage.setItem(k, loginInfo.userName)
             this.router.navigate(["/myProfile"])
           }
