@@ -19,6 +19,14 @@ export class EventCreateComponent implements OnInit {
 
   // event: Event;
 
+//   eventCategory: [
+//     {id: '1', value: 'connect'},
+//     {id: '2', value: 'volunteer'},
+//     {id: '3', value: 'learn'},
+//     {id: '4', value: 'donate'},
+//     {id: '5', value: 'celebrate'}
+// ];
+
 
   constructor(private http: HttpClient, private router: Router) {
     this.logInStatus = false;

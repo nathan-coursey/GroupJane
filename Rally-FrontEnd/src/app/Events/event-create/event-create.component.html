@@ -55,8 +55,25 @@
                 <input type="text" id="address" name="eventAddress" ngModel>
                 <br>
                 <br>
-                <label>category</label>
-                <input type="text" id="category" name="eventCategory" ngModel>
+
+                <label>category</label> <br>
+                <hr style="width:550px; margin-top:0;">
+                <input type="radio" value="connect" name="eventCategory" ngModel> connect
+                <input type="radio" value="volunteer" name="eventCategory" ngModel> volunteer
+                <input type="radio" value="learn" name="eventCategory" ngModel> learn <br>
+                <input type="radio" value="donate" name="eventCategory" ngModel> donate
+                <input type="radio" value="celebrate" name="eventCategory" ngModel> celebrate
+
+                <!-- <label for="eventCategory">category</label>
+                <span *ngFor="let category of eventCategory">
+                    <input type="radio" id="{{category.id}}" value="{{category.value}}" name="eventCategory" ngModel>
+                    <label for="connect">{{category.value}}</label>
+                </span> -->
+
+
+                <!-- <input type="text" id="category" name="eventCategory" ngModel> -->
+
+
                 <!-- <hr style="width:500px; margin-top:0;">
                 <input type="radio" value="connect" name="category"> connect  
                 <input type="radio" value="volunteer" name="category"> volunteer  
