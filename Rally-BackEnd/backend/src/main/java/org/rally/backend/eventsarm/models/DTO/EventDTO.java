@@ -1,12 +1,17 @@
 package org.rally.backend.eventsarm.models.DTO;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import org.rally.backend.eventsarm.models.AbstractEntity;
 import org.rally.backend.eventsarm.models.EventCategory;
 
 import java.util.List;
 
-public class EventDTO {
+@Entity
+public class EventDTO extends AbstractEntity {
 
 
     @NotBlank(message = "Who can your community thank for hosting this event?")
@@ -29,7 +34,9 @@ public class EventDTO {
 
 //    private String eventCategory;
 
-    private List<EventCategory> eventCategory;
+    @ManyToMany
+    @JsonManagedReference
+    private List<EventCategory> eventCategories;
 
     @NotBlank(message = "Tell your community what this event is all about!")
     private String description;
@@ -91,10 +98,10 @@ public class EventDTO {
 //    }
 
     public List<EventCategory> getEventCategory() {
-        return eventCategory;
+        return eventCategories;
     }
 
     public void setEventCategory(List<EventCategory> eventCategory) {
-        this.eventCategory = eventCategory;
+        this.eventCategories = eventCategory;
     }
 }

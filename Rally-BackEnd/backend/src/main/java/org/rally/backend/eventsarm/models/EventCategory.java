@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
+import org.rally.backend.eventsarm.models.DTO.EventDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class EventCategory extends AbstractEntity {
 
     @ManyToMany(mappedBy = "eventCategories")
     @JsonBackReference
-    private final List<Event> events = new ArrayList<>();
+    private final List<EventDTO> events = new ArrayList<>();
 
     public EventCategory() {}
 
@@ -38,7 +39,7 @@ public class EventCategory extends AbstractEntity {
         this.eventCategory = eventCategory;
     }
 
-    public List<Event> getEvents() {
+    public List<EventDTO> getEvents() {
         return events;
     }
 }
