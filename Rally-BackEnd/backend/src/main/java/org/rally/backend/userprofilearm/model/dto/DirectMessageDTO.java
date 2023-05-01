@@ -1,16 +1,6 @@
-package org.rally.backend.userprofilearm.model;
+package org.rally.backend.userprofilearm.model.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class DirectMessage {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class DirectMessageDTO {
 
     private Integer receivedByUserId;
 
@@ -22,20 +12,6 @@ public class DirectMessage {
 
     private String messageContent;
 
-    public DirectMessage() {
-    }
-
-    public DirectMessage(Integer receivedByUserId, String receivedByUserName, Integer sentByUserId, String sentByUserName, String messageContent) {
-        this.receivedByUserId = receivedByUserId;
-        this.receivedByUserName = receivedByUserName;
-        this.sentByUserId = sentByUserId;
-        this.sentByUserName = sentByUserName;
-        this.messageContent = messageContent;
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public Integer getReceivedByUserId() {
         return receivedByUserId;

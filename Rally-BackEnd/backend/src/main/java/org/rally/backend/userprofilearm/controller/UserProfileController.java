@@ -1,9 +1,9 @@
 package org.rally.backend.userprofilearm.controller;
 
-import org.rally.backend.userprofilearm.model.UserEntity;
-import org.rally.backend.userprofilearm.model.UserInformation;
-import org.rally.backend.userprofilearm.model.ViewUserBundle;
+import org.rally.backend.userprofilearm.model.*;
+import org.rally.backend.userprofilearm.model.dto.DirectMessageDTO;
 import org.rally.backend.userprofilearm.model.dto.UserInfoDTO;
+import org.rally.backend.userprofilearm.repository.DirectMessageRepository;
 import org.rally.backend.userprofilearm.repository.RoleRepository;
 import org.rally.backend.userprofilearm.repository.UserInformationRepository;
 import org.rally.backend.userprofilearm.repository.UserRepository;
@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,15 +24,23 @@ public class UserProfileController {
     UserRepository userRepository;
     UserInformationRepository userInformationRepository;
     RoleRepository roleRepository;
+    DirectMessageRepository directMessageRepository;
+
 
     @Autowired
     public UserProfileController(UserRepository userRepository,
                                  RoleRepository roleRepository,
-                                 UserInformationRepository userInformationRepository) {
+                                 UserInformationRepository userInformationRepository,
+                                 DirectMessageRepository directMessageRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.userInformationRepository = userInformationRepository;
+        this.directMessageRepository = directMessageRepository;
     }
+
+    /** GET REQUEST **/
+    /** GET REQUEST **/
+    /** GET REQUEST **/
 
     @GetMapping("/search")
     public List<UserEntity> displayAllUsers() {
@@ -76,6 +85,32 @@ public class UserProfileController {
         return userInformation;
     }
 
+    @GetMapping("/getActiveUserDirectMessageHistory/{id}")
+    public AllMainUserDMs activeUserDirectMessageHistory(@PathVariable int id) {
+        List<DirectMessage> sent = new ArrayList<>();
+        List<DirectMessage> received = new ArrayList<>();
+        AllMainUserDMs totalHistory;
+
+        for (DirectMessage dm : directMessageRepository.findAll()) {
+            if (dm.getSentByUserId().equals(id)) {
+                sent.add(dm);
+            } else if (dm.getReceivedByUserId().equals(id)) {
+                received.add(dm);
+            }
+        }
+
+        // How do I organize these into threads? Maybe a thread class that holds the dms from that user?
+
+        totalHistory = new AllMainUserDMs(sent, received);
+
+        return totalHistory;
+    }
+
+
+    /** POST REQUEST **/
+    /** POST REQUEST **/
+    /** POST REQUEST **/
+
     @PostMapping("/update-user-information")
     public ResponseEntity<?> updateUserInformation(@RequestBody UserInfoDTO userInfoDTO) {
 
@@ -97,6 +132,21 @@ public class UserProfileController {
         userInformationRepository.save(userInformation);
 
         return new ResponseEntity<>(userInformation, HttpStatus.OK);
+
+    }
+
+    @PostMapping("/sendDirectMessage")
+    public ResponseEntity<?> updateUserInformation(@RequestBody DirectMessageDTO directMessageDTO) {
+
+        DirectMessage messageSent = new DirectMessage(directMessageDTO.getReceivedByUserId(),
+                                                      directMessageDTO.getReceivedByUserName(),
+                                                      directMessageDTO.getSentByUserId(),
+                                                      directMessageDTO.getSentByUserName(),
+                                                      directMessageDTO.getMessageContent());
+
+        directMessageRepository.save(messageSent);
+
+        return new ResponseEntity<>(messageSent, HttpStatus.OK);
 
     }
 

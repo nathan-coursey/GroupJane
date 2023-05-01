@@ -37,13 +37,15 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.logInStatus = this.verifyService.verifyLoggedIn();
 
-
     if (localStorage.getItem('id') !== null) {
       this.viewUserInformationService.getUserById(localStorage.getItem('id')).subscribe((data: UserEntity) => {
         this.userEntity = data;
       })  
       this.viewUserInformationService.getUserInformationByUserId(localStorage.getItem('id')).subscribe((data: UserInformation) => {
         this.userInformation = data;
+      })
+      this.viewUserInformationService.getDirectMessagesFromUserId(localStorage.getItem('id')).subscribe((data) => {
+        console.log(data);
       })
     }
   }

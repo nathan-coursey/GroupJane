@@ -4,12 +4,15 @@ import { UserEntity } from '../../models/UserEntity';
 import { ViewUserService } from '../user-services/view-user.service';
 import { VerifyLogoutService } from '../../security/verify-logout.service';
 import { ViewUserBundle } from '../../models/ViewUserBundle';
+import { NgForm } from '@angular/forms';
+import { DirectMessageDTO } from '../../models/dto/directMessageDTO';
+import { DirectMessage } from '../../models/Directmessage';
 @Component({
   selector: 'app-view-user-profile',
   templateUrl: './view-user-profile.component.html',
   styleUrls: ['./view-user-profile.component.css']
 })
-export class ViewUserProfileComponent implements OnInit, OnDestroy {
+export class ViewUserProfileComponent implements OnInit {
 
   logInStatus: Boolean;
   viewUserEntity: UserEntity;
@@ -41,16 +44,28 @@ export class ViewUserProfileComponent implements OnInit, OnDestroy {
     })
   }
 
+  viewingUserSendDM(dmMessageDetails: NgForm) {
+    let sendDirectMessage: DirectMessageDTO = {
+      receivedByUserId: this.userEntityInformation.viewUser.id,
+      receivedByUserName: this.userEntityInformation.viewUser.userName,
+      sentByUserId: localStorage.getItem('id'),
+      sentByUserName: localStorage.getItem('userName'),
+      messageContent: dmMessageDetails.value.messageContent
+    }
+
+    this.viewUser.postDirectMessage(sendDirectMessage).subscribe((response: DirectMessage) => {
+      console.log(response);
+    })
+
+  }
+
+
   logOut() {
     localStorage.removeItem('userName');
     localStorage.removeItem('id')
     this.logInStatus = false;
     this.router.navigate(["/login"])
     return;
-  }
-
-  ngOnDestroy() {
-      this.sub.unsubscribe();
   }
 
 }

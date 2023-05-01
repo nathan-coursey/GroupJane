@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from '../../models/dto/LoginDTO';
 import { NgForm } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 import { ViewUserService } from '../../user-profile/user-services/view-user.service';
 import { UserEntity } from '../../models/UserEntity';
 
@@ -14,24 +13,19 @@ import { UserEntity } from '../../models/UserEntity';
 })
 export class LoginUserComponent implements OnInit {
 
-  userList: UserEntity[];
+  userLogginIn: UserEntity;
   private userUrl: string;
   incorrectPassword: boolean;
   userEntity: UserEntity;
 
   constructor(private http: HttpClient,
-              private router: Router, 
-              private findUser: ViewUserService) 
+              private router: Router) 
               { 
     this.userUrl = 'http://localhost:8080/api/login';
   }
 
 
-  ngOnInit(): void {
-    this.findUser.getUserList().subscribe((response: UserEntity[]) => {
-      this.userList = response;
-    })
-  }
+  ngOnInit(): void {}
 
   login(userInformation: NgForm ) {
       
@@ -42,21 +36,18 @@ export class LoginUserComponent implements OnInit {
       password: userInformation.value.password
     }
 
-    for (let i = 0; i < this.userList.length; i++) {
-      if (this.userList[i].userName === loginInfo.userName) {
-        localStorage.setItem('id', this.userList[i].id)
-      }
-    }
+    this.http.post(this.userUrl, loginInfo).subscribe((response: UserEntity) => {
+      
+      this.userLogginIn = response;
 
-    this.http.post(this.userUrl, loginInfo).subscribe((res) => {
-      for (const k in res){
-        if (k == "failed"){
+      for (const k in response){
+        if (k === "failed"){
           this.incorrectPassword = true;
           localStorage.removeItem('id');
           return;
-        }
-        else if (k == "userName"){            
-          localStorage.setItem(k, loginInfo.userName)
+        } else {            
+          localStorage.setItem('userName', this.userLogginIn.userName)
+          localStorage.setItem('id', this.userLogginIn.id)
           this.router.navigate(["/myProfile"]);
         }
       } 

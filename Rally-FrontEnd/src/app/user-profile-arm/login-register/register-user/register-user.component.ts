@@ -71,7 +71,6 @@ export class RegisterUserComponent implements OnInit {
     }
 
     this.http.post(this.userUrl, userBundle).subscribe((response: UserEntity) => {
-      console.log(response)
       localStorage.setItem('userName', this.registerUser.userName)
       localStorage.setItem('id', response.id)
       this.router.navigate(["/myProfile"])

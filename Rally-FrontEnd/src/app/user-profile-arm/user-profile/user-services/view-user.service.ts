@@ -9,13 +9,16 @@ import { Router } from '@angular/router';
 })
 export class ViewUserService {
 
-  private getUserListUrl = 'http://localhost:8080/user/search'
+  private getUserListUrl = 'http://localhost:8080/user/search';
   private searchUserByIdUrl = 'http://localhost:8080/user/searchid/';
   private searchUserByUserNameUrl = 'http://localhost:8080/user/searchUserName/';
   private searchUserInformationByIdUrl = 'http://localhost:8080/user/userinfo/';
-  private searchUserInformationByUserIdUrl = 'http://localhost:8080/user/getUserInformationByUserId/'
+  private searchUserInformationByUserIdUrl = 'http://localhost:8080/user/getUserInformationByUserId/';
   private getUserBundleByUserName = 'http://localhost:8080/user/getViewUserBundleInformation/';
-  private getUserIdCountRegister = 'http://localhost:8080/api/userIdCount'
+  private getUserIdCountRegister = 'http://localhost:8080/api/userIdCount';
+  private getDirectMessagesWithUserId = 'http://localhost:8080/user/getActiveUserDirectMessageHistory/';
+
+  private postDirectMessageToViewedUser = 'http://localhost:8080/user/sendDirectMessage';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -40,11 +43,15 @@ export class ViewUserService {
   }
 
   getViewUserBundleByUserName(username: string) {
-    return this.http.get(`${this.getUserBundleByUserName}` + username)
+    return this.http.get(`${this.getUserBundleByUserName}` + username);
   }
 
   getCurrentUserIdCount() {
-    return this.http.get(`${this.getUserIdCountRegister}`)
+    return this.http.get(`${this.getUserIdCountRegister}`);
+  }
+
+  getDirectMessagesFromUserId(id: string) {
+    return this.http.get(`${this.getDirectMessagesWithUserId}` + id);
   }
 
   redirectWhenViewingSelf(userName) {
@@ -52,6 +59,10 @@ export class ViewUserService {
       this.router.navigate(["/myProfile"])
       return;
     }
+  }
+
+  postDirectMessage(directMessage) {
+    return this.http.post(`${this.postDirectMessageToViewedUser}`, directMessage);
   }
 
 }

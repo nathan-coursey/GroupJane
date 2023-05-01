@@ -18,7 +18,20 @@
     </div>
     <div class="col">
         <div class="card">
-            <h2>Messages</h2>
+            <h2>Message</h2>
+            <div class="card">
+            <div style="text-align: left;" class="form-group"> 
+                <form #dmMessageDetails="ngForm" (ngSubmit)="viewingUserSendDM(dmMessageDetails)">
+                  <label>Messaging:<br>{{ this?.viewUserName }}</label>
+                  <br><br>
+                  <p>Message:</p>
+                  <textarea rows="3" cols="40" type="text" name="messageContent" ngModel></textarea>
+                  <div style="text-align: right;">
+                  <input type="submit" value="Send">
+                  </div>
+                </form>
+            </div>
+            </div>
         </div>
     </div>
 </div>
