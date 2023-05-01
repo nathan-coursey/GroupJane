@@ -2,6 +2,9 @@ package org.rally.backend.eventsarm.models.DTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import org.rally.backend.eventsarm.models.EventCategory;
+
+import java.util.List;
 
 public class EventDTO {
 
@@ -24,22 +27,12 @@ public class EventDTO {
     @NotBlank(message = "But how will your community know where to go?")
     private String eventAddress;
 
-//    private EventCategory eventCategory;
+//    private String eventCategory;
 
-    private String eventCategory;
+    private List<EventCategory> eventCategory;
 
     @NotBlank(message = "Tell your community what this event is all about!")
     private String description;
-
-//    public Event(String eventHost, String contactEmail, String eventTitle, String datetime, String eventAddress, String eventCategory, String description) {
-//        this.eventHost = eventHost;
-//        this.contactEmail = contactEmail;
-//        this.eventTitle = eventTitle;
-//        this.datetime = datetime;
-//        this.eventAddress = eventAddress;
-//        this.eventCategory = eventCategory;
-//        this.description = description;
-//    }
 
     public String getEventHost() {
         return eventHost;
@@ -73,14 +66,6 @@ public class EventDTO {
         this.eventAddress = eventAddress;
     }
 
-//    public EventCategory getEventCategory() {
-//        return eventCategory;
-//    }
-//
-//    public void setEventCategory(EventCategory eventCategory) {
-//        this.eventCategory = eventCategory;
-//    }
-
     public String getDescription() {
         return description;
     }
@@ -97,12 +82,19 @@ public class EventDTO {
         this.datetime = datetime;
     }
 
-    public String getEventCategory() {
+//    public String getEventCategory() {
+//        return eventCategory;
+//    }
+//
+//    public void setEventCategory(String eventCategory) {
+//        this.eventCategory = eventCategory;
+//    }
+
+    public List<EventCategory> getEventCategory() {
         return eventCategory;
     }
 
-    public void setEventCategory(String eventCategory) {
+    public void setEventCategory(List<EventCategory> eventCategory) {
         this.eventCategory = eventCategory;
     }
-
 }
