@@ -20,9 +20,7 @@ public class Event extends AbstractEntity {
 
     private String datetime;
 
-//    private String datetime;
-//@Basic
-//private java.time.LocalDateTime localDateTime;
+    private String datetime;
 
     @NotBlank(message = "But how will your community know where to go?")
     private String eventAddress;
