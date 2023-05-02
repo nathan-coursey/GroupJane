@@ -82,13 +82,22 @@
                 <p style="font-size: 25px;">photo goes here</p>
             </div>
             <div id="event_list">
-                <!-- loop eventually goes here -->
-                <!-- <img> goes here -->
+                <ng-container *ngFor="let event of events">
+                <p style="font-family:Impact; margin-top: -5px;">{{event.datetime}}</p>
+                <p style="font-weight: bold; margin-top: -20px;">{{event.eventTitle}}</p>
+                <p style="font-size: 25px; margin-top: -20px;">{{event.eventCategory}}</p>
+                <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by {{event.eventHost}}</p>
+                </ng-container>
+            </div>
+
+
+
+            <!-- <div id="event_list">
                 <p style="font-family:Impact; margin-top: -5px;">DATE & TIME</p>
                 <p style="font-weight: bold; margin-top: -20px;">EVENT TITLE</p>
                 <p style="font-size: 25px; margin-top: -20px;">category tags</p>
                 <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by (name)</p>
-            </div>
+            </div> -->
         
         </div>
     </div>

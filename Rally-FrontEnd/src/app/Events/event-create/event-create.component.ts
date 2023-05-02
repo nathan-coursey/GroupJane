@@ -17,7 +17,6 @@ export class EventCreateComponent implements OnInit {
   logInStatus: Boolean;
   private eventUrl: string;
 
-  // event: Event;
 
 
   constructor(private http: HttpClient, private router: Router) {
@@ -46,6 +45,8 @@ export class EventCreateComponent implements OnInit {
     console.log(localStorage.getItem('userName'))
     this.logInStatus = false;
   }
+
+  
 
   registerNewEvent(eventInformation: NgForm) {
     let createNewEvent: EventDTO = {
