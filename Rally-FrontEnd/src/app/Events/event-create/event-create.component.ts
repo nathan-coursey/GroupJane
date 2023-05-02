@@ -55,7 +55,8 @@ export class EventCreateComponent implements OnInit {
       datetime: eventInformation.value.datetime,
       eventAddress: eventInformation.value.eventAddress,
       eventCategory: eventInformation.value.eventCategory,
-      description: eventInformation.value.description
+      description: eventInformation.value.description,
+      imageId: eventInformation.value.imageId
     }
 
     console.log(createNewEvent);

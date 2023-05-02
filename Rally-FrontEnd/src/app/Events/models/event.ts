@@ -7,8 +7,9 @@ export class Event {
     eventAddress: string;
     eventCategory: string;
     description: string;
+    imageId: string;
 
-    constructor(id: number, eventHost: string, contactEmail: string, eventTitle: string, datetime: string, eventAddress: string, eventCategory: string, description: string) {
+    constructor(id: number, eventHost: string, contactEmail: string, eventTitle: string, datetime: string, eventAddress: string, eventCategory: string, description: string, imageId: string) {
         this.id = id;
         this.eventHost = eventHost;
         this.contactEmail = contactEmail;
@@ -17,6 +18,7 @@ export class Event {
         this.eventAddress = eventAddress;
         this.eventCategory = eventCategory;
         this.description = description;
+        this.imageId = imageId;
     }
 
 }
