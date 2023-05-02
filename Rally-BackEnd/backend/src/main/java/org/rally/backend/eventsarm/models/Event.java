@@ -34,7 +34,9 @@ public class Event extends AbstractEntity {
     @NotBlank(message = "Tell your community what this event is all about!")
     private String description;
 
-    public Event(String eventHost, String contactEmail, String eventTitle, String datetime, String eventAddress, String eventCategory, String description) {
+    private String imageId;
+
+    public Event(String eventHost, String contactEmail, String eventTitle, String datetime, String eventAddress, String eventCategory, String description, String imageId) {
         this.eventHost = eventHost;
         this.contactEmail = contactEmail;
         this.eventTitle = eventTitle;
@@ -42,6 +44,7 @@ public class Event extends AbstractEntity {
         this.eventAddress = eventAddress;
         this.eventCategory = eventCategory;
         this.description = description;
+        this.imageId = imageId;
     }
 
     public String getEventHost() {
@@ -108,7 +111,15 @@ public class Event extends AbstractEntity {
         this.eventCategory = eventCategory;
     }
 
-//    @Override
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
+
+    //    @Override
 //    public String toString() {
 //        return "Event{" +
 //                "eventHost='" + eventHost + '\'' +

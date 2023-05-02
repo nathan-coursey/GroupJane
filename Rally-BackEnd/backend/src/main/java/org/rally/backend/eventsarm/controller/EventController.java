@@ -35,7 +35,7 @@ public class EventController {
     @PostMapping("/create")
     public ResponseEntity<?> createEventForm(@RequestBody EventDTO eventDTO) {
 
-        Event createNewEvent = new Event(eventDTO.getEventHost(), eventDTO.getContactEmail(), eventDTO.getEventTitle(), eventDTO.getDatetime(), eventDTO.getEventAddress(), eventDTO.getEventCategory(), eventDTO.getDescription());
+        Event createNewEvent = new Event(eventDTO.getEventHost(), eventDTO.getContactEmail(), eventDTO.getEventTitle(), eventDTO.getDatetime(), eventDTO.getEventAddress(), eventDTO.getEventCategory(), eventDTO.getDescription(), eventDTO.getImageId());
 
         eventRepository.save(createNewEvent);
         AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");

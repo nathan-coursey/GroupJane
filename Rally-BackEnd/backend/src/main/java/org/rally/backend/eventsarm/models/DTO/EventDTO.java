@@ -31,6 +31,8 @@ public class EventDTO {
     @NotBlank(message = "Tell your community what this event is all about!")
     private String description;
 
+    private String imageId;
+
 //    public Event(String eventHost, String contactEmail, String eventTitle, String datetime, String eventAddress, String eventCategory, String description) {
 //        this.eventHost = eventHost;
 //        this.contactEmail = contactEmail;
@@ -105,4 +107,11 @@ public class EventDTO {
         this.eventCategory = eventCategory;
     }
 
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
 }
