@@ -9,6 +9,5 @@ public interface UserInformationRepository extends JpaRepository<UserInformation
     @Override
     Optional<UserInformation> findById(Integer integer);
 
-
-
+    Optional<UserInformation> findByUserId(int id);
 }

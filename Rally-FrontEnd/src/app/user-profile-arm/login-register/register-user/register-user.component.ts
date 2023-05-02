@@ -47,7 +47,6 @@ export class RegisterUserComponent implements OnInit {
     } else {
       this.registerUser = submitNewUser;
       this.passwordsMatch = false;
-      console.log(this.registerUser)
       return;
     }
 
@@ -62,8 +61,6 @@ export class RegisterUserComponent implements OnInit {
       city: userDetails.value.city,
       state: userDetails.value.state
     }
-
-    console.log(userInfo);
 
     let userBundle: UserBundleDTO = {
       registerDTO: this.registerUser,

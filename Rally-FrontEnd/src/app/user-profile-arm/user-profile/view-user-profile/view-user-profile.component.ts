@@ -53,10 +53,7 @@ export class ViewUserProfileComponent implements OnInit {
       messageContent: dmMessageDetails.value.messageContent
     }
 
-    this.viewUser.postDirectMessage(sendDirectMessage).subscribe((response: DirectMessage) => {
-      console.log(response);
-    })
-
+    this.viewUser.postDirectMessage(sendDirectMessage).subscribe();
   }
 
 

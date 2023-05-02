@@ -17,6 +17,7 @@ export class ViewUserService {
   private getUserBundleByUserName = 'http://localhost:8080/user/getViewUserBundleInformation/';
   private getUserIdCountRegister = 'http://localhost:8080/api/userIdCount';
   private getDirectMessagesWithUserId = 'http://localhost:8080/user/getActiveUserDirectMessageHistory/';
+  private getMainUserBundle = 'http://localhost:8080/user/getMainUserBundleInformation/';
 
   private postDirectMessageToViewedUser = 'http://localhost:8080/user/sendDirectMessage';
 
@@ -52,6 +53,10 @@ export class ViewUserService {
 
   getDirectMessagesFromUserId(id: string) {
     return this.http.get(`${this.getDirectMessagesWithUserId}` + id);
+  }
+
+  getMainUserBundleByUserName(userName: string) {
+    return this.http.get(`${this.getMainUserBundle}` + userName);
   }
 
   redirectWhenViewingSelf(userName) {

@@ -7,6 +7,8 @@ import { NgForm } from '@angular/forms';
 import { UserInformation } from '../../models/UserInformation';
 import { ViewUserService } from '../user-services/view-user.service';
 import { UserEntity } from '../../models/UserEntity';
+import { AllHistoryDirectMessage } from '../../models/AllHistoryDirectMessage';
+import { MainUserBundle } from '../../models/MainUserBundle';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,6 +19,7 @@ export class UserProfileComponent implements OnInit {
 
   currentUser;
   userInformation: UserInformation;
+  mainUserBundle: MainUserBundle;
   logInStatus: Boolean;
   changeInfo = true;
   private userUrl: string;
@@ -38,14 +41,11 @@ export class UserProfileComponent implements OnInit {
     this.logInStatus = this.verifyService.verifyLoggedIn();
 
     if (localStorage.getItem('id') !== null) {
-      this.viewUserInformationService.getUserById(localStorage.getItem('id')).subscribe((data: UserEntity) => {
-        this.userEntity = data;
-      })  
-      this.viewUserInformationService.getUserInformationByUserId(localStorage.getItem('id')).subscribe((data: UserInformation) => {
-        this.userInformation = data;
-      })
-      this.viewUserInformationService.getDirectMessagesFromUserId(localStorage.getItem('id')).subscribe((data) => {
-        console.log(data);
+      this.viewUserInformationService.getMainUserBundleByUserName(localStorage.getItem('userName')).subscribe((data: MainUserBundle) => {
+        this.mainUserBundle = data;
+        this.userInformation = this.mainUserBundle.viewUserInformation;
+        this.userEntity = this.mainUserBundle.mainUser;
+        console.log(this.mainUserBundle);
       })
     }
   }

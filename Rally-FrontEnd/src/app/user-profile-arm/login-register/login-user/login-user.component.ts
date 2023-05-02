@@ -43,7 +43,6 @@ export class LoginUserComponent implements OnInit {
       for (const k in response){
         if (k === "failed"){
           this.incorrectPassword = true;
-          localStorage.removeItem('id');
           return;
         } else {            
           localStorage.setItem('userName', this.userLogginIn.userName)

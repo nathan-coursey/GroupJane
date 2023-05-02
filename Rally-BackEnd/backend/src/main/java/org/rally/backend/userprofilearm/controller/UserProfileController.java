@@ -12,9 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -65,10 +63,22 @@ public class UserProfileController {
 
         /** call post history and favorites here when ready **/
         UserEntity targetUser = userRepository.findByUserName(userName);
-        Optional<UserInformation> targetInformation = userInformationRepository.findById(targetUser.getId());
+        Optional<UserInformation> targetInformation = userInformationRepository.findByUserId(targetUser.getId());
 
         return new ViewUserBundle(targetUser, targetInformation);
 
+    }
+
+    @GetMapping("/getMainUserBundleInformation/{userName}")
+    public MainUserBundle getMainUserBundle(@PathVariable String userName) {
+
+        UserEntity targetUser = userRepository.findByUserName(userName);
+        Optional<UserInformation> targetInformation = userInformationRepository.findByUserId(targetUser.getId());
+        MainUserDmHistory targetDirectMessages = activeUserDirectMessageHistory(targetUser.getId());
+
+        MainUserBundle userBundle =  new MainUserBundle(targetUser, targetInformation, targetDirectMessages);
+
+        return userBundle;
     }
 
     @GetMapping("/getUserInformationByUserId/{id}")
@@ -83,27 +93,6 @@ public class UserProfileController {
         }
 
         return userInformation;
-    }
-
-    @GetMapping("/getActiveUserDirectMessageHistory/{id}")
-    public AllMainUserDMs activeUserDirectMessageHistory(@PathVariable int id) {
-        List<DirectMessage> sent = new ArrayList<>();
-        List<DirectMessage> received = new ArrayList<>();
-        AllMainUserDMs totalHistory;
-
-        for (DirectMessage dm : directMessageRepository.findAll()) {
-            if (dm.getSentByUserId().equals(id)) {
-                sent.add(dm);
-            } else if (dm.getReceivedByUserId().equals(id)) {
-                received.add(dm);
-            }
-        }
-
-        // How do I organize these into threads? Maybe a thread class that holds the dms from that user?
-
-        totalHistory = new AllMainUserDMs(sent, received);
-
-        return totalHistory;
     }
 
 
@@ -148,6 +137,30 @@ public class UserProfileController {
 
         return new ResponseEntity<>(messageSent, HttpStatus.OK);
 
+    }
+
+    /** Service **/
+    /** Service **/
+    /** Service **/
+
+    public MainUserDmHistory activeUserDirectMessageHistory(int id) {
+
+        /** Isolating all messages from and to user **/
+        List<UserEntity> allUsers = new ArrayList<>();
+        List<DirectMessage> allMessagesRelatedToUser = new ArrayList<>();
+
+        for (DirectMessage dm : directMessageRepository.findAll()) {
+            if (dm.getReceivedByUserId().equals(id) || dm.getSentByUserId().equals(id)) {
+                allMessagesRelatedToUser.add(dm);
+                if (!allUsers.contains(userRepository.findByUserName(dm.getReceivedByUserName()))){
+                    allUsers.add(userRepository.findByUserName(dm.getReceivedByUserName()));
+                } else if (!allUsers.contains(userRepository.findByUserName(dm.getSentByUserName()))) {
+                    allUsers.add(userRepository.findByUserName(dm.getSentByUserName()));
+                }
+            }
+        }
+
+        return new MainUserDmHistory(allUsers, allMessagesRelatedToUser);
     }
 
 
