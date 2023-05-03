@@ -1,22 +1,33 @@
 package org.rally.backend.forumarm.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import org.rally.backend.userprofilearm.model.UserEntity;
 
 @Entity
-public class CommunityHome extends AbstractEntity{
+public class ForumPosts extends AbstractEntity{
     @ManyToOne
     private UserEntity userEntity;
+    @NotNull
     private String title;
+
     private String description;
-    public CommunityHome(String title, String description) {
+    private String category;
+    public ForumPosts(String title, String description, String category) {
         this.title = title;
         this.description = description;
+        this.category = category;
     }
-    public CommunityHome(){}
+    public ForumPosts(){}
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public UserEntity getUserEntity() {
         return userEntity;
@@ -25,6 +36,7 @@ public class CommunityHome extends AbstractEntity{
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
+
     public String getTitle() {
         return title;
     }

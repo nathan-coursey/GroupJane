@@ -15,8 +15,8 @@
     background-color: black;
 }
 .black-theme {
-    color:black;
-    background-image: linear-gradient( white, azure);
+    color:rgb(255, 255, 255);
+    background-image: linear-gradient( rgb(0, 0, 0));
     border: 1px solid black;
 }
 

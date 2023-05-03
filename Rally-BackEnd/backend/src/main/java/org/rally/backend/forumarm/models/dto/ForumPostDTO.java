@@ -4,6 +4,15 @@ public class ForumPostDTO {
     private String title;
     private String description;
     private String username;
+    private String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public String getTitle() {
         return title;

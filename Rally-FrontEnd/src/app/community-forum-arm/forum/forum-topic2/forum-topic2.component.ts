@@ -15,6 +15,7 @@ export class ForumTopic2Component implements OnInit {
   logInStatus: Boolean;
   darktheme: Boolean;
   testArray;
+  newArray;
   createPostBoolean: boolean;
   constructor(private http: HttpClient, private router: Router, private themeservice: ThemeserviceService) {
     this.logInStatus = false;
@@ -22,6 +23,7 @@ export class ForumTopic2Component implements OnInit {
     this.darktheme = false;
     this.testArray;
     this.forumTopic = "ForumTopic2";
+    this.newArray = [];
    }
   
   ngOnInit(): void {
@@ -50,10 +52,7 @@ export class ForumTopic2Component implements OnInit {
       this.themeservice.createAPost(postInformation, this.forumTopic);
   }
   getPosts(){
-    this.http.get(`http://localhost:8080/${this.forumTopic}`).subscribe((res)=>{
-      console.log(res);
-      this.testArray = res;
-    });
+    this.newArray = this.themeservice.getForumTopicPosts(this.forumTopic);
   }
   Light(){
       this.themeservice.switchToLightTheme();
@@ -64,7 +63,7 @@ export class ForumTopic2Component implements OnInit {
     this.darktheme = true;
   }
   logOut() {
-    localStorage.removeItem('username');
+    localStorage.removeItem('userName');
     console.log(localStorage.getItem('userName'));
     this.logInStatus = false;
   }

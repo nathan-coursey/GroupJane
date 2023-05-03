@@ -20,76 +20,18 @@ public class ForumController {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    CommunityHomePostRepository communityHomePostRepository;
-    @Autowired
-    IntroductionsPostRepository introductionsPostRepository;
-    @Autowired
-    ForumTopic1Repository forumTopic1Repository;
-    @Autowired
-    ForumTopic2Repository forumTopic2Repository;
-    @Autowired
-    ForumTopic3Repository forumTopic3Repository;
+    ForumPostRepository forumPostRepository;
 
-    @GetMapping("/CommunityHome")
-    public ResponseEntity<?>getCommunityHomePosts(){
-        List<CommunityHome> communityHomePosts = (List<CommunityHome>) communityHomePostRepository.findAll();
-        return new ResponseEntity<>(communityHomePosts, HttpStatus.OK);
+    @GetMapping("/Posts")
+    public ResponseEntity<?>getForumPosts(){
+        return new ResponseEntity<>(forumPostRepository.findAll(), HttpStatus.OK);
     }
-    @PostMapping("/CommunityHome")
-    public ResponseEntity<?>createCommunityHomePosts(@RequestBody ForumPostDTO forumPostDTO){
-        CommunityHome communityHomePost = new CommunityHome(forumPostDTO.getTitle(), forumPostDTO.getDescription());
-        communityHomePost.setUserEntity(userRepository.findByUserName(forumPostDTO.getUsername()));
-        communityHomePostRepository.save(communityHomePost);
-        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
-        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
-    }
-    @GetMapping("/Introductions")
-    public ResponseEntity<?>getIntroductionsPosts(){
-        return new ResponseEntity<>(introductionsPostRepository.findAll(), HttpStatus.OK);
-    }
-    @PostMapping("/Introductions")
-    public ResponseEntity<?>createIntroductionsPosts(@RequestBody ForumPostDTO forumPostDTO){
-        Introductions forumPost = new Introductions(forumPostDTO.getTitle(), forumPostDTO.getDescription());
+    @PostMapping("/Posts")
+    public ResponseEntity<?>createForumPost(@RequestBody ForumPostDTO forumPostDTO){
+        ForumPosts forumPost = new ForumPosts(forumPostDTO.getTitle(), forumPostDTO.getDescription(), forumPostDTO.getCategory());
         forumPost.setUserEntity(userRepository.findByUserName(forumPostDTO.getUsername()));
-        introductionsPostRepository.save(forumPost);
+        forumPostRepository.save(forumPost);
         AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
         return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
     }
-    @GetMapping("/ForumTopic1")
-    public ResponseEntity<?>getForumTopic1Posts(){
-        return new ResponseEntity<>(forumTopic1Repository.findAll(), HttpStatus.OK);
-    }
-    @PostMapping("/ForumTopic1")
-    public ResponseEntity<?>createForumTopic1Posts(@RequestBody ForumPostDTO forumPostDTO){
-        ForumTopic1 forumPost = new ForumTopic1(forumPostDTO.getTitle(), forumPostDTO.getDescription());
-        forumPost.setUserEntity(userRepository.findByUserName(forumPostDTO.getUsername()));
-        forumTopic1Repository.save(forumPost);
-        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
-        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
-    }
-    @GetMapping("/ForumTopic2")
-    public ResponseEntity<?>getForumTopic2Posts(){
-        return new ResponseEntity<>(forumTopic2Repository.findAll(), HttpStatus.OK);
-    }
-    @PostMapping("/ForumTopic2")
-    public ResponseEntity<?>createForumTopic2Posts(@RequestBody ForumPostDTO forumPostDTO){
-        ForumTopic2 forumPost = new ForumTopic2(forumPostDTO.getTitle(), forumPostDTO.getDescription());
-        forumPost.setUserEntity(userRepository.findByUserName(forumPostDTO.getUsername()));
-        forumTopic2Repository.save(forumPost);
-        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
-        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
-    }
-    @GetMapping("/ForumTopic3")
-    public ResponseEntity<?>getForumTopic3Posts(){
-        return new ResponseEntity<>(forumTopic3Repository.findAll(), HttpStatus.OK);
-    }
-    @PostMapping("/ForumTopic3")
-    public ResponseEntity<?>createForumTopic3Posts(@RequestBody ForumPostDTO forumPostDTO){
-        ForumTopic3 forumPost = new ForumTopic3(forumPostDTO.getTitle(), forumPostDTO.getDescription());
-        forumPost.setUserEntity(userRepository.findByUserName(forumPostDTO.getUsername()));
-        forumTopic3Repository.save(forumPost);
-        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
-        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
-    }
-
 }
