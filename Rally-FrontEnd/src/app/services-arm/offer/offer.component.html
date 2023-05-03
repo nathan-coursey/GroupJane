@@ -26,32 +26,51 @@
                 <br>
 
                 <!-- Name -->
-                <input type="text" class="form-control-center" style="width: 25%;" id="userName" name="userName" ngModel={{currentUser}}>
+                <input type="text" class="form-control-center" style="width: 25%;" id="userName" name="userName" required minlength="3" placeholder={{currentUser}} [(ngModel)]="model.userName" #userName="ngModel">
+
+                     <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+                        class="alert alert-warning">
+                        Name is required and must be at least three characters long.
+                     </div>
+
+                     <div *ngIf="userName.errors?.['minlength']">
+                     </div>
 
                 <br>
                 <br>
                 <br>
-                <!-- Service -->
-                <label class="text-orange" for="service">Define a Service:</label>
+                <!-- Offer or Request-->
+                <label class="text-orange" for="category-drop">Are You Offering or Requesting a Service?</label>
                 <br>
-                <input type="text" class="form-control-center" style="width: 25%;" id="service" name="service" ngModel>
+                <select id="type-drop" name="type" ngModel="value">
+                   <option value="Offering">Offering</option>
+                   <option value="Requesting">Requesting</option>
+                </select>
+            
+                <br>
+                <br>
+                <br>
+                <!-- Service -->
+                <label class="text-orange" for="service">Please Define Your Service:</label>
+                <br>
+                <input type="text" class="form-control-center" style="width: 25%;" id="service" name="service" placeholder="Provide a Short Title... (50 chars max)" ngModel>
                 
                 <br>
                 <br>
                 <br>
 
                <!-- Category drop down -->
-               <label class="text-orange" for="category-drop">Pick a Category:</label>
+               <label class="text-orange" for="category-drop">Pick a Category for the Service:</label>
                <br>
                <select id="category-drop" name="category" ngModel="value">
                   <option value="Art">Art</option>
-                  <option value="Admin">Administrative</option>
+                  <option value="Admininstrative">Administrative</option>
                   <option value="Babysitting">Babysitting</option>
                   <option value="Dogwalking">Dogwalking</option>
                   <option value="Event">Event</option>
                   <option value="Music">Music</option>
                   <option value="Other">Other</option>
-                  <option value="Photo">Photography</option>
+                  <option value="Photography">Photography</option>
                   <option value="Repair">Repair</option>
                   <option value="Rideshare">Rideshare</option>
                 </select>
@@ -81,78 +100,10 @@
                 <br>
                 <select id="time-drop" name="time" ngModel="days" multiple>
                    <option value="Morning">Morning</option>
-                   <option value="Afternoon">Afternoon</option>
+                   <option value="Afternoon">Afternoon  </option>
                    <option value="Evening">Evening</option>
-                   <option value="All">All</option>
+                   <option value="Any">Any</option>
                  </select>
-
-
-                <!-- TEMPORARILY COMMENTED OUT NOT WORKING -->
-                <!-- <label class="text-orange" for="availability">General Availability:</label>
-                <br>
-                <div class="form-check accent">
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="mon" ngModel>
-                    <label class="form-check-label" for="mon">
-                       &nbsp;&nbsp;Monday&nbsp;&nbsp;|&nbsp;&nbsp; 
-                    </label>
-                    
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="tues" ngModel>
-                    <label class="form-check-label" for="tues">
-                       &nbsp;&nbsp;Tuesday&nbsp;&nbsp;|&nbsp;&nbsp; 
-                    </label>
-                    
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="wed" ngModel>
-                    <label class="form-check-label" for="wed">
-                       &nbsp;&nbsp;Wednesday&nbsp;&nbsp;|&nbsp;&nbsp; 
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="thurs" ngModel>
-                    <label class="form-check-label" for="thurs">
-                       &nbsp;&nbsp;Thursday&nbsp;&nbsp;|&nbsp;&nbsp; 
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="fri" ngModel>
-                    <label class="form-check-label" for="fri">
-                       &nbsp;&nbsp;Friday&nbsp;&nbsp;|&nbsp;&nbsp; 
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="sat" ngModel>
-                    <label class="form-check-label" for="sat">
-                       &nbsp;&nbsp;Saturday&nbsp;&nbsp;|&nbsp;&nbsp; 
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="sun" ngModel>
-                    <label class="form-check-label" for="sun">
-                       &nbsp;&nbsp;Sunday&nbsp;&nbsp;|&nbsp;&nbsp;
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="every" ngModel>
-                    <label class="form-check-label" for="every">
-                       &nbsp;&nbsp;Everyday
-                    </label>
-
-                    <br>
-                    <br>
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="morning" ngModel>
-                    <label class="form-check-label" for="morning">
-                       &nbsp;&nbsp;Morning&nbsp;&nbsp;|&nbsp;&nbsp;
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="afternoon" ngModel>
-                    <label class="form-check-label" for="afternoon">
-                       &nbsp;&nbsp;Afternoon&nbsp;&nbsp;|&nbsp;&nbsp;
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="evening" ngModel>
-                    <label class="form-check-label" for="evening">
-                       &nbsp;&nbsp;Evening&nbsp;&nbsp;|&nbsp;&nbsp;
-                    </label>
-
-                    <input class="form-check-input-lg" type="checkbox" name="availability" id="any" value="Anytime" ngModel>
-                    <label class="form-check-label" for="any">
-                       &nbsp;&nbsp;Anytime
-                    </label>
-                </div> -->
 
                     <br>
                     <br>
@@ -162,7 +113,7 @@
                     <div class="form-group accent">
                         <label class="text-orange" for="description">Provide a Description:</label>
                         <br>
-                        <textarea class="form-control-center" style="width:50%" id="description" rows="4" name="description" ngModel></textarea>
+                        <textarea class="form-control-center" style="width:50%" id="description" rows="4" name="description" placeholder="Provide a description for the service, such as location information, whether offered or requested for free or for a fee, how you prefer payment, etc... (255 chars max)" ngModel></textarea>
                       </div>
                     <br>
                     <br>
@@ -185,7 +136,7 @@
                 <br>
             </div>
 
-            <button class="button-blue button-hover">Submit</button>
+            <button class="button-blue button-hover">Post It!</button>
             <br>
             <br>
         </form>

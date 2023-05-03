@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ServiceDTO } from '../models/Service';
+import { Name } from '../models/Service';
 
 @Component({
   selector: 'app-offer',
@@ -10,6 +11,7 @@ import { ServiceDTO } from '../models/Service';
   styleUrls: ['./offer.component.css']
 })
 export class OfferComponent implements OnInit {
+
 
   private userUrl: string;
   currentUser;
@@ -30,8 +32,11 @@ export class OfferComponent implements OnInit {
       this.currentUser = localStorage.getItem('userName');
       this.logInStatus = true;
     }
-  
+
   }
+
+  // Attempting validation
+  model = new Name(localStorage.getItem('userName'));
 
   logOut() {
     localStorage.clear();
@@ -39,7 +44,12 @@ export class OfferComponent implements OnInit {
     this.logInStatus = false;
   }
 
+  submitted = false;
+
   onSubmit(f: NgForm ) {
+
+    this.submitted = true;
+
     let submitService: ServiceDTO = {
       userName: f.value.userName,
       description: f.value.description,
@@ -47,7 +57,8 @@ export class OfferComponent implements OnInit {
       days: f.value.days,
       email: f.value.email,
       service: f.value.service,
-      time: f.value.time
+      time: f.value.time,
+      type: f.value.type
     }
     
     
@@ -55,6 +66,8 @@ export class OfferComponent implements OnInit {
       console.log(res);
       console.log(f.value.days);
     })
+
+    f.reset();
 
 }
 }

@@ -21,11 +21,11 @@ public class Service {
     private String category;
 //    private ArrayList<String> days;
     private String email;
-
     private String day;
     private String time;
+    private String type;
 
-    public Service(String userName, String description, String category, String day, String time, String email, String service) {
+    public Service(String userName, String description, String category, String day, String time, String email, String service, String type) {
         this.userName = userName;
         this.service = service;
         this.description = description;
@@ -33,6 +33,7 @@ public class Service {
         this.day = day;
         this.time = time;
         this.email = email;
+        this.type = type;
     }
 
     public Service () {};

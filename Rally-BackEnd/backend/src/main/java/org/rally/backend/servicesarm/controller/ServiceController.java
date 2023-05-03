@@ -20,7 +20,7 @@ public class ServiceController {
     public ResponseEntity<?> processOfferService (@RequestBody ServiceDTO serviceDTO) {
 
 
-        Service newService = new Service(serviceDTO.getUserName(), serviceDTO.getDescription(), serviceDTO.getCategory(), serviceDTO.getDayTime(serviceDTO.getDays()), serviceDTO.getDayTime(serviceDTO.getTime()), serviceDTO.getEmail(), serviceDTO.getService());
+        Service newService = new Service(serviceDTO.getUserName(), serviceDTO.getDescription(), serviceDTO.getCategory(), serviceDTO.getDayTime(serviceDTO.getDays()), serviceDTO.getDayTime(serviceDTO.getTime()), serviceDTO.getEmail(), serviceDTO.getService(), serviceDTO.getType());
 
         serviceRepository.save(newService);
         return new ResponseEntity<>(HttpStatus.OK);

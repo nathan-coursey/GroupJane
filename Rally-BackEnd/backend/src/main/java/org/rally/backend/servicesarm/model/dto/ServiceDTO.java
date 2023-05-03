@@ -13,8 +13,8 @@ public class ServiceDTO {
     private String category;
     private ArrayList<String> days;
     private ArrayList<String> time;
-
     private String email;
+    private String type;
 
     public String getUserName() {
         return userName;
@@ -42,6 +42,10 @@ public class ServiceDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getType() {
+        return type;
     }
 
     String daytimeString;
