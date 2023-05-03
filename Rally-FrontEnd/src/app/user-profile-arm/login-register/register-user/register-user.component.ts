@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserInfoDTO } from '../../models/dto/UserInfoDTO';
-import { ViewUserService } from '../../user-profile/user-services/view-user.service';
+import { ViewUserService } from '../../user-profile/services/view-user.service';
 import { UserBundleDTO } from '../../models/dto/UserBundleDTO';
 import { UserEntity } from '../../models/UserEntity';
 

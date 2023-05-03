@@ -6,8 +6,8 @@ export class AllHistoryDirectMessage {
     uniqueUserConversations: UserEntity[];
     directMessageList: DirectMessage[];
 
-	constructor(uniqueUserIds: UserEntity[], directMessageList: DirectMessage[]){
-        this.uniqueUserConversations = uniqueUserIds;
-        this.directMessageList = directMessageList;
+	constructor(uniqueUserConversations: UserEntity[], directMessageList: DirectMessage[]){
+        this.uniqueUserConversations = uniqueUserConversations,
+        this.directMessageList = directMessageList
 	}
 }

@@ -5,11 +5,11 @@ import java.util.List;
 public class MainUserDmHistory {
 
     List<UserEntity> userEntities;
-    List<DirectMessage> DirectMessageList;
+    List<DirectMessage> directMessageList;
 
     public MainUserDmHistory(List<UserEntity> userEntities, List<DirectMessage> directMessageList) {
         this.userEntities = userEntities;
-        DirectMessageList = directMessageList;
+        this.directMessageList = directMessageList;
     }
 
     public List<UserEntity> getUserEntities() {
@@ -21,10 +21,10 @@ public class MainUserDmHistory {
     }
 
     public List<DirectMessage> getDirectMessageList() {
-        return DirectMessageList;
+        return directMessageList;
     }
 
     public void setDirectMessageList(List<DirectMessage> directMessageList) {
-        DirectMessageList = directMessageList;
+        this.directMessageList = directMessageList;
     }
 }

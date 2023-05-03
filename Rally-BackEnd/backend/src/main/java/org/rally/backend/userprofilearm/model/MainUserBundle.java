@@ -1,5 +1,6 @@
 package org.rally.backend.userprofilearm.model;
 
+import java.util.List;
 import java.util.Optional;
 
 public class MainUserBundle {
@@ -7,12 +8,10 @@ public class MainUserBundle {
     UserEntity mainUser;
     Optional<UserInformation> viewUserInformation;
 
-    MainUserDmHistory mainUserDmHistory;
 
-    public MainUserBundle(UserEntity mainUser, Optional<UserInformation> viewUserInformation, MainUserDmHistory mainUserDmHistory) {
+    public MainUserBundle(UserEntity mainUser, Optional<UserInformation> viewUserInformation) {
         this.mainUser = mainUser;
         this.viewUserInformation = viewUserInformation;
-        this.mainUserDmHistory = mainUserDmHistory;
     }
 
     public UserEntity getMainUser() {
@@ -31,11 +30,4 @@ public class MainUserBundle {
         this.viewUserInformation = viewUserInformation;
     }
 
-    public MainUserDmHistory getMainUserDmHistory() {
-        return mainUserDmHistory;
-    }
-
-    public void setMainUserDmHistory(MainUserDmHistory mainUserDmHistory) {
-        this.mainUserDmHistory = mainUserDmHistory;
-    }
 }

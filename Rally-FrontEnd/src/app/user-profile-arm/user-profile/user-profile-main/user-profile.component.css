@@ -1,0 +1,10 @@
+div.scroll {
+    column-width: auto;
+    background-color: #6ec8e494;
+    height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 8px;
+  }
+

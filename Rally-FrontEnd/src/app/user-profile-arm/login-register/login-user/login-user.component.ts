@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from '../../models/dto/LoginDTO';
 import { NgForm } from '@angular/forms';
-import { ViewUserService } from '../../user-profile/user-services/view-user.service';
+import { ViewUserService } from '../../user-profile/services/view-user.service';
 import { UserEntity } from '../../models/UserEntity';
 
 @Component({

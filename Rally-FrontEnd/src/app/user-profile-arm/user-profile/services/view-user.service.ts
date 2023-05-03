@@ -17,11 +17,20 @@ export class ViewUserService {
   private getUserBundleByUserName = 'http://localhost:8080/user/getViewUserBundleInformation/';
   private getUserIdCountRegister = 'http://localhost:8080/api/userIdCount';
   private getDirectMessagesWithUserId = 'http://localhost:8080/user/getActiveUserDirectMessageHistory/';
+  private getDirectMessageHistory = 'http://localhost:8080/user/getActiveUserDmList/';
   private getMainUserBundle = 'http://localhost:8080/user/getMainUserBundleInformation/';
 
   private postDirectMessageToViewedUser = 'http://localhost:8080/user/sendDirectMessage';
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  getDmHistoryDirectMessages(mainUserid: string) {
+    return this.http.get(`${this.getDirectMessageHistory}` + mainUserid)
+  }
+
+  getDmHistoryUsers(id: string) {
+    return this.http.get(`${this.getDirectMessagesWithUserId}` + id);
+  }
 
   getUserList(): Observable<UserEntity[]>{
     return this.http.get<UserEntity[]>(`${this.getUserListUrl}`);
@@ -59,12 +68,20 @@ export class ViewUserService {
     return this.http.get(`${this.getMainUserBundle}` + userName);
   }
 
+  /* Service methods */
+  /* Service methods */
+  /* Service methods */
+
   redirectWhenViewingSelf(userName) {
     if (localStorage.getItem('userName') === userName) {
       this.router.navigate(["/myProfile"])
       return;
     }
   }
+
+  /* Post Methods */
+  /* Post Methods */
+  /* Post Methods */
 
   postDirectMessage(directMessage) {
     return this.http.post(`${this.postDirectMessageToViewedUser}`, directMessage);

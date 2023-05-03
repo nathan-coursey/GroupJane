@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin
 @RequestMapping(value = "/user")
 public class UserProfileController {
 
@@ -74,9 +74,12 @@ public class UserProfileController {
 
         UserEntity targetUser = userRepository.findByUserName(userName);
         Optional<UserInformation> targetInformation = userInformationRepository.findByUserId(targetUser.getId());
-        MainUserDmHistory targetDirectMessages = activeUserDirectMessageHistory(targetUser.getId());
 
-        MainUserBundle userBundle =  new MainUserBundle(targetUser, targetInformation, targetDirectMessages);
+        MainUserDmHistory targetDirectMessages = activeUserDirectMessageHistory(targetUser.getId());
+        List<UserEntity> usersInDm = targetDirectMessages.getUserEntities();
+        List<DirectMessage> allDmHistory = targetDirectMessages.getDirectMessageList();
+
+        MainUserBundle userBundle =  new MainUserBundle(targetUser, targetInformation);
 
         return userBundle;
     }
@@ -93,6 +96,22 @@ public class UserProfileController {
         }
 
         return userInformation;
+    }
+
+    @GetMapping("/getActiveUserDirectMessageHistory/{id}")
+    public List<UserEntity> getUserListWithDmHistory(@PathVariable int id) {
+        MainUserDmHistory targetDirectMessages = activeUserDirectMessageHistory(id);
+        List<UserEntity> targetUsersWithDmHistory = targetDirectMessages.getUserEntities();
+
+        return targetUsersWithDmHistory;
+    }
+
+    @GetMapping("/getActiveUserDmList/{id}")
+    public List<DirectMessage> getDirectMessagesForUser(@PathVariable int id) {
+        MainUserDmHistory targetDirectMessages = activeUserDirectMessageHistory(id);
+        List<DirectMessage> allDirectMessageHistory = targetDirectMessages.getDirectMessageList();
+
+        return allDirectMessageHistory;
     }
 
 
@@ -139,6 +158,7 @@ public class UserProfileController {
 
     }
 
+
     /** Service **/
     /** Service **/
     /** Service **/
@@ -146,16 +166,22 @@ public class UserProfileController {
     public MainUserDmHistory activeUserDirectMessageHistory(int id) {
 
         /** Isolating all messages from and to user **/
+        UserEntity targets;
         List<UserEntity> allUsers = new ArrayList<>();
         List<DirectMessage> allMessagesRelatedToUser = new ArrayList<>();
 
         for (DirectMessage dm : directMessageRepository.findAll()) {
+
             if (dm.getReceivedByUserId().equals(id) || dm.getSentByUserId().equals(id)) {
                 allMessagesRelatedToUser.add(dm);
+
                 if (!allUsers.contains(userRepository.findByUserName(dm.getReceivedByUserName()))){
-                    allUsers.add(userRepository.findByUserName(dm.getReceivedByUserName()));
+                    targets = userRepository.findByUserName(dm.getReceivedByUserName());
+                    allUsers.add(targets);
                 } else if (!allUsers.contains(userRepository.findByUserName(dm.getSentByUserName()))) {
-                    allUsers.add(userRepository.findByUserName(dm.getSentByUserName()));
+                    targets = userRepository.findByUserName(dm.getSentByUserName());
+                    System.out.println(targets);
+                    allUsers.add(targets);
                 }
             }
         }

@@ -8,23 +8,61 @@
 <br>
 
 <div class="row">
-<div class="col">
+
+
+<div class="col-sm-3 p-1 boarder">
     <div class="card">
+        <div class="profilepic">
         <h2>Hello<br>{{currentUser}}</h2>
-            <div style="align-content: center;">
-            <img src="/assets/user-profile-assets/profile-pic.gif" width="170" height="170">
-            </div>
-        </div> 
-    </div>
-    <div class="col">
         <div class="card">
-            <h2>Messages</h2>
+            <div style="align-content: center;">
+            <img src="/assets/user-profile-assets/profile-pic.gif" width="200" height="200">
+            </div>
         </div>
+        </div> 
     </div>
 </div>
 
+
+<div class="col-sm-8 p-1 border offset-md-1">
+        <div class="card">
+            <h2>Messages</h2>
+            <div class="card">
+                <div class="scroll" *ngIf="userDms; else showConversations">
+                <ul *ngFor="let user of userEntityDmList">
+                    <div class="card">
+                        <p (click)="displayConversation(user)">{{ user.userName }}</p>
+                    </div>
+                </ul>
+                </div>
+
+                <ng-template #showConversations>
+                    <div class="scroll">
+
+                        <!-- Under construction -->
+                        <table style="width:min-content" *ngFor="let dm of converstation">
+                            
+                                <tr class="card">Sent: {{dm.sentByUserName}}</tr> 
+                           
+                                <td style="width: max-content;" class="card">{{ dm.messageContent }}</td> 
+                            
+                                <td class="card">Recieved: {{ dm.receivedByUserName}}</td>
+                           
+                        </table>
+
+
+                        <button (click)="userDms=true;">Back</button>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+</div>
+
+
+</div>
+
 <div class="row">
-    <div class="col">
+    <div class="col" class="col-sm-3 p-1 boarder">
         <div class="card">
             <h2>UserDetails</h2>
             <div *ngIf="changeInfo; else changeForm">
@@ -63,7 +101,7 @@
             
         </div>
     </div>
-    <div class="col">
+    <div class="col-sm-6">
         <div class="card">
             <h2>Post History</h2>
         </div>

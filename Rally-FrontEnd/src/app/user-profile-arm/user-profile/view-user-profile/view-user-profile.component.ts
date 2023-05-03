@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserEntity } from '../../models/UserEntity';
-import { ViewUserService } from '../user-services/view-user.service';
+import { ViewUserService } from '../services/view-user.service';
 import { VerifyLogoutService } from '../../security/verify-logout.service';
 import { ViewUserBundle } from '../../models/ViewUserBundle';
 import { NgForm } from '@angular/forms';
