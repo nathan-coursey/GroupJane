@@ -46,7 +46,7 @@ export class EventCreateComponent implements OnInit {
     this.logInStatus = false;
   }
 
-  
+
 
   registerNewEvent(eventInformation: NgForm) {
     let createNewEvent: EventDTO = {
@@ -64,6 +64,9 @@ export class EventCreateComponent implements OnInit {
     this.http.post(this.eventUrl, createNewEvent).subscribe((res) => {
       console.log(res)
     });
+
+    eventInformation.reset();
+
   }
 
 

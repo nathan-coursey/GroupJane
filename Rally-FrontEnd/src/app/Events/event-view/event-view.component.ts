@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EventDTO } from '../models/DTO/EventDTO';
 import { Event } from '../models/event';
 import { Observable } from 'rxjs';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-view',
@@ -23,7 +24,7 @@ export class EventViewComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private sanitizer: DomSanitizer) {
     this.logInStatus = false;
     this.eventsUrl = 'http://localhost:8080/events/events/'
     this.eventList;
@@ -31,21 +32,16 @@ export class EventViewComponent implements OnInit {
 
   ngOnInit(): void {
     // this.verifyLoggedIn();
-    // this.getEventsList();
-    // this.fetchEvents();
+   
 
 
   this.http.get(this.eventsUrl).subscribe((response: Event[]) => {
     console.log(response);
     this.eventList = response;
   })
+
 }
 
-    // getEventsList( ) {
-    //   return this.http.get(this.eventsUrl).subscribe((res)=>{
-    //     console.log(res);
-    //   });
-    // }
 
 
   }
@@ -66,28 +62,6 @@ export class EventViewComponent implements OnInit {
   //   this.logInStatus = false;
   // }
 
-
-  // async fetchEvents() {
-
-  //   let response = await fetch('http://localhost:8080/api/events', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Access-Control-Allow-Origin': 'http://localhost:4200',
-  //     }
-  //   });
-
-  //   let payload: EventDTO[] = await response.json();
-
-  //   console.log("Response received with payload", payload);
-
-  //   payload.forEach(obj => {
-  //     let event = new EventDTO(obj.eventHost, obj.contactEmail, obj.eventTitle, obj.datetime, obj.eventAddress, obj.eventCategory, obj.description, obj.imageId)
-  //     this.eventList.push(event);
-  //   })
-  // }
-
-  // }
 
 
   

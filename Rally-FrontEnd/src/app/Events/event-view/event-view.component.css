@@ -1,18 +1,9 @@
-div#list_head {
+#list_head {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-    height: 100px;
-    width: auto;
-    padding-top: 30px;
-    padding-bottom: 30px;
     text-align: left;
     font-size: 45px;
     color: black;
     font-weight: 575;
-    
-    /* background-color: aqua; */
 }
 
 
@@ -30,19 +21,17 @@ div#list_head {
     float: right;
 }
 
-div#event_display {
-    width: 300px;
-    height: 750px;
-    float: left;
-    padding: 0px, 30px, 30px, 30px;
-    margin-left: 15px;
-    margin-top: 50px;
-    margin-right: 170px;
-    /* box-sizing: border-box;
-    border: 5px solid #e7a84b; */
+#event_display1 {
     text-align: left;
     font-size: 35px;
     font-family: arial;
+}
+
+#event_display2 {
+    text-align: left;
+    font-size: 35px;
+    font-family: arial;
+    margin-bottom: -5px; 
 }
 
 .rectangle {
@@ -66,27 +55,9 @@ div#event_display {
     width: 50%;
 }
 
-div#main_content {
-    /* margin-top: 20px; */
-    /* padding: 30px; */
-    text-align: left;
+.card-body {
+    /* text-align: left; */
     font-size: 30px;
-    /* background-color: red; */
-}
-
-div#event_pic {
-    background-color: #f6f4f3;
-    float: left;
-    margin-top: 15px;
-    height: 200px;
-    width: 300px;
-}
-
-div#event_list {
-    padding-left: 63%;
-    height: 200px;
-    margin-top: 25px;
-    /* background-color: aqua; */
 }
 
 

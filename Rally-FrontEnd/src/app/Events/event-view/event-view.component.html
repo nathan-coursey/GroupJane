@@ -40,12 +40,100 @@
 
 
 
+<body style="margin-top: 80px;">
+    <div class="container">
 
-    <div id="main_container">
+        <div class="row">
+            <div class="col">
+                <p id="list_head">What's happening?</p> 
+            </div>
+            <div class="col">
+                <span>
+                    <a href="http://localhost:4200/create/" class="myButton">CREATE EVENT</a>
+                </span>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-7">
+                <p style="text-align: left; font-size: 40px; ; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom: -15px;">All Events</p>
+                <hr style="height:4px; color: #0097b2; background-color: #0097b2;">
+            </div>
+        </div>
+        <br>
+       
+        <div class="row">
+            <div class="col-3">
+                <p id="event_display1">event calendar</p>
+                <div class="rectangle">
+
+                </div>
+            <br>
+            <br>
+            <br>
+        
+            <span>
+                <p id="event_display2">search by category</p>
+                <button class="button2">connect</button>
+                <button class="button2">learn</button>
+                <button class="button2">volunteer</button>
+                <button class="button2">donate</button>
+                <button class="button2">celebrate</button>
+                <button class="button2">view all</button>
+            </span>
+            </div>
+
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-7">
+                <div class="card mb-3" style="max-width: 900px;" *ngFor="let event of eventList">
+                    <div class="row no-gutters">
+                        <div class="col-md-7">
+                            <img src="{{event.imageId}}" class="card-img" alt="..." >
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <p style="font-family:Impact;">{{event.datetime}}</p>
+                                <p style="font-weight: bold; margin-top: -20px;">{{event.eventTitle}}</p>
+                                <p style="font-size: 25px; margin-top: -20px;">{{event.eventCategory}}</p>
+                                <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by {{event.eventHost}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+    <!-- <div id="main_container">
         <div id="list_head">
                 <p>What's happening?</p> 
             <span>
-                <a href="#" class="myButton">CREATE EVENT</a>
+                <a href="http://localhost:4200/create/" class="myButton">CREATE EVENT</a>
             </span>
         </div>
 
@@ -78,17 +166,35 @@
         <div id="main_content">
             <p style="font-size: 40px; ; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom: -15px;">All Events</p>
             <hr style="height:4px; color: #0097b2; background-color: #0097b2;">
-            <div id="event_pic">
-                <p style="font-size: 25px;">photo goes here</p>
+            <div class="card mb-3" style="max-width: 900px;" *ngFor="let event of eventList">
+                <div class="row no-gutters">
+                    <div class="col-md-7">
+                        <img src="{{event.imageId}}" class="card-img" alt="..." >
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <p style="font-family:Impact; margin-top: -5px;">{{event.datetime}}</p>
+                            <p style="font-weight: bold; margin-top: -20px;">{{event.eventTitle}}</p>
+                            <p style="font-size: 25px; margin-top: -20px;">{{event.eventCategory}}</p>
+                            <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by {{event.eventHost}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+            <!-- <div id="event_pic">
+                <img [src]="event.imageId.getImageId()"/>
+                <img src="{{event.imageId}}"/>
+                <p style="font-size: 25px;">pic goes here</p>
             </div>
-            <div id="event_list"  *ngFor="let event of eventList">
+            <div id="event_list"  >
                 
                 <p style="font-family:Impact; margin-top: -5px;">{{event.datetime}}</p>
                 <p style="font-weight: bold; margin-top: -20px;">{{event.eventTitle}}</p>
                 <p style="font-size: 25px; margin-top: -20px;">{{event.eventCategory}}</p>
                 <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by {{event.eventHost}}</p>
                 
-            </div>
+            </div> -->
 
 
 
@@ -99,5 +205,5 @@
                 <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by (name)</p>
             </div> -->
         
-        </div>
-    </div>
+        <!-- </div>
+    </div> -->
