@@ -23,7 +23,6 @@ export class IntroductionsComponent implements OnInit {
     this.darktheme = false;
     this.testArray;
     this.forumTopic = "Introductions";
-    this.newArray;
    }
   
   ngOnInit(): void {
@@ -34,6 +33,9 @@ export class IntroductionsComponent implements OnInit {
   checkTheme(){
       if (localStorage.getItem('theme') == 'dark'){
           this.Dark();
+      }
+      else{
+        this.Light();
       }
   }
   createPostButton(){
@@ -54,7 +56,6 @@ export class IntroductionsComponent implements OnInit {
   getPosts(){
     this.newArray = this.themeservice.getForumTopicPosts(this.forumTopic);
   }
-
   Light(){
       this.themeservice.switchToLightTheme();
       this.darktheme = false;
