@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Event } from '../models/event';
 
 @Component({
   selector: 'app-event',
@@ -12,28 +13,44 @@ export class EventComponent implements OnInit {
   currentUser;
   logInStatus: Boolean;
 
+
+  private eventUrl: string;
+
+  event: Event;
+
   constructor(private http: HttpClient, private router: Router) {
     this.logInStatus = false;
+    this.eventUrl = 'http://localhost:8080/events/event{id}/'
+    this.event;
    }
 
   ngOnInit(): void {
-    this.verifyLoggedIn();
+    // this.verifyLoggedIn();
+
+
+    this.http.get(this.eventUrl).subscribe((response: Event) => {
+      console.log(response);
+      this.event = response;
+    })
+
+
+
   }
 
-  verifyLoggedIn() {
+  // verifyLoggedIn() {
 
-    if (localStorage.getItem('userName') != null) {
-      this.currentUser = localStorage.getItem('userName');
-      this.logInStatus = true;
-    }
+  //   if (localStorage.getItem('userName') != null) {
+  //     this.currentUser = localStorage.getItem('userName');
+  //     this.logInStatus = true;
+  //   }
 
   
-  }
+  // }
 
-  logOut() {
-    localStorage.clear();
-    console.log(localStorage.getItem('userName'))
-    this.logInStatus = false;
-  }
+  // logOut() {
+  //   localStorage.clear();
+  //   console.log(localStorage.getItem('userName'))
+  //   this.logInStatus = false;
+  // }
 
 }

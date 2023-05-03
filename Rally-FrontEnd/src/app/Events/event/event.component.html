@@ -14,7 +14,7 @@
 
 
 
-<div *ngIf="logInStatus; else notLoggedIn">
+<!-- <div *ngIf="logInStatus; else notLoggedIn">
     
     <div style="text-align: right;  display: flex; justify-content:space-between;">
         <p style="font-weight: bolder;">Welcome, {{currentUser}}!</p>
@@ -27,7 +27,7 @@
 
 <ng-template #notLoggedIn>
     <p style="text-align: left;"><span><a routerLink="/login" routerLinkActive="active" (click)="logInStatus = false">Login</a></span> to <span style="font-family: impact; font-size: 15px;">rally!</span> your community</p>
-</ng-template>
+</ng-template> -->
 
 
 
@@ -53,7 +53,7 @@
 
             </div>
             <div class="col-7">
-                <p style="text-align: left; font-size: 40px; ; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom: -15px;">EVENT TITLE<span style="font-family: arial; font-size: 30px; float: right; margin-top: 15px;">date & time</span></p>
+                <p style="text-align: left; font-size: 40px; ; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom: -15px;">{{event.eventTitle}}<span style="font-family: arial; font-size: 30px; float: right; margin-top: 15px;">{{event.datetime}}</span></p>
                 <hr style="height:4px; color: #0097b2; background-color: #0097b2;">
             </div>
         </div>
@@ -86,18 +86,21 @@
 
             <div class="col-7">
                 <div id="details">
-                    <p style="font-size: 15px; margin-top: -12px; margin-bottom: -8px;">CATEGORY:</p>
+                    <p style="font-size: 15px; margin-top: -12px; margin-bottom: -8px;">CATEGORY: {{event.eventCategory}}</p>
                     <p>photo goes here</p>
+                    <img src="{{event.imageId}}" />
                     <br>
                     <br>
                     <br>
                     <br>
                     <br>  
-                    <p style="font-size: 15px; font-style: italic;">hosted by (name)</p>  
+                    <p style="font-size: 15px; font-style: italic;">hosted by: {{event.eventHost}}</p>  
                     <br>
-                    <p style="font-size: 25px;">address:</p>
+                    <p style="font-size: 25px;">address:</p><br>
+                    <p>{{event.eventAddress}}</p>
                     <br>
-                    <p style="font-size: 25px;">description:</p>  
+                    <p style="font-size: 25px;">description:</p><br>
+                    <p>{{event.description}}</p>  
                 </div>
             </div>
         </div>

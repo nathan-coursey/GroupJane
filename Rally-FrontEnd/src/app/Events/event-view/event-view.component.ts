@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventDTO } from '../models/DTO/EventDTO';
+// import { EventDTO } from '../models/DTO/EventDTO';
 import { Event } from '../models/event';
 import { Observable } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
