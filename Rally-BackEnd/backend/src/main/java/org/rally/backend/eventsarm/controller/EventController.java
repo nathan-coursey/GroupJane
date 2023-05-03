@@ -23,30 +23,20 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
-//    @GetMapping("/events")
-//    public ResponseEntity<?>displayAllEvents() {
-//        List<EventDTO> eventList = (List<EventDTO>) eventRepository.findAll();
-//        return new ResponseEntity<>(eventList, HttpStatus.OK);
-//    }
+
 
     @GetMapping("/events/")
     public ResponseEntity<?>displayAllEvents() {
         return new ResponseEntity<>(eventRepository.findAll(), HttpStatus.OK);
     }
 
-//    @GetMapping("/events")
-//    public List<EventDTO> displayAllEvents() {
-//
-//    }
+
+    @GetMapping("/event/{id}")
+    public ResponseEntity<?>displayEventPage(@PathVariable int id) {
+        return new ResponseEntity<>(eventRepository.findById(id), HttpStatus.OK);
+    }
 
 
-
-
-//    @GetMapping("/event")
-//    public String displayEventPage() {
-//
-//        return "/event";
-//    }
 
 
     @PostMapping("/create")
@@ -57,6 +47,7 @@ public class EventController {
         eventRepository.save(createNewEvent);
         AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
         return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
+
     }
 
     //ResponseEntity represents the whole HTTP response from front end
