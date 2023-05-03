@@ -20,8 +20,6 @@ public class Event extends AbstractEntity {
 
     private String datetime;
 
-    private String datetime;
-
     @NotBlank(message = "But how will your community know where to go?")
     private String eventAddress;
 
@@ -44,6 +42,8 @@ public class Event extends AbstractEntity {
         this.description = description;
         this.imageId = imageId;
     }
+
+    public Event() {};
 
     public String getEventHost() {
         return eventHost;

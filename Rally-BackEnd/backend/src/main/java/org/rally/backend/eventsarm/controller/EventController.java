@@ -11,7 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
+//@CrossOrigin(origins = "http://localhost:4200/")
 @CrossOrigin
 @RequestMapping("/events")
 public class EventController {
@@ -20,10 +24,23 @@ public class EventController {
     private EventRepository eventRepository;
 
 //    @GetMapping("/events")
-//    public ResponseEntity<?> displayAllEvents(@RequestBody Event event) {
-//        return new ResponseEntity<>()
-////        return "/events";
+//    public ResponseEntity<?>displayAllEvents() {
+//        List<EventDTO> eventList = (List<EventDTO>) eventRepository.findAll();
+//        return new ResponseEntity<>(eventList, HttpStatus.OK);
 //    }
+
+    @GetMapping("/events/")
+    public ResponseEntity<?>displayAllEvents() {
+        return new ResponseEntity<>(eventRepository.findAll(), HttpStatus.OK);
+    }
+
+//    @GetMapping("/events")
+//    public List<EventDTO> displayAllEvents() {
+//
+//    }
+
+
+
 
 //    @GetMapping("/event")
 //    public String displayEventPage() {
