@@ -23,7 +23,7 @@
 
 
 
-<div *ngIf="logInStatus; else notLoggedIn">
+<!-- <div *ngIf="logInStatus; else notLoggedIn">
     
     <div style="text-align: right;  display: flex; justify-content:space-between;">
         <p style="font-weight: bolder;">Welcome, {{currentUser}}!</p>
@@ -36,7 +36,7 @@
 
 <ng-template #notLoggedIn>
     <p style="text-align: left;"><span><a routerLink="/login" routerLinkActive="active" (click)="logInStatus = false">Login</a></span> to <span style="font-family: impact; font-size: 15px;">rally!</span> your community</p>
-</ng-template>
+</ng-template> -->
 
 
 
@@ -81,13 +81,13 @@
             <div id="event_pic">
                 <p style="font-size: 25px;">photo goes here</p>
             </div>
-            <div id="event_list">
-                <ng-container *ngFor="let event of eventList">
+            <div id="event_list"  *ngFor="let event of eventList">
+                
                 <p style="font-family:Impact; margin-top: -5px;">{{event.datetime}}</p>
                 <p style="font-weight: bold; margin-top: -20px;">{{event.eventTitle}}</p>
                 <p style="font-size: 25px; margin-top: -20px;">{{event.eventCategory}}</p>
                 <p style="font-size: 15px; font-style: italic; margin-top: 60px;">hosted by {{event.eventHost}}</p>
-                </ng-container>
+                
             </div>
 
 

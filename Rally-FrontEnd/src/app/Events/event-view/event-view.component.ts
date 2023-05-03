@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventDTO } from '../models/DTO/EventDTO';
+import { Event } from '../models/event';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-event-view',
@@ -14,70 +16,78 @@ export class EventViewComponent implements OnInit {
 
   currentUser;
   logInStatus: Boolean;
-  // private eventsUrl: string;
 
-  eventList: EventDTO[] = [];
+  private eventsUrl: string;
+
+  eventList: Event[] = [];
+
 
 
   constructor(private http: HttpClient, private router: Router) {
     this.logInStatus = false;
-    // this.eventsUrl = 'http://localhost:8080/events/'
+    this.eventsUrl = 'http://localhost:8080/events/events/'
     this.eventList;
    }
 
   ngOnInit(): void {
-    this.verifyLoggedIn();
-    // this.getEvents();
-    this.fetchEvents();
+    // this.verifyLoggedIn();
+    // this.getEventsList();
+    // this.fetchEvents();
+
+
+  this.http.get(this.eventsUrl).subscribe((response: Event[]) => {
+    console.log(response);
+    this.eventList = response;
+  })
+}
+
+    // getEventsList( ) {
+    //   return this.http.get(this.eventsUrl).subscribe((res)=>{
+    //     console.log(res);
+    //   });
+    // }
+
+
   }
 
-  verifyLoggedIn() {
+  // verifyLoggedIn() {
 
-    if (localStorage.getItem('userName') != null) {
-      this.currentUser = localStorage.getItem('userName');
-      this.logInStatus = true;
-    }
+  //   if (localStorage.getItem('userName') != null) {
+  //     this.currentUser = localStorage.getItem('userName');
+  //     this.logInStatus = true;
+  //   }
 
   
-  }
-
-  logOut() {
-    localStorage.clear();
-    console.log(localStorage.getItem('userName'))
-    this.logInStatus = false;
-  }
-
-  async fetchEvents() {
-
-    let response = await fetch('http://localhost:8080/api/events', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-      }
-    });
-
-    let payload: EventDTO[] = await response.json();
-
-    console.log("Response received with payload", payload);
-
-    payload.forEach(obj => {
-      let event = new EventDTO(obj.eventHost, obj.contactEmail, obj.eventTitle, obj.datetime, obj.eventAddress, obj.eventCategory, obj.description, obj.imageId)
-      this.eventList.push(event);
-    })
-  }
-
-
-
-
-  // getEvents() {
-  //   this.http.get(this.eventsUrl).subscribe((res)=>{
-  //     console.log(res);
-  //   });
   // }
-  
 
-  }
+  // logOut() {
+  //   localStorage.clear();
+  //   console.log(localStorage.getItem('userName'))
+  //   this.logInStatus = false;
+  // }
+
+
+  // async fetchEvents() {
+
+  //   let response = await fetch('http://localhost:8080/api/events', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Access-Control-Allow-Origin': 'http://localhost:4200',
+  //     }
+  //   });
+
+  //   let payload: EventDTO[] = await response.json();
+
+  //   console.log("Response received with payload", payload);
+
+  //   payload.forEach(obj => {
+  //     let event = new EventDTO(obj.eventHost, obj.contactEmail, obj.eventTitle, obj.datetime, obj.eventAddress, obj.eventCategory, obj.description, obj.imageId)
+  //     this.eventList.push(event);
+  //   })
+  // }
+
+  // }
 
 
   
