@@ -15,6 +15,11 @@ import { EventViewComponent } from './event-view/event-view.component';
 import { DropdownMenuComponent } from './user-profile-arm/experiments/dropdown-menu/dropdown-menu.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
+import { ResourcesHomeComponent } from './resources-arm/resources-home/resources-home.component';
+import { ResourcesListComponent } from './resources-arm/resources-list/resources-list.component';
+import { ResourcesSearchComponent } from './resources-arm/resources-search/resources-search.component';
+import { ResourcesAddComponent } from './resources-arm/resources-add/resources-add.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import { CommunityHomeComponent } from './community-forum-arm/community-home/com
     DropdownMenuComponent,
     ForumComponent,
     CommunityHomeComponent,
+    ResourcesHomeComponent,
+    ResourcesListComponent,
+    ResourcesSearchComponent,
+    ResourcesAddComponent
+
   ],
   imports: [
     BrowserModule,
