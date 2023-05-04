@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ThemeserviceService } from 'src/app/services/themeservice.service';
 
 @Component({
@@ -53,6 +53,7 @@ export class CommunityHomeComponent implements OnInit {
   }
   getPosts(){
     this.newArray = this.themeservice.getForumTopicPosts(this.forumTopic);
+    console.log(this.newArray)
   }
   Light(){
       this.themeservice.switchToLightTheme();

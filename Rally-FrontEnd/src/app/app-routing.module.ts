@@ -10,6 +10,7 @@ import { IntroductionsComponent } from './community-forum-arm/forum/introduction
 import { ForumTopic1Component } from './community-forum-arm/forum/forum-topic1/forum-topic1.component';
 import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/forum-topic2.component';
 import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/forum-topic3.component';
+import { ViewPostComponent } from './community-forum-arm/forum/view-post/view-post.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'forum/introductions', component: IntroductionsComponent},
   {path: 'forum/topic1', component: ForumTopic1Component},
   {path: 'forum/topic2', component: ForumTopic2Component},
-  {path: 'forum/topic3', component: ForumTopic3Component}
+  {path: 'forum/topic3', component: ForumTopic3Component},
+  {path: 'forum/post/:id', component: ViewPostComponent}
 ];
 
 @NgModule({

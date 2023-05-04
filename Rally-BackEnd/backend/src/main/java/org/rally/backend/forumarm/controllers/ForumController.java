@@ -4,7 +4,6 @@ import org.rally.backend.forumarm.models.*;
 import org.rally.backend.forumarm.models.dto.ForumPostDTO;
 import org.rally.backend.forumarm.models.dto.ReplyDTO;
 import org.rally.backend.forumarm.repository.*;
-import org.rally.backend.userprofilearm.model.UserEntity;
 import org.rally.backend.userprofilearm.model.response.AuthenticationSuccess;
 import org.rally.backend.userprofilearm.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,6 +34,12 @@ public class ForumController {
         AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
         return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
     }
+    @PostMapping("viewPost")
+    public ResponseEntity<?>getForumPost(@RequestBody int id){
+        Optional <ForumPosts> result = forumPostRepository.findById(id);
+        ForumPosts post = result.get();
+        return new ResponseEntity<>(post, HttpStatus.OK);
+    }
     @PostMapping("/Replies")
     public ResponseEntity<?>addReplyToPost(@RequestBody ReplyDTO replyDTO) {
         Replies reply = new Replies(replyDTO.getDescription());
@@ -52,4 +56,19 @@ public class ForumController {
     public ResponseEntity<?> getAllReplies(){
         return new ResponseEntity<>(repliesRepository.findAll(), HttpStatus.OK);
     }
+    @PostMapping("/DeleteReply")
+    public ResponseEntity<?> deleteReply(@RequestBody int id) {
+        repliesRepository.deleteById(id);
+        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
+        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
+    }
+    @PostMapping("/UpdateReply")
+    public ResponseEntity<?> updateReply(@RequestBody ReplyDTO replyDTO){
+        Optional <Replies> result = repliesRepository.findById(replyDTO.getId());
+        Replies reply = result.get();
+        reply.setDescription(replyDTO.getDescription());
+        AuthenticationSuccess authenticationSuccess = new AuthenticationSuccess("Success");
+        return new ResponseEntity<>(authenticationSuccess, HttpStatus.OK);
+    }
+
 }

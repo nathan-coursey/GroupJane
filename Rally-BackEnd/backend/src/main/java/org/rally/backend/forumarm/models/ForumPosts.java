@@ -63,4 +63,6 @@ public class ForumPosts extends AbstractEntity{
     public void addReply(Replies reply){
         this.replies.add(reply);
     }
+
+    public void removeReply(Replies reply){ this.replies.remove(reply); }
 }

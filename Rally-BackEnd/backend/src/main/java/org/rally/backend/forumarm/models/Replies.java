@@ -10,7 +10,7 @@ import org.rally.backend.userprofilearm.model.UserEntity;
 public class Replies extends AbstractEntity{
 
     private String description;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private UserEntity userEntity;
     @ManyToOne
     private ForumPosts forumPosts;

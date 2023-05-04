@@ -53,6 +53,4 @@ getForumTopicPosts(forumTopic: string){
   });
   return newArray;
 }
-
-
 }

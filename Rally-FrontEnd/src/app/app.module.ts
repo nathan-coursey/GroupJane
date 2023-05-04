@@ -18,6 +18,7 @@ import { ForumTopic1Component } from './community-forum-arm/forum/forum-topic1/f
 import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/forum-topic2.component';
 import { ThemeserviceService } from './services/themeservice.service';
 import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/forum-topic3.component';
+import { ViewPostComponent } from './community-forum-arm/forum/view-post/view-post.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/f
     ForumTopic1Component,
     ForumTopic2Component,
     ForumTopic3Component,
+    ViewPostComponent,
   ],
   imports: [
     BrowserModule,
