@@ -106,12 +106,12 @@
                         <div class="col-md-10">
                             <div class="card-body">
                                 <p style="font-family:Impact; margin-bottom: -10px;">{{event.datetime}}</p>
-                                <a [href]="'http://localhost:4200/event/?id=' + event.id" style="font-weight: bold;">{{event.eventTitle}}</a>
-                                <!-- <p style="font-weight: bold; margin-top: -20px;">{{event.eventTitle}}</p> -->
+                                <!-- <a [href]="'http://localhost:4200/event/?id=' + event.id" style="font-weight: bold;">{{event.eventTitle}}</a> -->
+                                <p style="font-weight: bold; margin-top: -20px;">{{event.eventTitle}}</p>
                                 <p style="font-size: 25px; margin-top: -10px;">{{event.eventCategory}}</p>
                                 <p style="font-size: 15px; font-style: italic; margin-top: 75px;">hosted by {{event.eventHost}}</p>
-                                <!-- <a [href]="'http://localhost:4200/event/?id=' + event.id" >learn more</a> -->
-                                <!-- <a [href]="http://localhost:4200/event/{id}" style="font-size: 15px;">learn more</a> -->
+                                <a [href]="'http://localhost:4200/event/?id=' + event.id" class="btn btn-outline-info btn-xm">learn more</a>
+                                <!-- <a [href]="'http://localhost:4200/event/?id=' + event.id" style="font-size: 15px;">learn more</a> -->
                             </div>
                         </div>
                     </div>

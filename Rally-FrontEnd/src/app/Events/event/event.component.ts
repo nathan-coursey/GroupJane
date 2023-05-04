@@ -30,8 +30,9 @@ export class EventComponent implements OnInit {
 
 
     this.http.get(this.eventUrl).subscribe((response: Event) => {
-      console.log(response);
+     
       this.eventDetails = response;
+      console.log(response);
     })
 
 
