@@ -1,10 +1,10 @@
 package org.rally.backend.resourcearm.model.response;
 import jakarta.persistence.*;
-import java.awt.*;
-import org.rally.backend.userprofilearm.model.UserEntity;
+
 @Entity
 @Table(name="resource")
 public class Resource {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id = 1;
@@ -18,7 +18,7 @@ public class Resource {
 
 
 
-    public Resource(String resourceName, String category, String address, String website, String telephoneNumber, String emailAddress, String description) {
+    public Resource(String resourceName, String category, String address, String website, String telephoneNumber, String emailAddress, String description, String resourceDTODescription) {
         this.resourceName = resourceName;
         this.category = category;
         this.address = address;
@@ -29,7 +29,7 @@ public class Resource {
 
     }
 
-    public Resource() {};
+    public Resource(String resourceName, String category, String address, String website, String telephoneNumber, String emailAddress, String description) {};
     public String getResourceName() {
         return resourceName;
     }

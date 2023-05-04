@@ -1,7 +1,5 @@
 package org.rally.backend.resourcearm.model.DTO;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
@@ -14,6 +12,7 @@ public class ResourceDTO {
     private String telephoneNumber;
     private String emailAddress;
     private String description;
+
 
     public String getResourceName() {
         return resourceName;
