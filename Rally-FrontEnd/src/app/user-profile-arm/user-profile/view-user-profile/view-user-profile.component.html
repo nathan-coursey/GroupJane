@@ -19,9 +19,7 @@
     <div class="col-sm-8 offset-md-1">
         <div class="card">
             <h4>Direct Messaging: <br>{{ viewUserName }}</h4>
-          
-
-            
+                   
                 <div class="scroll">
                     <form #dmMessageDetails="ngForm" (ngSubmit)="viewingUserSendDM(dmMessageDetails)">
                         <button (click)="displayConversation(viewUserEntity)">View Message History</button>
@@ -35,7 +33,6 @@
                         <textarea rows="3" cols="40" type="text" name="messageContent" ngModel></textarea>
                         <p>View most recent message below.</p><br>
                         <div style="text-align: right;">
-                        
                         </div>
                       </form>
                 <table style="width: 100%;" *ngFor="let dm of conversation">

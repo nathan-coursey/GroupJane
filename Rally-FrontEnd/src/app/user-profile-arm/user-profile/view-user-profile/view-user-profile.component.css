@@ -1,7 +1,7 @@
 div.scroll {
     column-width: auto;
     background-color: #b6eee9;
-    height: 230px;
+    height: 210px;
     overflow: auto;
     resize: vertical;
     text-align: center;
