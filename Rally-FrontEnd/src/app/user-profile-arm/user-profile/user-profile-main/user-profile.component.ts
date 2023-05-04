@@ -88,7 +88,6 @@ export class UserProfileComponent implements OnInit {
         this.conversation.push(this.allDmHistory[i]);
       } else if (localStorage.getItem('userName') === this.allDmHistory[i].receivedByUserName && this.respondToDm.userName === this.allDmHistory[i].sentByUserName) {
         this.conversation.push(this.allDmHistory[i]);
-        
       }
     }
     this.conversation.reverse();
@@ -112,7 +111,6 @@ export class UserProfileComponent implements OnInit {
 
     if (sendDirectMessage.messageContent.length < 3) {
       this.noError = false;
-      console.log("did it stop?")
       return
     }
     this.viewUser.postDirectMessage(sendDirectMessage).subscribe();

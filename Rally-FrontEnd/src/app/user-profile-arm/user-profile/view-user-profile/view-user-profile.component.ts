@@ -66,6 +66,7 @@ export class ViewUserProfileComponent implements OnInit {
 
     if (sendDirectMessage.messageContent.length < 3) {
       this.noError = false;
+      return;
     } 
 
     this.viewUser.postDirectMessage(sendDirectMessage).subscribe();
