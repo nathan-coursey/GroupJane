@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'events', component: EventViewComponent},
   {path: 'forum', component: ForumComponent},
   {path: 'communityHomeForum', component: CommunityHomeComponent},
-  {path: 'user/:userName', component: ViewUserProfileComponent}
+  {path: 'user/:userName/:id', component: ViewUserProfileComponent}
 ];
 
 @NgModule({

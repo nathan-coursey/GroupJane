@@ -9,6 +9,7 @@ import { ViewUserService } from '../services/view-user.service';
 import { UserEntity } from '../../models/UserEntity';
 import { MainUserBundle } from '../../models/MainUserBundle';
 import { DirectMessage } from '../../models/Directmessage';
+import { DirectMessageDTO } from '../../models/dto/directMessageDTO';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,12 +20,14 @@ export class UserProfileComponent implements OnInit {
 
   currentUser = localStorage.getItem('userName');
   userEntity: UserEntity;
+  respondToDm: UserEntity;
   userInformation: UserInformation;
   mainUserBundle: MainUserBundle;
   userEntityDmList: UserEntity[];
   allDmHistory: DirectMessage[];
-  converstation: DirectMessage[] = [];
+  conversation: DirectMessage[] = [];
 
+  noError: boolean = true;
   logInStatus = false;
   changeInfo = true;
   userDms = true;
@@ -35,6 +38,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private http: HttpClient, 
               private router: Router, 
+              private viewUser: ViewUserService,
               private verifyService: VerifyLogoutService, 
               private activeUserService: ViewUserService) {
    }
@@ -71,18 +75,54 @@ export class UserProfileComponent implements OnInit {
   }
 
   displayConversation( userDms: UserEntity) {
-    this.converstation = [];
-    
-    for (let i = 0; i < this.allDmHistory.length; i++) {
-      if (userDms.userName == this.allDmHistory[i].sentByUserName) {
-        this.converstation.push(this.allDmHistory[i]);
-      } else if (userDms.userName == this.allDmHistory[i].receivedByUserName) {
-        this.converstation.push(this.allDmHistory[i]);
+    this.respondToDm = null;
+
+    for (let i = 0; i < this.userEntityDmList.length; i++) {
+        if (this.respondToDm === null && userDms.userName == this.userEntityDmList[i].userName) {
+        this.respondToDm = this.userEntityDmList[i];
       }
     }
+    
+    for (let i = 0; i < this.allDmHistory.length; i++) {
+      if (localStorage.getItem('userName') === this.allDmHistory[i].sentByUserName && this.respondToDm.userName === this.allDmHistory[i].receivedByUserName) {
+        this.conversation.push(this.allDmHistory[i]);
+      } else if (localStorage.getItem('userName') === this.allDmHistory[i].receivedByUserName && this.respondToDm.userName === this.allDmHistory[i].sentByUserName) {
+        this.conversation.push(this.allDmHistory[i]);
+        
+      }
+    }
+    this.conversation.reverse();
+    // console.log(`${localStorage.getItem('userName')} is viewing and messaging ${this.respondToDm.userName}`)
     this.userDms = false;
 
   }
+
+  reload() {
+    location.reload();
+  }
+
+  respondToUserDm( userResponse: NgForm ) {
+    let sendDirectMessage: DirectMessageDTO = {
+      receivedByUserId: this.respondToDm.id,
+      receivedByUserName: this.respondToDm.userName,
+      sentByUserId: localStorage.getItem('id'),
+      sentByUserName: localStorage.getItem('userName'),
+      messageContent: userResponse.value.messageContent
+    }
+
+    if (sendDirectMessage.messageContent.length < 3) {
+      this.noError = false;
+      console.log("did it stop?")
+      return
+    }
+    this.viewUser.postDirectMessage(sendDirectMessage).subscribe();
+
+    /* Temp solution, need to figure out how to refresh just this part of the page while staying in user conversation. */
+    location.reload();
+    
+  } 
+
+
 
 
   updateUserInfo( userDetails: NgForm ) {

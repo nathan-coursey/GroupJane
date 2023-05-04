@@ -1,5 +1,6 @@
 package org.rally.backend.userprofilearm.controller;
 
+import org.rally.backend.userprofilearm.exception.MinimumCharacterException;
 import org.rally.backend.userprofilearm.model.*;
 import org.rally.backend.userprofilearm.model.dto.DirectMessageDTO;
 import org.rally.backend.userprofilearm.model.dto.UserInfoDTO;
@@ -151,6 +152,10 @@ public class UserProfileController {
                                                       directMessageDTO.getSentByUserId(),
                                                       directMessageDTO.getSentByUserName(),
                                                       directMessageDTO.getMessageContent());
+
+        if(messageSent.getMessageContent().toCharArray().length < 3) {
+            throw new MinimumCharacterException();
+        }
 
         directMessageRepository.save(messageSent);
 

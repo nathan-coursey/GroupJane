@@ -14,13 +14,16 @@ import { DirectMessage } from '../../models/Directmessage';
 })
 export class ViewUserProfileComponent implements OnInit {
 
+  dmList: DirectMessage[];
+  conversation: DirectMessage[];
   logInStatus: Boolean;
   viewUserEntity: UserEntity;
   viewUserName: string;
   viewUserId: string;
   userEntityInformation: ViewUserBundle;
 
-  private sub: any;
+  noError: boolean = true;
+  showDmHistory = true;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router, 
@@ -32,8 +35,9 @@ export class ViewUserProfileComponent implements OnInit {
   ngOnInit() {
     this.logInStatus = this.verifyService.verifyLoggedIn();
     /* This method pulls the parameters of the activated route and converts them into a usable object */
-    this.sub = this.activatedRoute.paramMap.subscribe(params => {
+    this.activatedRoute.paramMap.subscribe(params => {
     this.viewUserName = params.get('userName');
+    this.viewUserId = params.get('id');
     });
 
     this.viewUser.redirectWhenViewingSelf(this.viewUserName);
@@ -41,7 +45,14 @@ export class ViewUserProfileComponent implements OnInit {
     /* This method gets a bundle of information I want to display on the view user page */
     this.viewUser.getViewUserBundleByUserName(this.viewUserName).subscribe((data: ViewUserBundle) => {
       this.userEntityInformation = data;
+      this.viewUserEntity = this.userEntityInformation.viewUser;
     })
+
+    this.viewUser.getDmHistoryDirectMessages(this.viewUserId).subscribe((response: DirectMessage[]) => {
+        this.dmList =response
+        // console.log(this.dmList)
+    })
+
   }
 
   viewingUserSendDM(dmMessageDetails: NgForm) {
@@ -53,7 +64,26 @@ export class ViewUserProfileComponent implements OnInit {
       messageContent: dmMessageDetails.value.messageContent
     }
 
+    if (sendDirectMessage.messageContent.length < 3) {
+      this.noError = false;
+    } 
+
     this.viewUser.postDirectMessage(sendDirectMessage).subscribe();
+  }
+
+  displayConversation( userDms: UserEntity) {
+    this.conversation = [];
+    console.log(`${localStorage.getItem('userName')} is viewing and messaging ${userDms.userName}`)
+    
+    for (let i = 0; i < this.dmList.length; i++) {
+      if (localStorage.getItem('userName') === this.dmList[i].sentByUserName && userDms.userName === this.dmList[i].receivedByUserName) {
+        this.conversation.push(this.dmList[i]);
+      } else if (localStorage.getItem('userName') === this.dmList[i].receivedByUserName && userDms.userName === this.dmList[i].sentByUserName) {
+        this.conversation.push(this.dmList[i]);
+      }
+    }
+    this.conversation.reverse();
+    this.showDmHistory = false;
   }
 
 
