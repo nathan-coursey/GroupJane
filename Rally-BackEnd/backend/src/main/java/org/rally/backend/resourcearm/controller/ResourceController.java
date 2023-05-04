@@ -2,7 +2,7 @@ package org.rally.backend.resourcearm.controller;
 
 import org.rally.backend.resourcearm.model.DTO.ResourceDTO;
 import org.rally.backend.resourcearm.model.response.Resource;
-import org.rally.backend.userprofilearm.repository.ResourceRepository;
+import org.rally.backend.resourcearm.model.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class ResourceController {
     ResourceRepository resourceRepository;
 
     @PostMapping("/add")
-    public ResponseEntity<?> processAddResource (@RequestBody ResourceDTO resourceDTO) {
+    public ResponseEntity<?> processAddResource(@RequestBody ResourceDTO resourceDTO) {
 
         Resource newResource = new Resource(resourceDTO.getResourceName(), resourceDTO.getCategory(), resourceDTO.getAddress(), resourceDTO.getWebsite(), resourceDTO.getTelephoneNumber(), resourceDTO.getEmailAddress(), resourceDTO.getDescription());
         resourceRepository.save(newResource);

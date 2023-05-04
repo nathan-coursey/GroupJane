@@ -11,7 +11,7 @@ import { ResourceDTO } from '../model/Resource';
 })
 export class ResourcesAddComponent implements OnInit {
   private userUrl: string;
-  currentUser;
+  currentUser: string;
   logInStatus: Boolean;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -36,7 +36,7 @@ export class ResourcesAddComponent implements OnInit {
 
   onSubmit(f: NgForm ) {
     let submitResource: ResourceDTO = {
-      resourceName : f.value.resourceName,
+      resourceName: f.value.resourceName,
       category: f.value.category,
       address: f.value.address,
       website: f.value.website,

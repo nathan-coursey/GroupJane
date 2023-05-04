@@ -1,4 +1,4 @@
-package org.rally.backend.userprofilearm.repository;
+package org.rally.backend.resourcearm.model.repository;
 
 import jakarta.transaction.Transactional;
 import org.rally.backend.resourcearm.model.response.Resource;

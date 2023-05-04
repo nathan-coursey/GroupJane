@@ -1,14 +1,14 @@
 package org.rally.backend.resourcearm.model.response;
-
 import jakarta.persistence.*;
-
+import java.awt.*;
+import org.rally.backend.userprofilearm.model.UserEntity;
 @Entity
 @Table(name="resource")
 public class Resource {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id = 1;
     private String resourceName;
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int id = 1;
     private String category;
     private String address;
     private String website;
