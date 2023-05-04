@@ -10,18 +10,19 @@ import { Event } from '../models/event';
 })
 export class EventComponent implements OnInit {
 
-  currentUser;
-  logInStatus: Boolean;
+  // currentUser;
+  // logInStatus: Boolean;
 
 
   private eventUrl: string;
-
-  event: Event;
+  eventDetails: Event;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.logInStatus = false;
-    this.eventUrl = 'http://localhost:8080/events/event{id}/'
-    this.event;
+    // this.logInStatus = false;
+    this.eventUrl = 'http://localhost:8080/events/event/{id}/'
+    this.eventDetails;
+
+    
    }
 
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class EventComponent implements OnInit {
 
     this.http.get(this.eventUrl).subscribe((response: Event) => {
       console.log(response);
-      this.event = response;
+      this.eventDetails = response;
     })
 
 

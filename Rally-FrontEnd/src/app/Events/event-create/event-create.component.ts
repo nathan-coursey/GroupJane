@@ -66,8 +66,15 @@ export class EventCreateComponent implements OnInit {
     });
 
     eventInformation.reset();
+   
 
   }
+
+  // list() {
+  //   this.router.navigate(['events']);
+  // }
+
+
 
 
 
