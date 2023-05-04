@@ -21,4 +21,6 @@ export class Event {
         this.imageId = imageId;
     }
 
+   
+
 }

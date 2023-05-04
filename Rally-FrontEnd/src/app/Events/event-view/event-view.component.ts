@@ -21,6 +21,7 @@ export class EventViewComponent implements OnInit {
   private eventsUrl: string;
 
   eventList: Event[] = [];
+  filtered: Event[] = [];
 
 
 
@@ -28,23 +29,41 @@ export class EventViewComponent implements OnInit {
     this.logInStatus = false;
     this.eventsUrl = 'http://localhost:8080/events/events/'
     this.eventList;
+    this.filtered;
    }
 
   ngOnInit(): void {
     // this.verifyLoggedIn();
    
 
+    filterByConnect() {
+      this.filtered = this.eventList.filter((obj) => {
+        return obj.eventCategory === 'connect';
+      });
+      
 
   this.http.get(this.eventsUrl).subscribe((response: Event[]) => {
     console.log(response);
     this.eventList = response;
   })
 
+  
+
+}
+
+// filterByConnect() {
+// this.filtered = this.eventList.filter((obj) => {
+//   return obj.eventCategory === 'connect';
+// });
+
+}
+ 
+
 }
 
 
 
-  }
+  // }
 
   // verifyLoggedIn() {
 
