@@ -22,6 +22,7 @@ public class UserEntity {
     @NotNull
     private String pwHash;
 
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
@@ -43,7 +44,6 @@ public class UserEntity {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-
 
     public int getId() {
         return id;
