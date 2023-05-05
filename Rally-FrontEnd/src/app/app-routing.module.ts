@@ -6,7 +6,12 @@ import { UserProfileComponent } from './user-profile-arm/user-profile/user-profi
 import { SearchUserComponent } from './user-profile-arm/user-profile/search-user/search-user.component';
 import { EventViewComponent } from './event-view/event-view.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
-import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
+import { CommunityHomeComponent } from './community-forum-arm/forum/community-home/community-home.component';
+import { IntroductionsComponent } from './community-forum-arm/forum/introductions/introductions.component';
+import { ForumTopic1Component } from './community-forum-arm/forum/forum-topic1/forum-topic1.component';
+import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/forum-topic2.component';
+import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/forum-topic3.component';
+import { ViewPostComponent } from './community-forum-arm/forum/view-post/view-post.component';
 import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-user-profile/view-user-profile.component';
 
 
@@ -17,7 +22,12 @@ const routes: Routes = [
   {path: 'search', component: SearchUserComponent},
   {path: 'events', component: EventViewComponent},
   {path: 'forum', component: ForumComponent},
-  {path: 'communityHomeForum', component: CommunityHomeComponent},
+  {path: 'forum/communityhome', component: CommunityHomeComponent},
+  {path: 'forum/introductions', component: IntroductionsComponent},
+  {path: 'forum/topic1', component: ForumTopic1Component},
+  {path: 'forum/topic2', component: ForumTopic2Component},
+  {path: 'forum/topic3', component: ForumTopic3Component},
+  {path: 'forum/post/:id', component: ViewPostComponent},
   {path: 'user/:userName/:id', component: ViewUserProfileComponent}
 ];
 

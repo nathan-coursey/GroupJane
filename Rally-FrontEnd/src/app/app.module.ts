@@ -12,7 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { EventViewComponent } from './event-view/event-view.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
-import { CommunityHomeComponent } from './community-forum-arm/community-home/community-home.component';
+import { CommunityHomeComponent } from './community-forum-arm/forum/community-home/community-home.component';
+import { IntroductionsComponent } from './community-forum-arm/forum/introductions/introductions.component';
+import { ForumTopic1Component } from './community-forum-arm/forum/forum-topic1/forum-topic1.component';
+import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/forum-topic2.component';
+import { ThemeserviceService } from './services/themeservice.service';
+import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/forum-topic3.component';
+import { ViewPostComponent } from './community-forum-arm/forum/view-post/view-post.component';
 import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-user-profile/view-user-profile.component';
 
 @NgModule({
@@ -25,6 +31,11 @@ import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-u
     EventViewComponent,
     ForumComponent,
     CommunityHomeComponent,
+    IntroductionsComponent,
+    ForumTopic1Component,
+    ForumTopic2Component,
+    ForumTopic3Component,
+    ViewPostComponent,
     ViewUserProfileComponent,
   ],
   imports: [
@@ -33,7 +44,7 @@ import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-u
     FormsModule,
     HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, ThemeserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

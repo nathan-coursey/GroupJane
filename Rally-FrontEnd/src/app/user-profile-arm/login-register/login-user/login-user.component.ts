@@ -35,11 +35,8 @@ export class LoginUserComponent implements OnInit {
       userName: userInformation.value.userName,
       password: userInformation.value.password
     }
-
-    this.http.post(this.userUrl, loginInfo).subscribe((response: UserEntity) => {
-      
+    this.http.post(this.userUrl, loginInfo).subscribe((response: UserEntity) => {    
       this.userLogginIn = response;
-
       for (const k in response){
         if (k === "failed"){
           this.incorrectPassword = true;
@@ -52,6 +49,6 @@ export class LoginUserComponent implements OnInit {
       } 
     });
     
-    
+  
   }
 }

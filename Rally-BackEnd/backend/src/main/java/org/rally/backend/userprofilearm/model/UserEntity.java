@@ -2,6 +2,7 @@ package org.rally.backend.userprofilearm.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.rally.backend.forumarm.models.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.ArrayList;
 import java.util.List;
