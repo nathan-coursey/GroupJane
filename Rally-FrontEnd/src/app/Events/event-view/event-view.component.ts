@@ -36,10 +36,10 @@ export class EventViewComponent implements OnInit {
     // this.verifyLoggedIn();
    
 
-    filterByConnect() {
-      this.filtered = this.eventList.filter((obj) => {
-        return obj.eventCategory === 'connect';
-      });
+    // filterByConnect() {
+    //   this.filtered = this.eventList.filter((obj) => {
+    //     return obj.eventCategory === 'connect';
+    //   });
       
 
   this.http.get(this.eventsUrl).subscribe((response: Event[]) => {
@@ -59,7 +59,7 @@ export class EventViewComponent implements OnInit {
 }
  
 
-}
+// }
 
 
 
