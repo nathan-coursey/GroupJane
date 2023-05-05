@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { EventViewComponent } from './Events/event-view/event-view.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterUserComponent } from './user-profile-arm/login-register/register-user/register-user.component';
@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchUserComponent } from './user-profile-arm/user-profile/search-user/search-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { EventViewComponent } from './event-view/event-view.component';
+import { EventComponent } from './Events/event/event.component';
+import { EventCreateComponent } from './Events/event-create/event-create.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { ServicesHomeComponent } from './services-arm/services-home/services-home.component';
 import { OfferComponent } from './services-arm/offer/offer.component';
@@ -33,6 +34,8 @@ import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-u
     EventViewComponent,
     ForumComponent,
     CommunityHomeComponent,
+    EventComponent,
+    EventCreateComponent,
     ServicesHomeComponent,
     OfferComponent,
     IntroductionsComponent,

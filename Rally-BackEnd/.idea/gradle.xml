@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+=======
   <component name="GradleMigrationSettings" migrationVersion="1" />
+>>>>>>> f3e149a3e2bed74073d596ae0b3af9e310d0d3ab
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
+<<<<<<< HEAD
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-5.2.1" />
+        <option name="gradleJvm" value="17" />
+=======
         <option name="gradleJvm" value="openjdk-19" />
+>>>>>>> f3e149a3e2bed74073d596ae0b3af9e310d0d3ab
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/backend" />
