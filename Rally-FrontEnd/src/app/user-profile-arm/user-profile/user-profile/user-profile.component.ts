@@ -33,7 +33,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   logOut() {
-    localStorage.clear();
+    localStorage.removeItem('userName');
     this.logInStatus = false;
     this.router.navigate(["/login"])
     return;
