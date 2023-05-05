@@ -2,7 +2,6 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginUserComponent } from './user-profile-arm/login-register/login-user/login-user.component';
 import { RegisterUserComponent } from './user-profile-arm/login-register/register-user/register-user.component';
-import { UserProfileComponent } from './user-profile-arm/user-profile/user-profile/user-profile.component';
 import { EventViewComponent } from './Events/event-view/event-view.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
 import { EventComponent } from './Events/event/event.component';
@@ -17,12 +16,12 @@ import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/f
 import { ViewPostComponent } from './community-forum-arm/forum/view-post/view-post.component';
 import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-user-profile/view-user-profile.component';
 import { CommunityHomeComponent } from './community-forum-arm/forum/community-home/community-home.component';
+import { UserProfileComponent } from './user-profile-arm/user-profile/user-profile-main/user-profile.component';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginUserComponent},
   {path: 'register', component: RegisterUserComponent},
-  {path: 'myProfile', component: UserProfileComponent},
   {path: 'search', component: SearchUserComponent},
   {path: 'events', component: EventViewComponent},
   {path: 'forum', component: ForumComponent},
@@ -36,6 +35,7 @@ const routes: Routes = [
   {path: 'forum/topic2', component: ForumTopic2Component},
   {path: 'forum/topic3', component: ForumTopic3Component},
   {path: 'forum/post/:id', component: ViewPostComponent},
+  {path: 'myProfile', component: UserProfileComponent},
   {path: 'user/:userName/:id', component: ViewUserProfileComponent}
 ];
 

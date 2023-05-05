@@ -44,6 +44,7 @@ import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-u
     ForumTopic3Component,
     ViewPostComponent,
     ViewUserProfileComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
