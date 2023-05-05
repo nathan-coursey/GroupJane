@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { EventViewComponent } from './event-view/event-view.component';
 import { ForumComponent } from './community-forum-arm/forum/forum.component';
+import { ServicesHomeComponent } from './services-arm/services-home/services-home.component';
+import { OfferComponent } from './services-arm/offer/offer.component';
 import { CommunityHomeComponent } from './community-forum-arm/forum/community-home/community-home.component';
 import { IntroductionsComponent } from './community-forum-arm/forum/introductions/introductions.component';
 import { ForumTopic1Component } from './community-forum-arm/forum/forum-topic1/forum-topic1.component';
@@ -31,6 +33,8 @@ import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-u
     EventViewComponent,
     ForumComponent,
     CommunityHomeComponent,
+    ServicesHomeComponent,
+    OfferComponent,
     IntroductionsComponent,
     ForumTopic1Component,
     ForumTopic2Component,
