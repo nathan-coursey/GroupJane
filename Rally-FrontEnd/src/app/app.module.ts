@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterUserComponent } from './user-profile-arm/login-register/register-user/register-user.component';
 import { LoginUserComponent } from './user-profile-arm/login-register/login-user/login-user.component';
-import { UserProfileComponent } from './user-profile-arm/user-profile/user-profile/user-profile.component';
+import { UserProfileComponent } from './user-profile-arm/user-profile/user-profile-main/user-profile.component';
 import { FormsModule } from '@angular/forms';
 import { SearchUserComponent } from './user-profile-arm/user-profile/search-user/search-user.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,7 @@ import { ForumTopic2Component } from './community-forum-arm/forum/forum-topic2/f
 import { ThemeserviceService } from './services/themeservice.service';
 import { ForumTopic3Component } from './community-forum-arm/forum/forum-topic3/forum-topic3.component';
 import { ViewPostComponent } from './community-forum-arm/forum/view-post/view-post.component';
+import { ViewUserProfileComponent } from './user-profile-arm/user-profile/view-user-profile/view-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ViewPostComponent } from './community-forum-arm/forum/view-post/view-po
     ForumTopic2Component,
     ForumTopic3Component,
     ViewPostComponent,
+    ViewUserProfileComponent,
   ],
   imports: [
     BrowserModule,
