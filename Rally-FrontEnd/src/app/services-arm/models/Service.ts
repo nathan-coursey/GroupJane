@@ -2,14 +2,14 @@ export class ServiceDTO {
     userName: string;
 	description: string;
     category: string;
-    days: string[];
+    days: string;
     email: string;
     service: string;
     time: string;
     type: string;
 
 
-	constructor(userName: string, description: string, category: string, days: string[], email: string, service: string, time: string, type: string){
+	constructor(userName: string, description: string, category: string, days: string, email: string, service: string, time: string, type: string){
         this.userName = userName;
 		this.description = description;
         this.category = category;
@@ -25,6 +25,9 @@ export class ServiceDTO {
 // Attempting validation
 export class Name {
     constructor (
-        public userName: String
+        public userName: String,
+        public service: String,
+        public description: String,
+        public email: String
     ) {}
 }

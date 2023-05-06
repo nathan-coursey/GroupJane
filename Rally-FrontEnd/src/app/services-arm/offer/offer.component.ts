@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -12,7 +12,6 @@ import { Name } from '../models/Service';
 })
 export class OfferComponent implements OnInit {
 
-
   private userUrl: string;
   currentUser;
   logInStatus: Boolean;
@@ -23,7 +22,11 @@ export class OfferComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+
     this.verifyLoggedIn();
+
+    
   }
 
   verifyLoggedIn() {
@@ -35,8 +38,21 @@ export class OfferComponent implements OnInit {
 
   }
 
-  // Attempting validation
-  model = new Name(localStorage.getItem('userName'));
+  // Validations
+  types = ["Offering", "Requesting"];
+  typeModel = {type: this.types[0]};
+
+  categories = ["Art", "Administrative", "Babysitting", "Dogwalking", "Event", "Music", "Other", "Photography", "Repair", "Rideshare"];
+  categoryModel = {category: this.categories[0]}
+
+  days = ["Any", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  daysModel = {day: this.days[0]}
+
+  times = ["Any", "Morning", "Afternoon", "Evening"];
+  timeModel = {time: this.times[0]}
+
+  model = new Name(localStorage.getItem('userName'), localStorage.getItem('service'), localStorage.getItem('description'), localStorage.getItem('email'));
+
 
   logOut() {
     localStorage.clear();
@@ -63,11 +79,16 @@ export class OfferComponent implements OnInit {
     
     
     this.http.post(this.userUrl, submitService).subscribe((res) => {
+      console.log(submitService.userName);
+      console.log(submitService.type);
+      console.log(submitService.service);
+      console.log(submitService.category);
+      console.log(submitService.days);
+      console.log(submitService.time);
+      console.log(submitService.description);
+      console.log(submitService.email);
       console.log(res);
-      console.log(f.value.days);
     })
-
-    f.reset();
 
 }
 }
