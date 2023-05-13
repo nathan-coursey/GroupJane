@@ -1,7 +1,7 @@
 export class ServiceDTO {
     userName: string;
 	description: string;
-    category: string;
+    category: String;
     days: string;
     email: string;
     service: string;
@@ -9,7 +9,7 @@ export class ServiceDTO {
     type: string;
 
 
-	constructor(userName: string, description: string, category: string, days: string, email: string, service: string, time: string, type: string){
+	constructor(userName: string, description: string, category: String, days: string, email: string, service: string, time: string, type: string){
         this.userName = userName;
 		this.description = description;
         this.category = category;
